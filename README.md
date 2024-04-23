@@ -355,3 +355,6 @@ Happy coding!
 - [Markdown Cheat Sheet](https://www.markdownguide.org/cheat-sheet/)
 - [Python Circular Imports - StackAbuse](https://stackabuse.com/python-circular-imports/)
 - [Flask-CORS](https://flask-cors.readthedocs.io/en/latest/)
+
+## Credits
+I-Ching : https://github.com/strobus/i-ching
