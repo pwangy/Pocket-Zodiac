@@ -1,8 +1,13 @@
-import { useEffect, useState } from 'react'
-import { Switch, Route } from 'react-router-dom'
+import { useContext, useEffect, useState } from 'react'
+import { Outlet } from 'react-router-dom'
+// useContext file
+// nav
+// footer
 
-function App() {
-	return <h1>i'm the frontend!</h1>
+const App = () => {
+	return (
+		<h1>i'm the frontend!</h1>
+	)
 }
 
 export default App
