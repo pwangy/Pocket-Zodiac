@@ -12,12 +12,13 @@ flask-migrate = "4.0.7"
 flask-restful = "0.3.10"
 flask-sqlalchemy = "3.0.3"
 flask-session = "*"
-bcrypt = "4.1.1"
 faker = "24.11.0"
 ipdb = "0.13.9"
 marshmallow-sqlalchemy = "1.0.0"
+sqlalchemy = '*'
 sqlalchemy-serializer = "1.4.12"
 Werkzeug = "*"
+DateTime = "5.5"
 
 [requires]
 python_full_version = "3.8.13"
