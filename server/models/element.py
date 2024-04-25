@@ -6,7 +6,7 @@ class Element(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
     qualities = db.Column(db.String)
-    desc = db.Column(db.Text)
+    desc = db.Column(db.String)
     season = db.Column(db.String)
     direction = db.Column(db.String)
     planet = db.Column(db.String)
@@ -20,7 +20,7 @@ class Element(db.Model, SerializerMixin):
     east = db.relationship("East", back_populates="elements")
 
     # Serialize
-    # serialize_rules = ("-",)
+    serialize_rules = ("-east.element",)
 
     # Representation
     def __repr__(self):
