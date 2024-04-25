@@ -7,7 +7,7 @@ class User(db.Model, SerializerMixin):
     __tablename__ = 'users'
 
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.string(20), nullable=False, unique=True)
+    username = db.Column(db.String(20), nullable=False, unique=True)
     email = db.Column(db.String(50), nullable=False, unique=True)
     _password_hash = db.Column(db.String(50), nullable=False)
     birthdate = db.Column(db.String, default=DateTime.now().date().strftime("%Y-%m-%d"))
