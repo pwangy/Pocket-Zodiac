@@ -7,7 +7,7 @@ class WestSchema(ma.SQLAlchemyAutoSchema):
 
     user = fields.Nested(
         "UserSchema",
-        only=("id", "username", "email", "birthdate", "birthtime"),
+        only=("id", "username", "email", "birthdate"),
         exclude=("_password_hash",),
         many=True,
     )

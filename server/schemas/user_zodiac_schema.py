@@ -9,22 +9,21 @@ class UserZodiacSchema(ma.SQLAlchemyAutoSchema):
     user_id = fields.Integer(required=True)
     user = fields.Nested(
         "UserSchema",
-        only=("id", "username", "email", "birthdate", "birthtime"),
+        only=("id", "username", "email", "birthdate"),
         exclude=("_password_hash",),
         many=True,
     )
     west_id = fields.Integer(required=True)
     west = fields.Nested(
         "UserSchema",
-        only=("id", "username", "email", "birthdate", "birthtime"),
+        only=("id", "username", "email", "birthdate"),
         exclude=("_password_hash",),
         many=True,
     )
-    east_hour_id = fields.Integer(required=True)
     east_id = fields.Integer(required=True)
     east_id = fields.Nested(
         "UserSchema",
-        only=("id", "username", "email", "birthdate", "birthtime"),
+        only=("id", "username", "email", "birthdate"),
         exclude=("_password_hash",),
         many=True,
     )
