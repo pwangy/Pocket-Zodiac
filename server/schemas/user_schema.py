@@ -38,5 +38,10 @@ class UserSchema(ma.SQLAlchemyAutoSchema):
         if not DateTime.strptime(birthtime, "%H:%M"):
             raise ValueError('Time must be in \"HH:MM\"')
 
+    url = ma.Hyperlinks({
+    "self": ma.URLFor("userbyid", values=dict(id="<id>")),
+    "collection": ma.URLFor("users"),
+    })
+
 user_schema = UserSchema()
 users_schema = UserSchema(many=True)
