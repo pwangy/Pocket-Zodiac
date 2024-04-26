@@ -6,12 +6,12 @@ class UserSchema(ma.SQLAlchemyAutoSchema):
         load_instance = True
         exclude = ('_password_hash',)
 
-    user_zodiac = fields.Nested(
-        "UserZodiac",
-        only=("id", "east_west", "additional_birthdate"),
-        exclude=("user_id", "west_id", "east_id"),
-        many=True,
-    )
+    # user_zodiac = fields.Nested(
+    #     "UserZodiac",
+    #     only=("id", "east_west", "additional_birthdate"),
+    #     exclude=("user_id", "west_id", "east_id"),
+    #     many=True,
+    # )
     username = fields.String(required=True, unique=True, validate=validate.Length(min=2, max=20))
     email = fields.Email(required=True, unique=True)
     password_hash = fields.String(required=True, load_only=True, validate=validate.Length(min=8, max=20))

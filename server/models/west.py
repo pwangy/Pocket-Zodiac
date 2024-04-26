@@ -13,11 +13,11 @@ class West(db.Model, SerializerMixin):
     symbol = db.Column(db.String)
     img = db.Column(db.String)
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
-    user_zodiac_id = db.Column(db.Integer, db.ForeignKey("user_zodiac.id"))
+    # user_zodiac_id = db.Column(db.Integer, db.ForeignKey("user_zodiac.id"))
 
     # Relationships
     users = db.relationship("User", back_populates="west")
-    user_zodiac = db.relationship("UserZodiac", back_populates="west", foreign_keys=[user_zodiac_id])
+    # user_zodiac = db.relationship("UserZodiac", back_populates="west", foreign_keys=[user_zodiac_id])
 
     # Serialize
     serialize_rules = ("-user.west",)
@@ -29,9 +29,9 @@ class West(db.Model, SerializerMixin):
                 name: {self.name}
                 qualities: {self.qualities}
                 description: {self.desc}
-                element: {self.element}
                 planet: {self.planet}
                 symbol: {self.symbol}
                 image: {self.img}
             />
         """
+                # element: {self.element}

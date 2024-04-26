@@ -38,4 +38,6 @@ class EastSchema(ma.SQLAlchemyAutoSchema):
     })
     
 east_schema = EastSchema()
-easts_schema = EastSchema(many=True, exclude=("elements", "users"))
+easts_schema = EastSchema(many=True)
+
+# , exclude=("elements", "users")

@@ -14,7 +14,7 @@ class WestSchema(ma.SQLAlchemyAutoSchema):
     name = fields.String(required=True)
     qualities = fields.String(required=True)
     desc = fields.String(required=True)
-    element = fields.String(required=True)
+    # element = fields.String(required=True)
     planet = fields.String(required=True)
     symbol = fields.String(required=True)
     img = fields.String(
@@ -30,4 +30,6 @@ class WestSchema(ma.SQLAlchemyAutoSchema):
     })
 
 west_schema = WestSchema()
-wests_schema = WestSchema(many=True, exclude=("users",))
+wests_schema = WestSchema(many=True)
+
+#  exclude=("users",)

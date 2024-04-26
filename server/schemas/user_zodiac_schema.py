@@ -1,4 +1,5 @@
-from . import ma, fields, validate, DateTime, UserZodiac, validates, re
+from . import ma, fields, validate, DateTime, UserZodiac, validates
+import re
 
 class UserZodiacSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
@@ -34,8 +35,8 @@ class UserZodiacSchema(ma.SQLAlchemyAutoSchema):
         "self": ma.URLFor("userzodiacbyid", values=dict(id="<id>")),
         "collection": ma.URLFor("userszodiac"),
         "users": ma.URLFor("users"),
-        "west": ma.URLFor("west"),
-        "east": ma.URLFor("east"),
+        # "west": ma.URLFor("west"),
+        # "east": ma.URLFor("east"),
     })
     
     @validates('additional_birthdate')
@@ -44,4 +45,6 @@ class UserZodiacSchema(ma.SQLAlchemyAutoSchema):
             raise ValueError('Date must be in \"YYYY-MM-DD\"')
 
 user_zodiac_schema = UserZodiacSchema()
-users_zodiac_schema = UserZodiacSchema(many=True, exclude=("users",))
+users_zodiac_schema = UserZodiacSchema(many=True)
+
+# , exclude=("users",)

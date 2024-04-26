@@ -18,11 +18,11 @@ class Element(db.Model, SerializerMixin):
     color = db.Column(db.String)
 
     # Relationships
-    east_id = db.Column(db.Integer, db.ForeignKey("east.id"))
-    east = db.relationship("East", back_populates="elements")
+    # east_id = db.Column(db.Integer, db.ForeignKey("east.id"))
+    # east = db.relationship("East", foreign_keys=[east_id], back_populates="elements")
 
     # Serialize
-    serialize_rules = ("-east.elements",)
+    # serialize_rules = ("-east.elements",)
 
     # Representation
     def __repr__(self):

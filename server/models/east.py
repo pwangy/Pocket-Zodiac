@@ -1,4 +1,6 @@
+from .user_zodiac import UserZodiac
 from . import SerializerMixin, validates, re, db
+from importlib import import_module
 
 
 class East(db.Model, SerializerMixin):
@@ -11,22 +13,26 @@ class East(db.Model, SerializerMixin):
     polarity = db.Column(db.String)
     order_12 = db.Column(db.Integer)
     order_60 = db.Column(db.Integer)
-    element_id = db.Column(db.Integer, db.ForeignKey("element.id"))
+    # element_id = db.Column(db.Integer, db.ForeignKey("element.id"))
     img = db.Column(db.String)
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
 
     # Relationships
-    elements = db.relationship("Element", back_populates="east")
+    # elements = db.relationship("Element", back_populates="east", foreign_keys=[element_id])
     users = db.relationship("User", back_populates="east")
-    from .user_zodiac import UserZodiac
-    user_zodiac_id = db.Column(db.Integer, db.ForeignKey("user_zodiac.id"))
-    user_zodiac = db.relationship(
-        "UserZodiac",
-        back_populates="east",
-        foreign_keys=[user_zodiac_id],
-        remote_side="UserZodiac.east_id",
-        primaryjoin=user_zodiac_id == UserZodiac.id
-    )
+    # user_zodiac_id = db.Column(db.Integer, db.ForeignKey("user_zodiac.id"))
+
+    # def get_user_zodiac_join(self):
+    #     from .user_zodiac import UserZodiac
+    #     return self.user_zodiac_id == UserZodiac.id
+
+    # user_zodiac = db.relationship(
+    #     "UserZodiac",
+    #     back_populates="east",
+    #     foreign_keys=[user_zodiac_id],
+    #     remote_side="UserZodiac.east_id",
+    #     primaryjoin=get_user_zodiac_join,
+    # )
 
     # Serialize
     serialize_rules = ("-elements.east", "-user_zodiac.east")
