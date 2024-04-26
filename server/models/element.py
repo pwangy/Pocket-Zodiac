@@ -1,7 +1,8 @@
-from . import SerializerMixin, validates, re, db
+from . import SerializerMixin, db
+
 
 class Element(db.Model, SerializerMixin):
-    __tablename__ = 'elements'
+    __tablename__ = "elements"
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
@@ -17,10 +18,11 @@ class Element(db.Model, SerializerMixin):
     color = db.Column(db.String)
 
     # Relationships
-    east = db.relationship("East", back_populates="elements")
+    # east_id = db.Column(db.Integer, db.ForeignKey("east.id"))
+    # east = db.relationship("East", foreign_keys=[east_id], back_populates="elements")
 
     # Serialize
-    serialize_rules = ("-east.element",)
+    # serialize_rules = ("-east.elements",)
 
     # Representation
     def __repr__(self):

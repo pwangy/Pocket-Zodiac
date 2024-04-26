@@ -1,4 +1,5 @@
-from .. import (Resource, db, User, user_schemea, jwt_required, current_user)
+from .. import (Resource, db, User, user_schema, jwt_required, current_user)
+
 
 class Session(Resource):
     @jwt_required()

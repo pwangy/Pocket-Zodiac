@@ -9,14 +9,14 @@ class EastSchema(ma.SQLAlchemyAutoSchema):
     element = fields.Nested(
         "EastSchema",
         only=("id", "name", "qualities", "desc", "polarity", "order_12", "order_60", "img"),
-        exclude=("element", "user"),
+        exclude=("element", "user_id"),
         many=True,
     )
     user_id = fields.Integer(required=True)
     user = fields.Nested(
         "UserSchema",
-        only=("id", "username", "email", "birthdate", "birthtime"),
-        exclude=("_password_hash",),
+        only=("id", "username", "email", "birthdate"),
+        exclude=("_password_hash", "user_zodiac_id"),
         many=True,
     )
     name = fields.String(required=True)
@@ -38,4 +38,6 @@ class EastSchema(ma.SQLAlchemyAutoSchema):
     })
     
 east_schema = EastSchema()
-easts_schema = EastSchema(many=True, exclude=("elements", "users"))
+easts_schema = EastSchema(many=True)
+
+# , exclude=("elements", "users")

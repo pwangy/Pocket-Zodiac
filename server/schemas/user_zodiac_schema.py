@@ -1,4 +1,5 @@
-from . import ma, fields, validate, DateTime, UserZodiac, validates, re
+from . import ma, fields, validate, DateTime, UserZodiac, validates
+import re
 
 class UserZodiacSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
@@ -9,22 +10,21 @@ class UserZodiacSchema(ma.SQLAlchemyAutoSchema):
     user_id = fields.Integer(required=True)
     user = fields.Nested(
         "UserSchema",
-        only=("id", "username", "email", "birthdate", "birthtime"),
+        only=("id", "username", "email", "birthdate"),
         exclude=("_password_hash",),
         many=True,
     )
     west_id = fields.Integer(required=True)
     west = fields.Nested(
         "UserSchema",
-        only=("id", "username", "email", "birthdate", "birthtime"),
+        only=("id", "username", "email", "birthdate"),
         exclude=("_password_hash",),
         many=True,
     )
-    east_hour_id = fields.Integer(required=True)
     east_id = fields.Integer(required=True)
     east_id = fields.Nested(
         "UserSchema",
-        only=("id", "username", "email", "birthdate", "birthtime"),
+        only=("id", "username", "email", "birthdate"),
         exclude=("_password_hash",),
         many=True,
     )
@@ -35,8 +35,8 @@ class UserZodiacSchema(ma.SQLAlchemyAutoSchema):
         "self": ma.URLFor("userzodiacbyid", values=dict(id="<id>")),
         "collection": ma.URLFor("userszodiac"),
         "users": ma.URLFor("users"),
-        "west": ma.URLFor("west"),
-        "east": ma.URLFor("east"),
+        # "west": ma.URLFor("west"),
+        # "east": ma.URLFor("east"),
     })
     
     @validates('additional_birthdate')
@@ -45,4 +45,6 @@ class UserZodiacSchema(ma.SQLAlchemyAutoSchema):
             raise ValueError('Date must be in \"YYYY-MM-DD\"')
 
 user_zodiac_schema = UserZodiacSchema()
-users_zodiac_schema = UserZodiacSchema(many=True, exclude=("users",))
+users_zodiac_schema = UserZodiacSchema(many=True)
+
+# , exclude=("users",)
