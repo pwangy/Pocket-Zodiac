@@ -4,15 +4,16 @@ from datetime import datetime
 from config import flask_bcrypt
 
 
+
 class User(db.Model, SerializerMixin):
     __tablename__ = "users"
 
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(20), nullable=False, unique=True)
     email = db.Column(db.String(50), nullable=False, unique=True)
-    _password_hash = db.Column(db.String(50), nullable=False)
+    _password_hash = db.Column(db.String(128), nullable=False)
     birthdate = db.Column(
-        db.DateTime, default=datetime.now().date().strftime("%Y-%m-%d")
+        db.Date, default=datetime.now().date().strftime("%Y-%m-%d")
     )
     east_id = db.Column(db.Integer, db.ForeignKey("east.id"))
     west_id = db.Column(db.Integer, db.ForeignKey("west.id"))

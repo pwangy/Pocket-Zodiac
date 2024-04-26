@@ -1,7 +1,3 @@
-from . import SerializerMixin, db
-from datetime import datetime
-
-
 class UserZodiac(db.Model, SerializerMixin):
     __tablename__ = "user_zodiac"
 
@@ -15,7 +11,6 @@ class UserZodiac(db.Model, SerializerMixin):
     )
 
     # Relationships
-    from .east import East
     users = db.relationship("User", back_populates="user_zodiac")
     east = db.relationship(
         "East",
@@ -23,19 +18,9 @@ class UserZodiac(db.Model, SerializerMixin):
         foreign_keys=[east_id],
         uselist=False,
         primaryjoin="UserZodiac.east_id == East.id",
-        remote_side=East.id,
+        remote_side="East.id",
     )
     west = db.relationship("West", back_populates="user_zodiac", foreign_keys=[west_id])
 
     # Serialize
     serialize_rules = ("-user.user_zodiac", "-east.user_zodiac", "-west.user_zodiac")
-
-    # Representation
-    def __repr__(self):
-        return f"""
-            <UserZodiac {self.id}:
-                user: {self.user_id}
-                eastern: {self.east_id}
-                western: {self.west_id}
-            />
-        """

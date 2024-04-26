@@ -14,15 +14,22 @@ class East(db.Model, SerializerMixin):
     element_id = db.Column(db.Integer, db.ForeignKey("element.id"))
     img = db.Column(db.String)
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
-    user_zodiac_id = db.Column(db.Integer, db.ForeignKey("user_zodiac.id"))
 
     # Relationships
     elements = db.relationship("Element", back_populates="east")
     users = db.relationship("User", back_populates="east")
-    user_zodiac = db.relationship("UserZodiac", back_populates="east")
+    from .user_zodiac import UserZodiac
+    user_zodiac_id = db.Column(db.Integer, db.ForeignKey("user_zodiac.id"))
+    user_zodiac = db.relationship(
+        "UserZodiac",
+        back_populates="east",
+        foreign_keys=[user_zodiac_id],
+        remote_side="UserZodiac.east_id",
+        primaryjoin=user_zodiac_id == UserZodiac.id
+    )
 
     # Serialize
-    serialize_rules = ("-elements.east",)
+    serialize_rules = ("-elements.east", "-user_zodiac.east")
 
     # Representation
     def __repr__(self):

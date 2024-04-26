@@ -1,4 +1,4 @@
-from . import SerializerMixin, validates, re, db
+from . import SerializerMixin, db
 
 
 class Element(db.Model, SerializerMixin):
@@ -16,9 +16,9 @@ class Element(db.Model, SerializerMixin):
     taste = db.Column(db.String)
     organ = db.Column(db.String)
     color = db.Column(db.String)
-    east_id = db.Column(db.Integer, db.ForeignKey("east.id"))
 
     # Relationships
+    east_id = db.Column(db.Integer, db.ForeignKey("east.id"))
     east = db.relationship("East", back_populates="elements")
 
     # Serialize
