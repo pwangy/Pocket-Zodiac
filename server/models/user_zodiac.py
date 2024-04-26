@@ -16,7 +16,7 @@ class UserZodiac(db.Model, SerializerMixin):
 
     # Relationships
 
-    users = db.relationship("User", back_populates="user_zodiac")
+    # users = db.relationship("User", back_populates="user_zodiac")
     # east = db.relationship(
     #     "East",
     #     back_populates="user_zodiac",
@@ -29,14 +29,14 @@ class UserZodiac(db.Model, SerializerMixin):
 
     # Serialize
     # serialize_rules = ("-user.user_zodiac", "-east.user_zodiac", "-west.user_zodiac")
-    serialize_rules = ("-user.user_zodiac",)
+    # serialize_rules = ("-user.user_zodiac",)
 
     # Representation
     def __repr__(self):
         return f"""
             <UserZodiac {self.id}:
-                user: {self.user_id}
-                eastern: {self.east_id}
-                western: {self.west_id}
             />
         """
+                # user: {self.user_id}
+                # eastern: {self.east_id}
+                # western: {self.west_id}

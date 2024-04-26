@@ -15,17 +15,17 @@ class User(db.Model, SerializerMixin):
     birthdate = db.Column(
         db.Date, default=datetime.now().date().strftime("%Y-%m-%d")
     )
-    east_id = db.Column(db.Integer, db.ForeignKey("east.id"))
-    west_id = db.Column(db.Integer, db.ForeignKey("west.id"))
+    # east_id = db.Column(db.Integer, db.ForeignKey("east.id"))
+    # west_id = db.Column(db.Integer, db.ForeignKey("west.id"))
 
     # Relationships
-    user_zodiac = db.relationship(
-        "UserZodiac", back_populates="users", cascade="all, delete-orphan"
-    )
-    east = db.relationship("East", back_populates="users")
-    west = db.relationship("West", back_populates="users")
+    # user_zodiac = db.relationship(
+    #     "UserZodiac", back_populates="users", cascade="all, delete-orphan"
+    # )
+    # east = db.relationship("East", back_populates="users")
+    # west = db.relationship("West", back_populates="users")
 
-    serialize_rules = ("-_password_hash",)
+    # serialize_rules = ("-_password_hash",)
 
     # #! rm after testing
     def __repr__(self):

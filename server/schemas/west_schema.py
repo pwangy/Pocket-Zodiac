@@ -5,12 +5,12 @@ class WestSchema(ma.SQLAlchemyAutoSchema):
         model = West
         load_instance = True
 
-    user = fields.Nested(
-        "UserSchema",
-        only=("id", "username", "email", "birthdate"),
-        exclude=("_password_hash",),
-        many=True,
-    )
+    # user = fields.Nested(
+    #     "UserSchema",
+    #     only=("id", "username", "email", "birthdate"),
+    #     exclude=("_password_hash",),
+    #     many=True,
+    # )
     name = fields.String(required=True)
     qualities = fields.String(required=True)
     desc = fields.String(required=True)
@@ -26,7 +26,7 @@ class WestSchema(ma.SQLAlchemyAutoSchema):
     url = ma.Hyperlinks({
         "self": ma.URLFor("westbyid", values=dict(id="<id>")),
         "collection": ma.URLFor("west"),
-        "users": ma.URLFor("users"),
+        # "users": ma.URLFor("users"),
     })
 
 west_schema = WestSchema()
