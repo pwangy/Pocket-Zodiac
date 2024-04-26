@@ -1,24 +1,22 @@
 import { useContext } from 'react'
 import { NavLink } from 'react-router-dom'
-import { UserContext } from '../context/UserContext'
+import { AuthContext } from '../context/AuthContext'
 
-const Nav = () => {
-	const { user, logout } = useContext(UserContext)
+const Header = () => {
+	const { user, logout } = useContext(AuthContext)
 	
     return (
-        <header>
+        <>
             <h1>Pocket Astro</h1>
-            <nav>
-                {user ? (
-                    <>
-                        <NavLink id='link' to='/' className=''>link</NavLink>
-                        <NavLink id='link' to='/' className='nav-link' onClick={logout}>Logout</NavLink>
-                    </>
-                ) : (
-                    <NavLink id='link' to='/' className='link'></NavLink>
-                )}
-            </nav>
-        </header>
+            {/* {user ? ( */}
+                <>
+                    <NavLink id='link' to='/' className=''>link</NavLink>
+                    <NavLink id='link' to='/' className='' onClick={logout}>Logout</NavLink>
+                </>
+            {/* ) : ( */}
+                <NavLink id='link' to='/' className='link'></NavLink>
+            {/* )} */}
+        </>
 )}
 
-export default Nav
+export default Header

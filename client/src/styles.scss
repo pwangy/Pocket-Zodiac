@@ -48,3 +48,33 @@ table {
 }
 
 /* Start Styles */
+
+// pallet
+$blk: #191414;
+$wht: snow;
+
+html, div, h1, p, a {
+	margin: 16px 6px;
+	padding: 16px 0;
+	color: $wht;
+	background-color: $blk;
+	border: 1px solid $wht;
+	border-radius: 3px;
+}
+
+// Footer
+footer {
+	margin-top: 3em;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+footer > p {
+	// font-family: $font-primary;
+	// font-size: x-small;
+	line-height: normal;
+	text-align: center;
+  }
+
+/* Breakpoints */
