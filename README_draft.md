@@ -238,3 +238,8 @@ Happy coding!
 
 ## Credits
 I-Ching : https://github.com/strobus/i-ching
+
+Western sign descriptions: The Influence of the Zodiac Upon Human Life by Eleanor Kirk, 1894
+eastern illustartions 
+
+= Image by <a href="https://www.freepik.com/free-vector/hand-drawn-chinese-zodiac-animals-illustration-set_35061601.htm#fromView=search&page=1&position=14&uuid=098f6370-6acc-4b96-920b-0ee372bffd2c?log-in=google">Freepik</a>

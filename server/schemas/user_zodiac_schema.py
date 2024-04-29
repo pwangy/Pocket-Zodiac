@@ -7,34 +7,34 @@ class UserZodiacSchema(ma.SQLAlchemyAutoSchema):
         load_instance = True
         ordered = True
     
-    user_id = fields.Integer(required=True)
-    user = fields.Nested(
-        "UserSchema",
-        only=("id", "username", "email", "birthdate"),
-        exclude=("_password_hash",),
-        many=True,
-    )
-    west_id = fields.Integer(required=True)
-    west = fields.Nested(
-        "UserSchema",
-        only=("id", "username", "email", "birthdate"),
-        exclude=("_password_hash",),
-        many=True,
-    )
-    east_id = fields.Integer(required=True)
-    east_id = fields.Nested(
-        "UserSchema",
-        only=("id", "username", "email", "birthdate"),
-        exclude=("_password_hash",),
-        many=True,
-    )
+    # user_id = fields.Integer(required=True)
+    # user = fields.Nested(
+    #     "UserSchema",
+    #     only=("id", "username", "email", "birthdate"),
+    #     exclude=("_password_hash",),
+    #     many=True,
+    # )
+    # west_id = fields.Integer(required=True)
+    # west = fields.Nested(
+    #     "UserSchema",
+    #     only=("id", "username", "email", "birthdate"),
+    #     exclude=("_password_hash",),
+    #     many=True,
+    # )
+    # east_id = fields.Integer(required=True)
+    # east_id = fields.Nested(
+    #     "UserSchema",
+    #     only=("id", "username", "email", "birthdate"),
+    #     exclude=("_password_hash",),
+    #     many=True,
+    # )
     east_west = fields.String()
     additional_birthdate = fields.String()
 
     url = ma.Hyperlinks({
         "self": ma.URLFor("userzodiacbyid", values=dict(id="<id>")),
         "collection": ma.URLFor("userszodiac"),
-        "users": ma.URLFor("users"),
+        # "users": ma.URLFor("users"),
         # "west": ma.URLFor("west"),
         # "east": ma.URLFor("east"),
     })

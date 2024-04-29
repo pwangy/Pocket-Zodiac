@@ -5,20 +5,20 @@ class EastSchema(ma.SQLAlchemyAutoSchema):
         model = East
         load_instance = True
 
-    element_id = fields.Integer(required=True)
-    element = fields.Nested(
-        "EastSchema",
-        only=("id", "name", "qualities", "desc", "polarity", "order_12", "order_60", "img"),
-        exclude=("element", "user_id"),
-        many=True,
-    )
-    user_id = fields.Integer(required=True)
-    user = fields.Nested(
-        "UserSchema",
-        only=("id", "username", "email", "birthdate"),
-        exclude=("_password_hash", "user_zodiac_id"),
-        many=True,
-    )
+    # element_id = fields.Integer(required=True)
+    # element = fields.Nested(
+    #     "EastSchema",
+    #     only=("id", "name", "qualities", "desc", "polarity", "order_12", "order_60", "img"),
+    #     exclude=("element", "user_id"),
+    #     many=True,
+    # )
+    # user_id = fields.Integer(required=True)
+    # user = fields.Nested(
+    #     "UserSchema",
+    #     only=("id", "username", "email", "birthdate"),
+    #     exclude=("_password_hash", "user_zodiac_id"),
+    #     many=True,
+    # )
     name = fields.String(required=True)
     qualities = fields.String(required=True)
     desc = fields.String(required=True)
@@ -34,7 +34,7 @@ class EastSchema(ma.SQLAlchemyAutoSchema):
     url = ma.Hyperlinks({
         "self": ma.URLFor("eastbyid", values=dict(id="<id>")),
         "collection":ma.URLFor("east"),
-        "elements": ma.URLFor("elements"),
+        # "elements": ma.URLFor("elements"),
     })
     
 east_schema = EastSchema()

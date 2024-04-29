@@ -5,12 +5,12 @@ class ElementSchema(ma.SQLAlchemyAutoSchema):
         model = Element
         load_instance = True
 
-    east = fields.Nested(
-        "EastSchema",
-        only=("name", "qualities", "desc", "polarity", "order_12", "order_60", "img"),
-        exclude=("element",),
-        many=True,
-    )
+    # east = fields.Nested(
+    #     "EastSchema",
+    #     only=("name", "qualities", "desc", "polarity", "order_12", "order_60", "img"),
+    #     exclude=("element",),
+    #     many=True,
+    # )
     name = fields.String(required=True)
     qualities = fields.String(required=True)
     desc = fields.String(required=True)
@@ -26,7 +26,7 @@ class ElementSchema(ma.SQLAlchemyAutoSchema):
     url = ma.Hyperlinks({
         "self": ma.URLFor("elementbyid", values=dict(id="<id>")),
         "collection": ma.URLFor("elements"),
-        "east": ma.URLFor("east"),
+        # "east": ma.URLFor("east"),
     })
 
 element_schema = ElementSchema()

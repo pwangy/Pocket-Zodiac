@@ -4,7 +4,6 @@ from datetime import datetime
 from config import flask_bcrypt
 
 
-
 class User(db.Model, SerializerMixin):
     __tablename__ = "users"
 
@@ -12,18 +11,12 @@ class User(db.Model, SerializerMixin):
     username = db.Column(db.String(20), nullable=False, unique=True)
     email = db.Column(db.String(50), nullable=False, unique=True)
     _password_hash = db.Column(db.String(128), nullable=False)
-    birthdate = db.Column(
-        db.Date, default=datetime.now().date().strftime("%Y-%m-%d")
-    )
-    east_id = db.Column(db.Integer, db.ForeignKey("east.id"))
-    west_id = db.Column(db.Integer, db.ForeignKey("west.id"))
+    birthdate = db.Column(db.Date, default=datetime.now().date().strftime("%Y-%m-%d"))
 
     # Relationships
-    user_zodiac = db.relationship(
-        "UserZodiac", back_populates="users", cascade="all, delete-orphan"
+    user_zodiacs = db.relationship(
+        "UserZodiac", back_populates="user", cascade="all, delete-orphan"
     )
-    east = db.relationship("East", back_populates="users")
-    west = db.relationship("West", back_populates="users")
 
     serialize_rules = ("-_password_hash",)
 
