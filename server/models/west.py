@@ -1,4 +1,6 @@
 from . import SerializerMixin, db
+from sqlalchemy.ext.associationproxy import association_proxy
+from datetime import datetime
 
 
 class West(db.Model, SerializerMixin):
@@ -6,21 +8,24 @@ class West(db.Model, SerializerMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
+    gloss = db.Column(db.String)
     qualities = db.Column(db.String)
     desc = db.Column(db.String)
     element = db.Column(db.String)
+    modality = db.Column(db.String)
     planet = db.Column(db.String)
+    house = db.Column(db.Integer)
+    start = datetime.datetime.strptime( , "%d-$m")
+    end = datetime.datetime.strptime( , "%d-$m")
     symbol = db.Column(db.String)
     img = db.Column(db.String)
-    # user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
-    # user_zodiac_id = db.Column(db.Integer, db.ForeignKey("user_zodiac.id"))
 
     # Relationships
-    # users = db.relationship("User", back_populates="west")
-    # user_zodiac = db.relationship("UserZodiac", back_populates="west", foreign_keys=[user_zodiac_id])
+    user_zodiacs = db.relationship("UserZodiac", back_populates="west")
+    users = association_proxy("user_zodiacs", "user")
 
     # Serialize
-    # serialize_rules = ("-user.west",)
+    serialize_rules = ("-user_zodiacs.west",)
 
     # Representation
     def __repr__(self):
@@ -29,9 +34,9 @@ class West(db.Model, SerializerMixin):
                 name: {self.name}
                 qualities: {self.qualities}
                 description: {self.desc}
+                element: {self.element}
                 planet: {self.planet}
                 symbol: {self.symbol}
                 image: {self.img}
             />
         """
-                # element: {self.element}
