@@ -11,7 +11,7 @@ class Element(db.Model, SerializerMixin):
     season = db.Column(db.String)
     direction = db.Column(db.String)
     planet = db.Column(db.String)
-    number = db.Column(db.String)
+    number = db.Column(db.Integer)
     smell = db.Column(db.String)
     taste = db.Column(db.String)
     organ = db.Column(db.String)

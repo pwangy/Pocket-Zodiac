@@ -8,19 +8,10 @@ from flask_jwt_extended import JWTManager
 from datetime import timedelta
 from os import environ
 
-# from flask_cors import CORS
-# from flask_session import Session
-
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///zodiac.db"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.config["SQLALCHEMY_ECHO"] = True
-
-# Session config
-# app.secret_key = environ.get("SESSION_SECRET")
-# app.config["SESSION_TYPE"] = "sqlalchemy"
-# app.config["SESSION_SQLALCHEMY_TABLE"] = "sessions"
-# app.config["SESSION_SQLALCHEMY"] = db
 
 #! Flask JWT Extended configuration
 app.config["JWT_SECRET_KEY"] = environ.get("JWT_SECRET")
@@ -41,5 +32,3 @@ api = Api(app)
 ma = Marshmallow(app)
 flask_bcrypt = Bcrypt(app)
 jwt = JWTManager(app)
-# session = Session(app)
-# CORS(app)

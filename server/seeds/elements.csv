@@ -1,6 +1,6 @@
 id,name,qualities,desc,season,direction,planet,number,smell,taste,organ,color
-,Wood,"bearing, casual",desc,Spring,East,Jupiter,8,Rancid,Sour,Liver,Azure
-,Fire,"imagination, educated",desc,Summer,South,Mars,7,Burnt,Bitter,Heart,Vermilion
-,Earth,"intellect, circumspect",desc,-,Center,Saturn,5,Perfume,Sweet,Spleen,Yellow
-,Metal,"elequence, vigorous",desc,Autumn,West,Venus,9,Raw,Musty,Lungs,White
-,Water,"attentiveness, tranquil",desc,Winter,North,Mercury,6,Rotten,Salt,Kidney,Black
+NULL,Wood,"bearing, casual",desc,Spring,East,Jupiter,8,Rancid,Sour,Liver,Azure
+NULL,Fire,"imagination, educated",desc,Summer,South,Mars,7,Burnt,Bitter,Heart,Vermilion
+NULL,Earth,"intellect, circumspect",desc,-,Center,Saturn,5,Perfume,Sweet,Spleen,Yellow
+NULL,Metal,"elequence, vigorous",desc,Autumn,West,Venus,9,Raw,Musty,Lungs,White
+NULL,Water,"attentiveness, tranquil",desc,Winter,North,Mercury,6,Rotten,Salt,Kidney,Black

@@ -12,13 +12,12 @@ class East(db.Model, SerializerMixin):
     polarity = db.Column(db.String)
     order_12 = db.Column(db.Integer)
     order_60 = db.Column(db.Integer)
-    western_counterpart = db.Column(db.Integer, db.ForeignKey("west.id"))
+    western_counterpart = db.Column(db.String)
     element_id = db.Column(db.Integer, db.ForeignKey("elements.id"))
     img = db.Column(db.String)
 
     # Relationships
     element = db.relationship("Element", back_populates="east_signs")
-    west = db.relationship("West", back_populates="east_signs")
     uses = association_proxy("user_zodiacs", "user")
     user_zodiacs = db.relationship("UserZodiac", back_populates="east")
 
