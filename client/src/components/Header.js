@@ -7,7 +7,7 @@ const Header = () => {
 	
     return (
         <>
-            <h1>Pocket Astro</h1>
+            <h1>Pocket Chinese Astrology</h1>
             {/* {user ? ( */}
                 <>
                     <NavLink id='link' to='/' className=''>link</NavLink>
