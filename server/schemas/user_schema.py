@@ -14,7 +14,7 @@ class UserSchema(ma.SQLAlchemyAutoSchema):
     # )
     username = fields.String(required=True, unique=True, validate=validate.Length(min=2, max=20))
     email = fields.Email(required=True, unique=True)
-    password_hash = fields.String(required=True, load_only=True, validate=validate.Length(min=8, max=20))
+    password_hash = fields.String(required=True, load_only=True, validate=validate.Length(min=8, max=128))
     birthdate = fields.Date()
 
     def load(self, data, instance=None, *, partial=False, **kwargs):
