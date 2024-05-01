@@ -1,7 +1,7 @@
 from .. import (Resource, db, User, user_schema, jwt_required, current_user)
 
 
-class Session(Resource):
+class CheckSession(Resource):
     @jwt_required()
     def get(self):
         if current_user:

@@ -8,7 +8,6 @@ import { AuthContext } from '../context/AuthContext'
 
 YupPassword(Yup)
 
-// Validation
 const signupSchema = object({
 	username: string()
 		.min(2, 'Username must be at least 2 characters.')
@@ -56,13 +55,18 @@ const Auth = () => {
 		initialValues,
 		validationSchema: isLogin ? loginSchema : signupSchema,
 		onSubmit: (formData) => {
-			console.log(formData)
+			debugger
+
+			const updatedValues = Object.assign({}, formData, {
+				password_hash: formData.password,
+			})
+			delete updatedValues.password;
 			fetch(requestUrl, {
 				method: 'POSt',
 				headers: {
 					'Content-Type': 'application/json'
 				},
-				body: JSON.stringify(formData)
+				body: JSON.stringify(updatedValues)
 			}).then((res) => {
 				if (res.ok) {
 					res.json()
@@ -126,6 +130,7 @@ const Auth = () => {
 								onChange={formik.handleChange}
 								onBlur={formik.handleBlur}
 								value={formik.values.confirmPassword}
+								autoComplete='confirm-new-password'
 							/>
 							{formik.errors.confirmPassword &&
 								formik.touched.confirmPassword && (

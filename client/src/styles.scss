@@ -51,15 +51,20 @@ table {
 
 // pallet
 $blk: #191414;
+$night: #0A023C;
 $wht: snow;
+
+// typography
+$font-primary: Sans-Serif;
 
 html, div, h1, p, a {
 	margin: 16px 6px;
-	padding: 16px 0;
+	padding: 16px 6px;
 	color: $wht;
-	background-color: $blk;
+	background-color: $night;
 	border: 1px solid $wht;
 	border-radius: 3px;
+	font-family: $font-primary;
 }
 
 // Footer
