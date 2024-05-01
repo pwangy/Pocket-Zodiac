@@ -24,7 +24,7 @@ def seed_users():
             users = []
             usernames = []
 
-            for _ in range(50):
+            for _ in range(30):
                 username = fake.first_name()
                 while username in usernames:
                     username = fake.first_name()
@@ -51,11 +51,15 @@ def seed_user_zodiacs():
             users = User.query.all()
 
             for user in users:
-                western_sign = calculate_west(user.birthdate)
+                # western_sign = calculate_west(user.birthdate)
+                # print(f'Western sign for {user.username}: {western_sign}')
 
                 user_zodiac = UserZodiac(
                     user_id=user.id,
-                    west_id=western_sign.id,
+                    # west_id=western_sign.id,
+                    # eaast_id=,
+                    east_west=fake.random_element(elements=('East', 'West')),
+                    additional_birthdate=fake.date_time_between(start_date="-50y", end_date="now")
                 )
                 db.session.add(user_zodiac)
             db.session.commit()
