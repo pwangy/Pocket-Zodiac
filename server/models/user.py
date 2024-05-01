@@ -10,7 +10,7 @@ class User(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(20), nullable=False, unique=True)
     email = db.Column(db.String(50), nullable=False, unique=True)
-    _password_hash = db.Column(db.String(128), nullable=False)
+    _password_hash = db.Column(db.String, nullable=False)
     birthdate = db.Column(db.Date, default=datetime.now().date().strftime("%Y-%m-%d"))
 
     # Relationships
@@ -32,11 +32,11 @@ class User(db.Model, SerializerMixin):
 
     @hybrid_property
     def password_hash(self):
-        raise AttributeError("Passwords cannot be inspected after setup.")
+        raise AttributeError("Inaccessable!")
 
     @password_hash.setter
     def password_hash(self, new_password):
-        if not len(new_password) >= 8:
+        if len(new_password) < 8:
             raise ValueError("Password must be at least 8 characters")
         elif not re.search(r"[$&+,:;=?@#|'<>.-^*()%!]", new_password):
             raise ValueError("Password must contain special characters")
@@ -47,20 +47,24 @@ class User(db.Model, SerializerMixin):
         elif not re.search(r"[0-9]", new_password):
             raise ValueError("Password must contain at least one number")
         else:
-            hashed = flask_bcrypt.generate_password_hash(new_password).decode("utf-8")
-            self._password_hash = hashed
+            hashed_password = flask_bcrypt.generate_password_hash(new_password).decode(
+                'utf-8'
+            )
+            self._password_hash = hashed_password
 
-    def auth(self, password_to_check):
+    def authenticate(self, password_to_check):
         return flask_bcrypt.check_password_hash(self._password_hash, password_to_check)
 
     @validates("username")
-    def validate_username(self, key, username):
-        if not re.match(r"^[a-zA-Z0-9_]*$", username):
-            raise ValueError("Username must be alphanumeric with underscores only")
+    def validate_username(self, _, username):
+        if not isinstance(username, str):
+            raise TypeError("Username must be a string.")
+        elif 2 > len(username) > 20:
+            raise ValueError("Username must be between 2 and 20 characters.")
         return username
 
     @validates("email")
-    def validate_email(self, key, email):
+    def validate_email(self, _, email):
         if not re.match(r"^[\w\-\.]+@([\w\-]+\.)+[\w\-]{2,4}$", email):
             raise ValueError("Invalid email address")
         return email

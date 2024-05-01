@@ -1,8 +1,8 @@
-"""put back relationships
+"""redraw tables
 
-Revision ID: 39d4b79d6937
+Revision ID: cae37e54599a
 Revises: 
-Create Date: 2024-04-26 10:32:44.856654
+Create Date: 2024-04-30 21:16:46.343111
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '39d4b79d6937'
+revision = 'cae37e54599a'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -26,7 +26,7 @@ def upgrade():
     sa.Column('season', sa.String(), nullable=True),
     sa.Column('direction', sa.String(), nullable=True),
     sa.Column('planet', sa.String(), nullable=True),
-    sa.Column('number', sa.String(), nullable=True),
+    sa.Column('number', sa.Integer(), nullable=True),
     sa.Column('smell', sa.String(), nullable=True),
     sa.Column('taste', sa.String(), nullable=True),
     sa.Column('organ', sa.String(), nullable=True),
@@ -37,7 +37,7 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('username', sa.String(length=20), nullable=False),
     sa.Column('email', sa.String(length=50), nullable=False),
-    sa.Column('_password_hash', sa.String(length=128), nullable=False),
+    sa.Column('_password_hash', sa.String(), nullable=False),
     sa.Column('birthdate', sa.Date(), nullable=True),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email'),
@@ -46,10 +46,13 @@ def upgrade():
     op.create_table('west',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(), nullable=True),
-    sa.Column('qualities', sa.String(), nullable=True),
+    sa.Column('gloss', sa.String(), nullable=True),
     sa.Column('desc', sa.String(), nullable=True),
+    sa.Column('qualities', sa.String(), nullable=True),
     sa.Column('element', sa.String(), nullable=True),
+    sa.Column('modality', sa.String(), nullable=True),
     sa.Column('planet', sa.String(), nullable=True),
+    sa.Column('house', sa.Integer(), nullable=True),
     sa.Column('symbol', sa.String(), nullable=True),
     sa.Column('img', sa.String(), nullable=True),
     sa.PrimaryKeyConstraint('id')
@@ -62,6 +65,7 @@ def upgrade():
     sa.Column('polarity', sa.String(), nullable=True),
     sa.Column('order_12', sa.Integer(), nullable=True),
     sa.Column('order_60', sa.Integer(), nullable=True),
+    sa.Column('western_counterpart', sa.String(), nullable=True),
     sa.Column('element_id', sa.Integer(), nullable=True),
     sa.Column('img', sa.String(), nullable=True),
     sa.ForeignKeyConstraint(['element_id'], ['elements.id'], ),

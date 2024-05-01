@@ -108,8 +108,8 @@ const Auth = () => {
 						placeholder='Password'
 						onChange={formik.handleChange}
 						onBlur={formik.handleBlur}
-						value={formik.values.username}
-						// autoComplete='current-password'
+						value={formik.values._password_hash}
+						autoComplete='current-password'
 					/>
 					{formik.errors._password_hash &&
 						formik.touched._password_hash && (
