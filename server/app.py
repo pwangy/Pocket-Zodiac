@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 from config import app, api
 from routes.user.users import Users
-# from routes.user.user_by_id import UserById
+from routes.user.user_by_id import UserById
 from routes.user_zodiac.user_zodiac import UserZodiac
 from routes.user_zodiac.user_zodiac_by_id import UserZodiacById
 from routes.east.east import East
