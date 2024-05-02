@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+// import { useNavigate } from 'react-router-dom'
 import * as Yup from 'yup'
 import YupPassword from 'yup-password'
 import { object, string } from 'yup'
@@ -46,7 +46,7 @@ const initialValues = {
 const Auth = () => {
 	const { user, login } = useContext(AuthContext)
 	const [isLogin, setIsLogin] = useState(true)
-	const navigate = useNavigate()
+	// const navigate = useNavigate()
 
 	const requestUrl = isLogin ? '/login' : '/signup'
 
