@@ -7,14 +7,16 @@ const Header = () => {
 	
     return (
         <>
-            <h1>Pocket Chinese Astrology</h1>
+            <h1>Pocket Zodiac</h1>
             {/* {user ? ( */}
                 <>
-                    <NavLink id='link' to='/' className=''>link</NavLink>
+                    <NavLink id='link' to='/' className=''>home</NavLink>
+                    <NavLink id='link' to='/zodiac' className=''>my zodiac</NavLink>
+                    <NavLink id='link' to='/explore' className=''>explore</NavLink>
                     <NavLink id='link' to='/' className='' onClick={logout}>Logout</NavLink>
                 </>
             {/* ) : ( */}
-                <NavLink id='link' to='/' className='link'></NavLink>
+                {/* <NavLink id='link' to='/' className='link'></NavLink> */}
             {/* )} */}
         </>
 )}

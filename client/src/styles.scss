@@ -51,13 +51,13 @@ table {
 
 // pallet
 $blk: #191414;
-$night: #0A023C;
+$night: #0E1926;
 $wht: snow;
 
 // typography
 $font-primary: Sans-Serif;
 
-html, div, h1, p, a {
+html, div, h1, p, a, .form {
 	margin: 16px 6px;
 	padding: 16px 6px;
 	color: $wht;
@@ -71,7 +71,9 @@ html, div, h1, p, a {
 .form > p, input, button {
 	display: flex;
 	flex-flow: column nowrap;
+	// background-color: #333;
 }
+
 
 // Footer
 footer {
@@ -83,9 +85,36 @@ footer {
 }
 footer > p {
 	// font-family: $font-primary;
-	// font-size: x-small;
+	font-size: x-small;
 	line-height: normal;
 	text-align: center;
   }
 
 /* Breakpoints */
+// Tablet
+@media only screen and (min-width: 600px) {
+	main {
+		width: 85vw;
+		background-color: darkblue;
+	}
+	nav {
+		max-width: 500px;
+	}
+	textarea {
+		width: 50em;
+	}
+}
+
+// Desktop
+@media only screen and (min-width: 992px) {
+	main {
+		width: 85vw;
+		background-color: darkslategray;
+	}
+	nav {
+		max-width: 500px;
+	}
+	textarea {
+		width: 60em;
+	}
+}
