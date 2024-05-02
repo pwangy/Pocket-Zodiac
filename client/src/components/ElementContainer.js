@@ -9,7 +9,7 @@ const ElementsContainer = () => {
 	return (
         <>
             <p>Elements</p>
-            <p>{listElements}</p>
+            {listElements}
         </>
 )}
 
