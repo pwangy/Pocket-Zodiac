@@ -7,11 +7,6 @@ class UserSchema(ma.SQLAlchemyAutoSchema):
         load_instance = True
         exclude = ("_password_hash",)
 
-    user_zodiac = fields.Nested(
-        "UserZodiac",
-        only=("id", "east_west"),
-        many=True,
-    )
     username = fields.String(
         required=True,
         unique=True,
@@ -24,9 +19,13 @@ class UserSchema(ma.SQLAlchemyAutoSchema):
         data_key="password_hash",
         required=True,
         load_only=True,
-        validate=validate.Length(min=8, max=128),
+        validate=validate.Length(min=8, error="Password must be at least 8 characters long"),
     )
     birthdate = fields.Date()
+    user_zodiac = fields.Nested(
+        "UserZodiac",
+        only=("id", "east_west"),
+    )
 
     def load(self, data, instance=None, *, partial=False, **kwargs):
         loaded_instance = super().load(
@@ -49,7 +48,6 @@ class UserSchema(ma.SQLAlchemyAutoSchema):
             "collection": ma.URLFor("users"),
         }
     )
-
 
 user_schema = UserSchema()
 users_schema = UserSchema(many=True)
