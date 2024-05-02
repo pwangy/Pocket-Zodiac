@@ -6,4 +6,5 @@ class Refresh(Resource):
         new_access_token = create_access_token(identity=current_user.id, fresh=False)
         response = make_response(user_schema.dump(current_user), 200)
         set_access_cookies(response, new_access_token)
+        import ipdb; ipdb.set_trace()
         return response
