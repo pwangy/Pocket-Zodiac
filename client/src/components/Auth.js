@@ -101,7 +101,7 @@ const Auth = () => {
 						value={formik.values.username}
 						autoComplete='username'
 					/>
-					{formik.errors.username && formik.touched.username && (
+					{formik.errors && formik.errors.username && formik.touched.username && (
 						<div className='error-message'>{formik.errors.username}</div>
 					)}
 					<Field
@@ -113,7 +113,7 @@ const Auth = () => {
 						value={formik.values.password}
 						autoComplete='current-password'
 					/>
-					{formik.errors.password && formik.touched._password && (
+					{formik.errors && formik.errors.password && formik.touched.password && (
 						<div className='error-message'>{formik.errors.password}</div>
 					)}
 					{!isLogin && (
@@ -127,7 +127,7 @@ const Auth = () => {
 								value={formik.values.confirmPassword}
 								autoComplete='confirm-new-password'
 							/>
-							{formik.errors.confirmPassword && formik.touched.confirmPassword && (
+							{formik.errors && formik.errors.confirmPassword && formik.touched.confirmPassword && (
 								<div className='error-message'>{formik.errors.confirmPassword}</div>
 							)}
 							<Field
@@ -139,7 +139,7 @@ const Auth = () => {
 								value={formik.values.email}
 								autoComplete='email'
 							/>
-							{formik.errors.email && formik.touched.email && (
+							{formik.errors && formik.errors.email && formik.touched.email && (
 								<div className='error-message'>{formik.errors.email}</div>
 							)}
 						</>
