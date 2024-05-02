@@ -32,7 +32,8 @@ const AuthProvider = ({ children }) => {
 			headers: {
 				'X-CSRF-TOKEN': getCookie('csrf_access_token')
 			},
-		}).then((res) => {
+		})
+		.then((res) => {
 			if (res.ok) {
 				res.json().then(updateUser)
 			} else {
@@ -41,7 +42,8 @@ const AuthProvider = ({ children }) => {
 					headers: {
 						'X-CSRF-TOKEN': getCookie('csrf_refresh_token'),
 					}
-				}).then((res) => {
+				})
+				.then((res) => {
 					if (res.ok) {
 						res.json().then(updateUser)
 					} else {

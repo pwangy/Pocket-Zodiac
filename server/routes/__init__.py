@@ -13,9 +13,25 @@ from models.east import East
 from models.west import West
 from models.element import Element
 from models.user_zodiac import UserZodiac
-# from .user_zodiac import UserZodiac
-from config import db, app, jwt
-from flask_jwt_extended import (create_access_token, create_refresh_token, jwt_required, get_jwt_identity, set_access_cookies, set_refresh_cookies, unset_jwt_cookies, unset_refresh_cookies, unset_access_cookies, current_user, get_jwt, verify_jwt_in_request, decode_token,)
+
+from config import db, app, api, jwt
+import ipdb
+from flask_jwt_extended import (
+    create_access_token,
+    create_refresh_token,
+    jwt_required,
+    get_jwt_identity,
+    set_access_cookies,
+    set_refresh_cookies,
+    unset_jwt_cookies,
+    unset_refresh_cookies,
+    unset_access_cookies,
+    current_user,
+    get_jwt,
+    verify_jwt_in_request,
+    decode_token,
+)
+
 
 @app.route("/")
 def index():
@@ -27,7 +43,13 @@ def not_found(error):
 
 @app.before_request
 def before_request():
-    path_dict = {"eastbyid": East, "westbyid": West, "elementbyid": Element, "userbyid": User, "userzodiacbyid": UserZodiac}
+    path_dict = {
+        "eastbyid": East,
+        "westbyid": West,
+        "elementbyid": Element,
+        "userbyid": User,
+        "userzodiacbyid": UserZodiac,
+    }
     if request.endpoint in path_dict:
         id = request.view_args.get("id")
         record = db.session.get(path_dict.get(request.endpoint), id)
@@ -37,10 +59,9 @@ def before_request():
 def login_required(func):
     @wraps(func)
     def decorated_function(*args, **kwargs):
-        if "user_id" not in session:
-            return {"message": "Access Denied, please log in!"}, 422
+        # if "user_id" not in session:
+            # return {"message": "Access Denied, please log in!"}, 422
         return func(*args, **kwargs)
-
     return decorated_function
 
 # Register a callback function that loads a user from your database whenever

@@ -1,5 +1,6 @@
 from .. import Resource, unset_access_cookies, make_response
 
+
 class Logout(Resource):
     def delete(self):
         try:

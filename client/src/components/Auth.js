@@ -14,7 +14,7 @@ const signupSchema = object({
 		.max(20, 'Username cannot be longer than 20 characters.')
 		.required('Required'),
 
-	_password_hash: string()
+	password: string()
 		.min(8, 'Passwords must be at least 8 characters long.')
 		.matches(/[a-zA-Z0-9]/, 'Password should contain letters and numbers.')
 		.minLowercase(1, 'Password must contain at least 1 lowercase letter.')
@@ -24,20 +24,23 @@ const signupSchema = object({
 		.required('Password is required.'),
 
 	confirmPassword: string()
-		.oneOf([Yup.ref('_password_hash'), null], 'Passwords must match.')
-		.required('Confirm Password is required.')
+		.oneOf([Yup.ref('password'), null], 'Passwords must match.')
+		.required('Confirm Password is required.'),
+
+	email: string().email().required("Email is required")
 })
 
 const loginSchema = object({
 	username: string().required('Username is required.'),
-	_password_hash: string().required('A password is required to login.')
+	password: string().required('A password is required to login.')
 })
 
 // Initial values
 const initialValues = {
 	username: '',
-	_password_hash: '',
-	confirmPassword: ''
+	password: '',
+	confirmPassword: '',
+	email: ''
 }
 
 const Auth = () => {
@@ -55,14 +58,13 @@ const Auth = () => {
 		initialValues,
 		validationSchema: isLogin ? loginSchema : signupSchema,
 		onSubmit: (formData) => {
-			debugger
-
+			// debugger
 			const updatedValues = Object.assign({}, formData, {
 				password_hash: formData.password,
 			})
 			delete updatedValues.password;
 			fetch(requestUrl, {
-				method: 'POSt',
+				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'
 				},
@@ -72,15 +74,13 @@ const Auth = () => {
 					res.json()
 						.then((userData) => {
 							login(userData)
-						})
-						.then(() => {
-							// isLogin ? navigate('/home') : navigate('/')
 							console.log('logged in!')
 						})
-					console.log(user)
+						// .then(() => {
+						// 	// isLogin ? navigate('/home') : navigate('/')
+						// })
 				} else if (res.status === 422) {
 					console.error('invalid login!')
-				} else {
 					return res.json().then((errorObj) => console.log(errorObj))
 				}
 			})
@@ -88,7 +88,7 @@ const Auth = () => {
 	})
 
 	return (
-		<>
+		<section className='form'>
 			<p>{isLogin ? 'Login' : 'Sign up'}</p>
 			<Formik onSubmit={formik.handleSubmit}>
 				<Form>
@@ -102,25 +102,20 @@ const Auth = () => {
 						autoComplete='username'
 					/>
 					{formik.errors.username && formik.touched.username && (
-						<div className='error-message'>
-							{formik.errors.username}
-						</div>
+						<div className='error-message'>{formik.errors.username}</div>
 					)}
 					<Field
-						name='_password_hash'
+						name='password'
 						type='password'
 						placeholder='Password'
 						onChange={formik.handleChange}
 						onBlur={formik.handleBlur}
-						value={formik.values._password_hash}
+						value={formik.values.password}
 						autoComplete='current-password'
 					/>
-					{formik.errors._password_hash &&
-						formik.touched._password_hash && (
-							<div className='error-message'>
-								{formik.errors._password_hash}
-							</div>
-						)}
+					{formik.errors.password && formik.touched._password && (
+						<div className='error-message'>{formik.errors.password}</div>
+					)}
 					{!isLogin && (
 						<>
 							<Field
@@ -132,22 +127,28 @@ const Auth = () => {
 								value={formik.values.confirmPassword}
 								autoComplete='confirm-new-password'
 							/>
-							{formik.errors.confirmPassword &&
-								formik.touched.confirmPassword && (
-									<div className='error-message'>
-										{formik.errors.confirmPassword}
-									</div>
-								)}
+							{formik.errors.confirmPassword && formik.touched.confirmPassword && (
+								<div className='error-message'>{formik.errors.confirmPassword}</div>
+							)}
+							<Field
+								type='text'
+								name='email'
+								placeholder='email'
+								onChange={formik.handleChange}
+								onBlur={formik.handleBlur}
+								value={formik.values.email}
+								autoComplete='email'
+							/>
+							{formik.errors.email && formik.touched.email && (
+								<div className='error-message'>{formik.errors.email}</div>
+							)}
 						</>
 					)}
 					<input type='submit' value={isLogin ? 'Login' : 'Sign up'} />
-					{isLogin ? 
-						<button type='button' className='change-form' onClick={handleIsLogin}>Create New Account</button>
-					 : ''
-                     }
+					{isLogin ? <button type='button' className='change-form' onClick={handleIsLogin}>Create New Account</button> : ''}
 				</Form>
 			</Formik>
-		</>
+		</section>
 )}
 
 export default Auth

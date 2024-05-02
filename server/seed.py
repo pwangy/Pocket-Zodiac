@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# import asyncio
 import csv
 from faker import Faker
 from config import app
@@ -9,9 +8,6 @@ from models.west import West
 from models.element import Element
 from models.user import User
 from models.user_zodiac import UserZodiac
-
-# from seed_users import seed_users
-# from seed_user_zodiacs import seed_user_zodiacs
 from utils.signs import calculate_west
 
 
@@ -81,6 +77,7 @@ def seed():
             Element.query.delete()
             User.query.delete()
             UserZodiac.query.delete()
+            db.session.commit()
             print("Tables dropped")
         except Exception as e:
             print("Could not drop tables")

@@ -28,7 +28,7 @@ app.config["JWT_REFRESH_TOKEN_EXPIRES"] = timedelta(days=90)
 
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
-api = Api(app)
+api = Api(app, prefix="/api/v1")
 ma = Marshmallow(app)
 flask_bcrypt = Bcrypt(app)
 jwt = JWTManager(app)

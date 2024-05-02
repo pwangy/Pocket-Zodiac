@@ -14,18 +14,8 @@ class WestSchema(ma.SQLAlchemyAutoSchema):
     modality = fields.String(required=True)
     planet = fields.String(required=True)
     house = fields.String(required=True)
-    symbol = fields.String(
-        required=True,
-        validate=validate.Regexp(
-            r".*\.(jpeg|png|jpg)", error="File URI must be in JPEG, JPG, or PNG format"
-        ),
-    )
-    img = fields.String(
-        required=True,
-        validate=validate.Regexp(
-            r".*\.(jpeg|png|jpg)", error="File URI must be in JPEG, JPG, or PNG format"
-        ),
-    )
+    symbol = fields.String()
+    img = fields.String()
 
     url = ma.Hyperlinks(
         {
