@@ -6,19 +6,21 @@ const Header = () => {
 	const { user, logout } = useContext(AuthContext)
 	
     return (
-        <>
+        <header>
             <h1>Pocket Zodiac</h1>
-            {/* {user ? ( */}
+            {user ? (
                 <>
-                    <NavLink id='link' to='/' className=''>home</NavLink>
-                    <NavLink id='link' to='/zodiac' className=''>my zodiac</NavLink>
-                    <NavLink id='link' to='/explore' className=''>explore</NavLink>
-                    <NavLink id='link' to='/' className='' onClick={logout}>Logout</NavLink>
+                    <NavLink id='link' to='/' className='nav'>home</NavLink>
+                    <NavLink id='link' to='/profile' className='nav'>profile</NavLink>
+                    <NavLink id='link' to='/zodiac' className='nav'>my zodiac</NavLink>
+                    <NavLink id='link' to='/explore' className='nav'>explore</NavLink>
+                    <NavLink id='link' to='/' className='nav' onClick={logout}>Logout</NavLink>
                 </>
-            {/* ) : ( */}
-                {/* <NavLink id='link' to='/' className='link'></NavLink> */}
-            {/* )} */}
-        </>
+            ) : (
+                ''
+            )}
+        </header>
 )}
 
 export default Header
+// {/* <NavLink id='link' to='/' className='link'></NavLink> */}

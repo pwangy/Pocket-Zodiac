@@ -1,31 +1,19 @@
 import { createContext, useState, useEffect } from 'react'
-// import { useNavigate } from 'react-router-dom'
 
 export const AuthContext = createContext()
 
 const AuthProvider = ({ children }) => {
 	const [user, setUser] = useState(null)
 	const updateUser = (user) => setUser(user)
-	const [elements, setElements] = useState([])
+	// const [username, setUsername] = useState('')
+	// const updateUsername = (user) => setUsername(user.username)
 	// const [somethingtoedit, setsomethingtoedit] = useSttate(false)
-	// const navigate = useNavigate()
 
 	const getCookie = (name) => {
 		const value = `; ${document.cookie}`
 		const parts = value.split(`; ${name}=`)
 		if (parts.length === 2) return parts.pop().split(';').shift()
 	}
-
-	useEffect(() => {
-		fetch('/elements')
-			.then((res) => {
-				if (res.ok) {
-					return res.json().then(setElements)
-				}
-				return res.json().then((errorObj) => console.log(errorObj))
-			})
-			.catch((err) => console.log(err))
-	}, [setElements])
 
 	useEffect(() => {
 		fetch('/me', {
@@ -45,20 +33,17 @@ const AuthProvider = ({ children }) => {
 				})
 				.then((res) => {
 					if (res.ok) {
-						res.json().then(updateUser)
+						res.json()
+							console.log('Logged in!')
+							.then(updateUser)
+							// .then(updateUsername)
 					} else {
-						// navigate('/auth')
 						console.error('Please log in.')
 					}
 				})
 			}
 		})
 	}, [])
-
-	const login = (user) => {
-		setUser(user)
-		console.log('user logged in!')
-	}
 
 	const logout = (user) => {
 		fetch('/logout', { method: 'DELETE' })
@@ -72,7 +57,7 @@ const AuthProvider = ({ children }) => {
 	}
 
 	return (
-		<AuthContext.Provider value={{ user, login, logout, elements }}>
+		<AuthContext.Provider value={{ user, updateUser, logout }}>
 			{children}
 		</AuthContext.Provider>
 	)

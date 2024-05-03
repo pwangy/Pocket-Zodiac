@@ -4,6 +4,7 @@ import Auth from '../components/Auth'
 import Error from '../App'
 import PersonalZodiac from '../pages/PersonalZodiac'
 import Explore from '../pages/Explore'
+import Detail from '../components/Detail'
 
 // view & edit info
 
@@ -30,7 +31,21 @@ const router = createBrowserRouter([
 				path: '/explore',
 				element: <Explore />
 			},
+			{
+				path: '/element/:id',
+				element: <Detail />
+			},
+			{
+				path: '/profile',
+				element: ''
+			},
     ]}
 ])
 
 export default router
+
+// /profile
+// /auth
+// /explore
+// /user-info
+// no page refreshes

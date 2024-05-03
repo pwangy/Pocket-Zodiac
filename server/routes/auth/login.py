@@ -17,13 +17,14 @@ class Login(Resource):
         try:
             data = request.json
             user = User.query.filter_by(username=data.get("username")).first()
+            
+            # import ipdb; ipdb.set_trace()
             if user and user.authenticate(data.get("password_hash")):
                 access_token = create_access_token(identity=user.id, fresh=True)
                 refresh_token = create_refresh_token(identity=user.id)
-                response = make_response(user_schema.dump(user), 201)
+                response = make_response(user_schema.dump(user), 200)
                 set_access_cookies(response, access_token)
                 set_refresh_cookies(response, refresh_token)
-                # import ipdb; ipdb.set_trace()
                 return response
             else:
                 return {"message": "Invalid login"}, 422

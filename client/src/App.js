@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { Outlet } from 'react-router-dom'
 import { AuthContext } from './context/AuthContext'
 import Header from './components/Header'
@@ -6,14 +6,42 @@ import Footer from './components/Footer'
 
 const App = () => {
 	const { user } = useContext(AuthContext)
+	const [elements, setElements] = useState([])
+	const [east, setEast] = useState([])
+	const [west, setWest] = useState([])
+
+	useEffect(() => {
+		fetch('/elements')
+			.then((res) => {
+				if (res.ok) {
+					return res.json().then(setElements)
+				}
+				return res.json().then((errorObj) => console.log(errorObj))
+			})
+			.catch((err) => console.log(err))
+	}, [setElements])
+
+
+	useEffect(() => {
+		fetch('/east')
+			.then((res) => {
+				if (res.ok) {
+					return res.json().then(setEast)
+				}
+				return res.json().then((errorObj) => console.log(errorObj))
+			})
+			.catch((err) => console.log(err))
+	}, [setEast])
+
 	
+
 	return (
-		<>
+		<main>
 			<Header />
-			<h1>i'm the frontend!</h1>
-			<Outlet context={{ user }} />
+			<h3>i'm the frontend!</h3>
+			<Outlet context={{ user, elements, east }} />
 			<Footer />
-		</>
+		</main>
 )}
 
 export default App
