@@ -15,11 +15,6 @@ from routes.auth.logout import Logout
 from routes.auth.check_session import CheckSession
 from routes.auth.refresh import Refresh
 
-api.add_resource(Login, "/login")
-api.add_resource(Logout, "/logout")
-api.add_resource(CheckSession, "/me")
-api.add_resource(Users, "/signup")
-api.add_resource(Refresh, "/refresh")
 api.add_resource(East, "/east")
 api.add_resource(EastById, "/eastbyid")
 api.add_resource(West, "/west")
@@ -28,6 +23,11 @@ api.add_resource(UserZodiac, "/userszodiac")
 api.add_resource(UserZodiacById, "/userzodiacbyid")
 api.add_resource(Elements, "/elements")
 api.add_resource(ElementById, "/elementsbyid")
+api.add_resource(Users, "/signup")
+api.add_resource(Login, "/login")
+api.add_resource(Logout, "/logout")
+api.add_resource(CheckSession, "/me")
+api.add_resource(Refresh, "/refresh")
 
 if __name__ == "__main__":
     app.run(port=5555, debug=True)

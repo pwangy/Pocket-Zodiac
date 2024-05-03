@@ -1,15 +1,15 @@
 import { Link } from 'react-router-dom'
+import Placeholder from '../assets/elements/solarsystem.png'
 
 const Card = ({ id, name, qualities, desc, season, direction, planet, number, smell, taste, organ, color }) => {
-    
+
     return (
-        <article>
+        <div className='card'>
+            <img src={Placeholder} alt='element icon' className='ico' />
             <Link to={`/element/${id}`}>
-                <img src=''></img>
-                <h3>{name}</h3>
+                <h6>{name}</h6>
             </Link>
-        </article>
-    )
-}
+        </div>
+)}
 
 export default Card

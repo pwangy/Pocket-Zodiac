@@ -35,7 +35,17 @@ const router = createBrowserRouter([
 				path: '/element/:id',
 				element: <Detail />
 			},
+			{
+				path: '/profile',
+				element: ''
+			},
     ]}
 ])
 
 export default router
+
+// /profile
+// /auth
+// /explore
+// /user-info
+// no page refreshes

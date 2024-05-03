@@ -21,7 +21,9 @@ time, mark, audio, video {
 	border: 0;
 	font-size: 100%;
 	font: inherit;
-	vertical-align: baseline;
+	border-radius: 3px;
+	border: 1px solid #abbab2;
+	// vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
@@ -52,19 +54,97 @@ table {
 // pallet
 $blk: #191414;
 $night: #0E1926;
+$dk11: #2E4C6B;
+$dk10: #264C73;
+$dk9: #1F4C7A;
+$dk8: #2e3833;
+$dk7: #45544c;
+$dk6: #5c7066;
+$md5: #738c80;
+$md4: #8fa399;
+$li3: #abbab2;
+$li2: #c7d1cc;
+$li1: #e3e8e6;
 $wht: snow;
 
 // typography
 $font-primary: Sans-Serif;
 
-html, div, h1, p, a, .form {
-	margin: 16px 6px;
-	padding: 16px 6px;
+html, div, h3, p, a, .form {
+	// margin: 0;
+	// padding: 16px 6px;
 	color: $wht;
 	background-color: $night;
-	border: 1px solid $wht;
+	border: 1px solid lightblue;
 	border-radius: 3px;
 	font-family: $font-primary;
+}
+
+main {
+	background-color: $dk10;
+}
+
+#root{
+	padding: 16px;
+}
+
+// nav
+header {
+	background-color: $li3;
+	margin-bottom: 16px;
+	padding-bottom: 16px;
+	border: 1px solid pink;
+}
+
+h1 {
+	height: 2em;
+	margin: 0 16px 0 0;
+	background-color: $md4;
+	color: $night;
+}
+.nav {
+	margin-right: 10px;
+	text-decoration: none;
+	text-transform: uppercase;
+	// font-family: $font-primary;
+	font-size: small;
+	color: $wht ;
+	cursor: pointer;
+	border: none;
+}
+.nav:hover {
+	text-decoration: none;
+}
+.nav.active {
+	color: $li3;
+	font-weight: 900;
+}
+//
+h3 {
+	background-color: $dk7;
+	font-weight: 900;
+	text-transform: uppercase;
+}
+p {
+	margin: 16px 0;
+	background-color: $dk11;
+}
+section {
+	margin: 16px 0;
+	background-color: $dk6;
+}
+article {
+	margin: 16px 0;
+	background-color: $dk9;
+}
+.row-wrap {
+	display: flex;
+	flex-direction: row wrap;
+}
+.card {
+	width: 15%;
+	margin-right: 16px;
+
 }
 
 // Auth
@@ -74,6 +154,15 @@ html, div, h1, p, a, .form {
 	// background-color: #333;
 }
 
+// Explore
+.ico {
+	width: 100px;
+	height: 100px;
+	border: none;
+}
+article > img, h6 {
+	border: none;
+}
 
 // Footer
 footer {
@@ -82,6 +171,7 @@ footer {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	// background-color: $dk6;
 }
 footer > p {
 	// font-family: $font-primary;

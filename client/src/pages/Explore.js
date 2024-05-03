@@ -1,9 +1,10 @@
-import { useContext } from 'react'
-import { AuthContext } from '../context/AuthContext'
+// import { useContext } from 'react'
+// import { AuthContext } from '../context/AuthContext'
+import { useOutletContext } from 'react-router-dom'
 import ElementsContainer from '../components/ElementContainer'
 
 const Explore = () => {
-    const { elements } = useContext(AuthContext)
+    const { elements } = useOutletContext()
 
 	return (
         <>

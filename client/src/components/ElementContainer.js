@@ -1,16 +1,15 @@
-import { useContext } from 'react'
-import { AuthContext } from '../context/AuthContext'
+import { useOutletContext } from 'react-router-dom'
 import Card from './Card'
 
 const ElementsContainer = () => {
-    const { elements } = useContext(AuthContext)
+    const { elements } = useOutletContext()
     const listElements = elements?.map(e => <Card key={e.id} {...e} />)
 
 	return (
-        <>
+        <article className="row-wrap">
             <p>Elements</p>
             {listElements}
-        </>
+        </article>
 )}
 
 export default ElementsContainer

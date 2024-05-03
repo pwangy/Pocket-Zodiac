@@ -53,17 +53,17 @@ const Auth = () => {
 	}
 
 	return (
-		<section className='form'>
+		<article className='form'>
 			<p>{isLogin ? 'Login' : 'Sign up'}</p>
 			<Formik 
 				initialValues={initialValues}
 				validationSchema = {isLogin ? loginSchema : signupSchema}
 				onSubmit={(formData) => {
-					// debugger
 					const updatedValues = Object.assign({}, formData, {
 						password_hash: formData.password,
 					})
 					delete updatedValues.password;
+					delete updatedValues.confirmPassword;
 					fetch(requestUrl, {
 						method: 'POST',
 						headers: {
@@ -94,9 +94,6 @@ const Auth = () => {
 							name='username'
 							type='text'
 							placeholder='Username'
-							// onChange={handleChange}
-							// onBlur={handleBlur}
-							// value={values.username}
 							autoComplete='username'
 						/>
 						{errors && errors.username && touched.username && (
@@ -106,9 +103,6 @@ const Auth = () => {
 							name='password'
 							type='password'
 							placeholder='Password'
-							// onChange={handleChange}
-							// onBlur={handleBlur}
-							// value={values.password}
 							autoComplete='current-password'
 						/>
 						{errors && errors.password && touched.password && (
@@ -120,9 +114,6 @@ const Auth = () => {
 									type='password'
 									name='confirmPassword'
 									placeholder='Confirm Password'
-									// onChange={handleChange}
-									// onBlur={handleBlur}
-									// value={values.confirmPassword}
 									autoComplete='confirm-new-password'
 								/>
 								{errors && errors.confirmPassword && touched.confirmPassword && (
@@ -132,9 +123,6 @@ const Auth = () => {
 									type='text'
 									name='email'
 									placeholder='email'
-									// onChange={handleChange}
-									// onBlur={handleBlur}
-									// value={values.email}
 									autoComplete='email'
 								/>
 								{errors && errors.email && touched.email && (
@@ -148,7 +136,7 @@ const Auth = () => {
 			</>
 			)}
 			</Formik>
-		</section>
+		</article>
 )}
 
 export default Auth
