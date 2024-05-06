@@ -44,7 +44,6 @@ class UserSchema(ma.SQLAlchemyAutoSchema):
 
     url = ma.Hyperlinks(
         {
-            # "self": ma.URLFor("userbyid", values=dict(id="<id>")),
             "collection": ma.URLFor("users"),
         }
     )

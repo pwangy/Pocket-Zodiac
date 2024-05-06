@@ -16,6 +16,7 @@ class Element(db.Model, SerializerMixin):
     taste = db.Column(db.String)
     organ = db.Column(db.String)
     color = db.Column(db.String)
+    img = db.Column(db.String)
 
     # Relationships
     east_signs = db.relationship("East", back_populates="element")
@@ -38,5 +39,6 @@ class Element(db.Model, SerializerMixin):
                 taste: {self.taste}
                 organ: {self.organ}
                 color: {self.color}
+                img: {self.img}
             />
         """

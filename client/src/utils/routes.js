@@ -4,7 +4,7 @@ import Auth from '../components/Auth'
 import Error from '../App'
 import PersonalZodiac from '../pages/PersonalZodiac'
 import Explore from '../pages/Explore'
-import Detail from '../components/Detail'
+import Detail from '../components/elements/Detail'
 
 // view & edit info
 

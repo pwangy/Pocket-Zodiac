@@ -247,3 +247,8 @@ eastern illustartions
 
 element placeholder: 
 <a href="https://www.flaticon.com/free-icons/astrology" title="astrology icons">Astrology icons created by Freepik - Flaticon</a>
+
+element desc: WHITE, SUZANNE. THE NEW ASTROLOGY FOR THE 21ST CENTURY: A Unique Blend of Chinese and Western Astrology (pp. 10-11). Suzanne White. Kindle Edition.
+
+eastern sign descriptions: 
+Reiko Chiba. Japanese Fortune Calendar -- Reiko Chiba -- 2011 -- Tuttle Publishing -- 9781462911271 -- 378dfbadd9e15eb3e9655dfffecbdae3 -- Anna’s Archive (pp. 9-10). Kindle Edition. 

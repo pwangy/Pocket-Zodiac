@@ -1,25 +1,27 @@
 from . import ma, fields, validate, East
 
+
 class EastSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
         model = East
         load_instance = True
 
-    name = fields.String(required=True)
-    qualities = fields.String(required=True)
-    desc = fields.String(required=True)
-    polarity = fields.String(required=True)
-    order_12 = fields.Integer(required=True)
-    order_60 = fields.Integer(required=True)
+    name = fields.String()
+    name_12 = fields.String()
+    qualities = fields.String()
+    desc = fields.String()
+    polarity = fields.String()
+    order_12 = fields.Integer()
+    order_60 = fields.Integer()
     western_counterpart = fields.String()
     img = fields.String()
     element_id = fields.Integer()
-    element = fields.Nested('ElementSchema')
+    element = fields.Nested("ElementSchema")
+    start = fields.Date()
+    end = fields.Date()
+    start1 = fields.Date()
+    end1 = fields.Date()
 
-    url = ma.Hyperlinks({
-        "self": ma.URLFor("eastbyid", values=dict(id="<id>")),
-        "collection":ma.URLFor("east")
-    })
 
 east_schema = EastSchema()
 easts_schema = EastSchema(many=True)

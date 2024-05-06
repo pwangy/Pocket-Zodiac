@@ -21,7 +21,6 @@ const App = () => {
 			.catch((err) => console.log(err))
 	}, [setElements])
 
-
 	useEffect(() => {
 		fetch('/east')
 			.then((res) => {
@@ -33,13 +32,23 @@ const App = () => {
 			.catch((err) => console.log(err))
 	}, [setEast])
 
-	
+	useEffect(() => {
+		fetch('/west')
+			.then((res) => {
+				if (res.ok) {
+					return res.json().then(setWest)
+				}
+				return res.json().then((errorObj) => console.log(errorObj))
+			})
+			.catch((err) => console.log(err))
+	}, [setWest])
+
 
 	return (
 		<main>
 			<Header />
 			<h3>i'm the frontend!</h3>
-			<Outlet context={{ user, elements, east }} />
+			<Outlet context={{ user, elements, east, west  }} />
 			<Footer />
 		</main>
 )}

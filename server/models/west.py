@@ -14,9 +14,11 @@ class West(db.Model, SerializerMixin):
     element = db.Column(db.String)
     modality = db.Column(db.String)
     planet = db.Column(db.String)
-    house = db.Column(db.Integer)
+    house = db.Column(db.String)
     symbol = db.Column(db.String)
     img = db.Column(db.String)
+    start = db.Column(db.Date)
+    end = db.Column(db.Date)
 
     # Relationships
     user_zodiacs = db.relationship("UserZodiac", back_populates="west")
@@ -30,11 +32,25 @@ class West(db.Model, SerializerMixin):
         return f"""
             <West {self.id}:
                 name: {self.name}
+                gloss: {self.gloss}
                 qualities: {self.qualities}
                 description: {self.desc}
                 element: {self.element}
+                modality: {self.modality}
                 planet: {self.planet}
+                house: {self.house}
                 symbol: {self.symbol}
                 image: {self.img}
+                start: {self.start}
+                end: {self.end}
             />
         """
+
+
+# def convert_date_w(date_str):
+#     try:
+#         day, month = map(int, date_str.split("-"))
+#         year = 2024
+#         return datetime(year, day, month)
+#     except ValueError:
+#         return None
