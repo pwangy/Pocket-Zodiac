@@ -48,7 +48,7 @@ const App = () => {
 		<main>
 			<Header />
 			<h3>i'm the frontend!</h3>
-			<Outlet context={{ user, elements, east, west  }} />
+			<Outlet context={{ user, elements, east, west }} />
 			<Footer />
 		</main>
 )}
