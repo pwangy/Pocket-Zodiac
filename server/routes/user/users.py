@@ -10,8 +10,6 @@ from .. import (
     set_refresh_cookies,
 )
 
-# import ipdb
-
 class Users(Resource):
     def post(self):
         try:

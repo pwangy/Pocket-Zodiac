@@ -15,14 +15,22 @@ from routes.auth.logout import Logout
 from routes.auth.check_session import CheckSession
 from routes.auth.refresh import Refresh
 
-api.add_resource(Easts, "/east")
-api.add_resource(EastById, "/eastbyid")
-api.add_resource(Wests, "/west")
-api.add_resource(WestById, "/westbyid")
-api.add_resource(UserZodiac, "/userszodiac")
+
+
+#! not used
 api.add_resource(UserZodiacById, "/userzodiacbyid")
-api.add_resource(Elements, "/elements")
+api.add_resource(UserZodiac, "/userszodiac")
+api.add_resource(EastById, "/eastbyid")
+api.add_resource(WestById, "/westbyid")
 api.add_resource(ElementById, "/elementsbyid")
+
+# patch
+api.add_resource(UserById, "/users/<int:id>")
+
+#? checked
+api.add_resource(Elements, "/elements")
+api.add_resource(Easts, "/east") 
+api.add_resource(Wests, "/west")
 api.add_resource(Users, "/signup")
 api.add_resource(Login, "/login")
 api.add_resource(Logout, "/logout")

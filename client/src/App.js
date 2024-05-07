@@ -23,24 +23,24 @@ const App = () => {
 
 	useEffect(() => {
 		fetch('/east')
-			.then((res) => {
+			.then(res => {
 				if (res.ok) {
 					return res.json().then(setEast)
 				}
 				return res.json().then((errorObj) => console.log(errorObj))
 			})
-			.catch((err) => console.log(err))
+			.catch(err => console.log(err))
 	}, [setEast])
 
 	useEffect(() => {
 		fetch('/west')
-			.then((res) => {
+			.then(res => {
 				if (res.ok) {
 					return res.json().then(setWest)
 				}
 				return res.json().then((errorObj) => console.log(errorObj))
 			})
-			.catch((err) => console.log(err))
+			.catch(err => console.log(err))
 	}, [setWest])
 
 
