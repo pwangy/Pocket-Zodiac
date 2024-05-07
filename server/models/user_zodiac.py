@@ -10,9 +10,7 @@ class UserZodiac(db.Model, SerializerMixin):
     west_id = db.Column(db.Integer, db.ForeignKey("west.id"))
     east_id = db.Column(db.Integer, db.ForeignKey("east.id"))
     east_west = db.Column(db.String)
-    additional_birthdate = db.Column(
-        db.DateTime, default=datetime.now().date().strftime("%Y-%m-%d")
-    )
+    additional_birthdate = db.Column(db.String)
 
     # Relationships
     user = db.relationship("User", back_populates="user_zodiacs")

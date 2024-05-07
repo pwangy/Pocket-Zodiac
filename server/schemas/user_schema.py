@@ -1,4 +1,5 @@
 from . import ma, fields, validate, validates, DateTime, User
+from datetime import datetime
 
 
 class UserSchema(ma.SQLAlchemyAutoSchema):
@@ -21,7 +22,7 @@ class UserSchema(ma.SQLAlchemyAutoSchema):
         load_only=True,
         validate=validate.Length(min=8, error="Password must be at least 8 characters long"),
     )
-    birthdate = fields.Date()
+    birthdate = fields.String()
     user_zodiac = fields.Nested(
         "UserZodiac",
         only=("id", "east_west"),
@@ -37,10 +38,10 @@ class UserSchema(ma.SQLAlchemyAutoSchema):
 
         return loaded_instance
 
-    @validates("birthdate")
-    def validate_birthdate(self, birthdate):
-        if not DateTime.strptime(birthdate, "%Y-%m-%d"):
-            raise ValueError('Date must be in "YYYY-MM-DD"')
+    # @validates("birthdate")
+    # def validate_birthdate(self, birthdate):
+    #     if not datetime.strptime(birthdate, "%Y-%m-%d"):
+    #         raise ValueError('Date must be in "YYYY-MM-DD"')
 
     url = ma.Hyperlinks(
         {

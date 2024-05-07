@@ -1,6 +1,7 @@
 from . import SerializerMixin, validates, re, db
 from sqlalchemy.ext.hybrid import hybrid_property
 from datetime import datetime
+from DateTime import DateTime
 from config import flask_bcrypt
 
 
@@ -11,7 +12,7 @@ class User(db.Model, SerializerMixin):
     username = db.Column(db.String(20), nullable=False, unique=True)
     email = db.Column(db.String(50), nullable=True, unique=True)
     _password_hash = db.Column(db.String, nullable=False)
-    birthdate = db.Column(db.Date)
+    birthdate = db.Column(db.String)
 
     # Relationships
     user_zodiacs = db.relationship(
@@ -20,7 +21,6 @@ class User(db.Model, SerializerMixin):
 
     serialize_rules = ("-_password_hash",)
 
-    # #! rm after testing
     def __repr__(self):
         return f"""
             <User {self.id}:

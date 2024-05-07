@@ -1,7 +1,7 @@
-from .. import request, g, Resource, db, user_zodiac_schema, login_required
+from .. import request, g, Resource, db, user_zodiac_schema, jwt_required
 
 class UserZodiacById(Resource):
-    @login_required
+    @jwt_required()
     def get(self, id):
         try: 
             if g.user_zodiac:

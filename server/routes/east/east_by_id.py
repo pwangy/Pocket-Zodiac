@@ -1,7 +1,7 @@
-from .. import request, g, Resource, db, east_schema, login_required
+from .. import request, g, Resource, db, east_schema, jwt_required
 
 class EastById(Resource):
-    @login_required
+    @jwt_required()
     def get(self, id):
         if g.east:
             return east_schema.dump(g.east), 200

@@ -56,11 +56,11 @@ def before_request():
         key_name = "user" if request.endpoint == "user_by_id" else "east" if request.endpoint == "eastbyid" else "west" if request.endpoint == "westbyid" else "element" if request.endpoint == "elementbyid" else "user_zodiac"
         setattr(g, key_name, record)
 
-def login_required(func):
-    @wraps(func)
-    def decorated_function(*args, **kwargs):
-        return func(*args, **kwargs)
-    return decorated_function
+# def login_required(func):
+#     @wraps(func)
+#     def decorated_function(*args, **kwargs):
+#         return func(*args, **kwargs)
+#     return decorated_function
 
 # Register a callback function that loads a user from your database whenever
 # a protected route is accessed. This should return any python object on a

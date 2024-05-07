@@ -1,7 +1,8 @@
-from .. import (request, Resource, login_required, West, wests_schema)
+import jwt
+from .. import (request, Resource, jwt_required, West, wests_schema)
 
 class Wests(Resource):
-    @login_required
+    @jwt_required()
     def get(self):
         try:
             serialized_west = wests_schema.dump(West.query)

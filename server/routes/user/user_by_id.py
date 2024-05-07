@@ -1,40 +1,31 @@
-from .. import request, Resource, db, g, user_schema, User, login_required, jwt_required
+from flask_jwt_extended import current_user
+from .. import request, Resource, db, g, user_schema, User, jwt_required
+from datetime import datetime
 
 
 class UserById(Resource):
-    @login_required
-    def get(self, id):
-        try:
-            if g.user:
-                return user_schema.dump(g.user), 200
-        except Exception as e:
-            return {"error": str(e)}, 400
-
-    @login_required
+    @jwt_required()
     def patch(self, id):
         try:
-            userToUpdate = User.query.filter(User.id == id).first()
-            if userToUpdate:
+            # userToUpdate = User.query.filter(User.id == session['user_id']).first()
+            if current_user:
                 data = request.json
-                updated_user = user_schema.load(data, instance=userToUpdate, partial=True)
+                birthdate_str = data.get('birthdate')
+                if not birthdate_str:
+                    raise ValueError('Birthdate is required.')
+                birthdate = datetime.strptime(birthdate_str, '%Y-%m-%d')
+                # import ipdb; ipdb.set_trace()
+
+                data['birthdate'] = birthdate
+                user_data = user_schema.load(data, instance=current_user, partial=True)
+
                 db.session.commit()
-                return user_schema.dump(updated_user), 200
+                return user_schema.dump(current_user), 200
             else:
                 return {"Error": f"Unable to find user"}, 404
         except Exception as e:
+            db.session.rollback()
             return {"Error": str(e)}, 400
-        
-        # if user := db.session.get(User, id):
-        #     try:
-        #         data = request.json
-        #         updated_user = user_schema.load(data, instance=user, partial=True)
-        #         db.session.commit()
-        #         return user_schema.dump(updated_user), 202
-        #     except Exception as e:
-        #         db.session.rollback()
-        #         return {"error": str(e)}, 400
-        # else: 
-        #     return {"message": f"Could not find User with id #{id}"}, 404
 
     # @jwt_required
     def delete(self, id):
