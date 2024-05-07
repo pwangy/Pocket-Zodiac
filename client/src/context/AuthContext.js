@@ -47,7 +47,8 @@ const AuthProvider = ({ children }) => {
 	const patchUser = (patched_user) => setUser({...user, email: patched_user.email, birthdate: patched_user.birthdate})
 
 
-	const deleteUser = (deleted_user) => setUser(user => user.filter(user => user.id !== deleted_user.id))
+	const deleteUser = (deleted_user) => setUser(null)
+		// setUser(user => user.filter(user => user.id !== deleted_user.id))
 	
 
 	const logout = (user) => {
