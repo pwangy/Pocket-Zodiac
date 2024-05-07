@@ -5,9 +5,6 @@ export const AuthContext = createContext()
 const AuthProvider = ({ children }) => {
 	const [user, setUser] = useState(null)
 	const updateUser = (user) => setUser(user)
-	// const [username, setUsername] = useState('')
-	// const updateUsername = (user) => setUsername(user.username)
-	// const [somethingtoedit, setsomethingtoedit] = useSttate(false)
 
 	const getCookie = (name) => {
 		const value = `; ${document.cookie}`
@@ -48,8 +45,6 @@ const AuthProvider = ({ children }) => {
 
 
 	const deleteUser = (deleted_user) => setUser(null)
-		// setUser(user => user.filter(user => user.id !== deleted_user.id))
-	
 
 	const logout = (user) => {
 		fetch('/logout', { method: 'DELETE' })
