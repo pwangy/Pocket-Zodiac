@@ -96,18 +96,14 @@ const Auth = () => {
 							placeholder='Username'
 							autoComplete='username'
 						/>
-						{errors && errors.username && touched.username && (
-							<div className='error-message'>{errors.username}</div>
-						)}
+						<ErrorMessage name='username' component='div' />
 						<Field
 							name='password'
 							type='password'
 							placeholder='Password'
 							autoComplete='current-password'
 						/>
-						{errors && errors.password && touched.password && (
-							<div className='error-message'>{errors.password}</div>
-						)}
+						<ErrorMessage name='password' component='div' />
 						{!isLogin && (
 							<>
 								<Field
@@ -116,18 +112,14 @@ const Auth = () => {
 									placeholder='Confirm Password'
 									autoComplete='confirm-new-password'
 								/>
-								{errors && errors.confirmPassword && touched.confirmPassword && (
-									<div className='error-message'>{errors.confirmPassword}</div>
-								)}
+								<ErrorMessage name='confirmPassword' component='div' />
 								<Field
 									type='text'
 									name='email'
 									placeholder='email'
 									autoComplete='email'
 								/>
-								{errors && errors.email && touched.email && (
-									<div className='error-message'>{errors.email}</div>
-								)}
+								<ErrorMessage name='email' component='div' />
 							</>
 						)}
 						<input type='submit' value={isLogin ? 'Login' : 'Sign up'} />

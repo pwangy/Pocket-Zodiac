@@ -11,7 +11,7 @@ const Header = () => {
             {user ? (
                 <>
                     <NavLink id='link' to='/' className='nav'>home</NavLink>
-                    <NavLink id='link' to='/profile' className='nav'>profile</NavLink>
+                    <NavLink id='link' to={`/profile/${user.id}`} className='nav'>profile</NavLink>
                     <NavLink id='link' to='/zodiac' className='nav'>my zodiac</NavLink>
                     <NavLink id='link' to='/explore' className='nav'>explore</NavLink>
                     <NavLink id='link' to='/' className='nav' onClick={logout}>Logout</NavLink>

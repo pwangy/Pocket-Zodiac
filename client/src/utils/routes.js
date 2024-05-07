@@ -4,7 +4,8 @@ import Auth from '../components/Auth'
 import Error from '../App'
 import PersonalZodiac from '../pages/PersonalZodiac'
 import Explore from '../pages/Explore'
-import Detail from '../components/Detail'
+import Detail from '../components/elements/Detail'
+import Profile from '../pages//Profile'
 
 // view & edit info
 
@@ -36,16 +37,17 @@ const router = createBrowserRouter([
 				element: <Detail />
 			},
 			{
-				path: '/profile',
-				element: ''
+				path: '/profile/:id',
+				element: <Profile />
 			},
+			// {
+			// 	path: '/profile',
+			// 	element: <Profile />
+			// },
     ]}
 ])
 
 export default router
 
-// /profile
-// /auth
-// /explore
 // /user-info
 // no page refreshes

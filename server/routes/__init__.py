@@ -35,7 +35,7 @@ from flask_jwt_extended import (
 
 @app.route("/")
 def index():
-    return "<h1>Pocket Chinese Astrology Server</h1>"
+    return "<h1>Pocket Astrology Server</h1>"
 
 @app.errorhandler(NotFound)
 def not_found(error):
@@ -59,8 +59,6 @@ def before_request():
 def login_required(func):
     @wraps(func)
     def decorated_function(*args, **kwargs):
-        # if "user_id" not in session:
-            # return {"message": "Access Denied, please log in!"}, 422
         return func(*args, **kwargs)
     return decorated_function
 

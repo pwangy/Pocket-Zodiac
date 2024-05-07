@@ -3,8 +3,8 @@ import csv
 from faker import Faker
 from config import app
 from models.__init__ import db
-from models.east import East
-from models.west import West
+from models.east import East, convert_date
+from models.west import West, convert_date_w
 from models.element import Element
 from models.user import User
 from models.user_zodiac import UserZodiac
@@ -72,9 +72,9 @@ def seed():
 
         # clear existing data
         try:
-            East.query.delete()
-            West.query.delete()
-            Element.query.delete()
+            # East.query.delete()
+            # West.query.delete()
+            # Element.query.delete()
             User.query.delete()
             UserZodiac.query.delete()
             db.session.commit()
@@ -82,35 +82,42 @@ def seed():
         except Exception as e:
             print("Could not drop tables")
 
-        # element
-        with open("seeds/elements.csv", "r") as file:
-            reader = csv.DictReader(file)
-            for row in reader:
-                row["id"] = int(row["id"]) if row["id"].isdigit() else None
-                element = Element(**row)
-                db.session.add(element)
-        db.session.commit()
-        print("Elements seeded")
+# ? Freeze changes to Element, East, & West db
+        # # element
+        # with open("seeds/elements.csv", "r") as file:
+        #     reader = csv.DictReader(file)
+        #     for row in reader:
+        #         row["id"] = int(row["id"]) if row["id"].isdigit() else None
+        #         element = Element(**row)
+        #         db.session.add(element)
+        # db.session.commit()
+        # print("Elements seeded")
 
-        # east
-        with open("seeds/east.csv", "r") as file:
-            reader = csv.DictReader(file)
-            for row in reader:
-                row["id"] = int(row["id"]) if row["id"].isdigit() else None
-                east = East(**row)
-                db.session.add(east)
-        db.session.commit()
-        print("East seeded")
+        # # east
+        # with open("seeds/east.csv", "r") as file:
+        #     reader = csv.DictReader(file)
+        #     for row in reader:
+        #         row["id"] = int(row["id"]) if row["id"].isdigit() else None
+        #         row["start"] = convert_date(row["start"])
+        #         row["end"] = convert_date(row["end"])
+        #         row["start1"] = convert_date(row["start1"])
+        #         row["end1"] = convert_date(row["end1"])
+        #         east = East(**row)
+        #         db.session.add(east)
+        # db.session.commit()
+        # print("East seeded")
 
-        # west
-        with open("seeds/west.csv", "r") as file:
-            reader = csv.DictReader(file)
-            for row in reader:
-                row["id"] = int(row["id"]) if row["id"].isdigit() else None
-                west = West(**row)
-                db.session.add(west)
-        db.session.commit()
-        print("West seeded")
+        # # west
+        # with open("seeds/west.csv", "r") as file:
+        #     reader = csv.DictReader(file)
+        #     for row in reader:
+        #         row["id"] = int(row["id"]) if row["id"].isdigit() else None
+        #         row["start"] = convert_date_w(row["start"])
+        #         row["end"] = convert_date_w(row["end"])
+        #         west = West(**row)
+        #         db.session.add(west)
+        # db.session.commit()
+        # print("West seeded")
 
         users_created = seed_users()
         if users_created:

@@ -139,10 +139,10 @@ article {
 }
 .row-wrap {
 	display: flex;
-	flex-direction: row wrap;
+	flex-flow: row wrap;
 }
 .card {
-	width: 15%;
+	width: 7em;
 	margin-right: 16px;
 
 }

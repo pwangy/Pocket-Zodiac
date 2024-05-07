@@ -1,6 +1,6 @@
 import { useContext, useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import { AuthContext } from '../context/AuthContext' 
+import { AuthContext } from '../../context/AuthContext' 
 
 const Detail = () => {
     const { id } = useParams()

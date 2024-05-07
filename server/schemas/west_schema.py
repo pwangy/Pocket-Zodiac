@@ -1,4 +1,4 @@
-from . import ma, fields, validate, West
+from . import ma, fields, West, DateTime
 
 
 class WestSchema(ma.SQLAlchemyAutoSchema):
@@ -6,22 +6,18 @@ class WestSchema(ma.SQLAlchemyAutoSchema):
         model = West
         load_instance = True
 
-    name = fields.String(required=True)
-    gloss = fields.String(required=True)
-    desc = fields.String(required=True)
-    qualities = fields.String(required=True)
-    element = fields.String(required=True)
-    modality = fields.String(required=True)
-    planet = fields.String(required=True)
-    house = fields.String(required=True)
+    name = fields.String()
+    gloss = fields.String()
+    desc = fields.String()
+    qualities = fields.String()
+    element = fields.String()
+    modality = fields.String()
+    planet = fields.String()
+    house = fields.String()
     symbol = fields.String()
     img = fields.String()
-
-    url = ma.Hyperlinks(
-        {
-            "self": ma.URLFor("westbyid", values=dict(id="<id>")),
-            "collection": ma.URLFor("west"),
-    })
+    start = fields.Date()
+    end = fields.Date()
 
 
 west_schema = WestSchema()

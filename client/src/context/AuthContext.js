@@ -21,7 +21,7 @@ const AuthProvider = ({ children }) => {
 				'X-CSRF-TOKEN': getCookie('csrf_access_token')
 			},
 		})
-		.then((res) => {
+		.then(res => {
 			if (res.ok) {
 				res.json().then(updateUser)
 			} else {
@@ -31,12 +31,11 @@ const AuthProvider = ({ children }) => {
 						'X-CSRF-TOKEN': getCookie('csrf_refresh_token'),
 					}
 				})
-				.then((res) => {
+				.then(res => {
 					if (res.ok) {
 						res.json()
 							console.log('Logged in!')
 							.then(updateUser)
-							// .then(updateUsername)
 					} else {
 						console.error('Please log in.')
 					}
@@ -44,6 +43,12 @@ const AuthProvider = ({ children }) => {
 			}
 		})
 	}, [])
+
+	const patchUser = (patched_user) => setUser({...user, email: patched_user.email, birthdate: patched_user.birthdate})
+
+
+	const deleteUser = (deleted_user) => setUser(user => user.filter(user => user.id !== deleted_user.id))
+	
 
 	const logout = (user) => {
 		fetch('/logout', { method: 'DELETE' })
@@ -57,7 +62,7 @@ const AuthProvider = ({ children }) => {
 	}
 
 	return (
-		<AuthContext.Provider value={{ user, updateUser, logout }}>
+		<AuthContext.Provider value={{ user, updateUser, logout, patchUser, deleteUser }}>
 			{children}
 		</AuthContext.Provider>
 	)

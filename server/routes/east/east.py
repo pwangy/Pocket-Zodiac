@@ -1,7 +1,8 @@
 from .. import request, Resource, login_required, East, easts_schema, db
 
-class East(Resource):
-    # @login_required
+
+class Easts(Resource):
+    @login_required
     def get(self):
         try:
             serialized_east = easts_schema.dump(East.query)

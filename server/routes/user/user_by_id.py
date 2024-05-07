@@ -1,24 +1,28 @@
-from .. import request, Resource, db, g, user_schema, login_required
+from .. import request, Resource, db, g, user_schema, User, login_required
 
 
 class UserById(Resource):
+    @login_required
     def get(self, id):
-        if g.user:
-            return user_schema.dump(g.user), 200
-        return {"message": f"Could not find User with id #{id}"}, 404
+        try:
+            if g.user:
+                return user_schema.dump(g.user), 200
+        except Exception as e:
+            return {"error": str(e)}, 400
 
     @login_required
     def patch(self, id):
-        if g.user:
+        user = getattr(g, "user", None)
+        if user:
             try:
                 data = request.json
-                updated_user = user_schema.load(data, instance=g.user, partial=True)
+                updated_user = user_schema.load(data, instance=user, partial=True)
                 db.session.commit()
-                return user_schema.dump(updated_user), 200
+                return user_schema.dump(updated_user), 202
             except Exception as e:
-                db.session.rollback()
-                return {"message": str(e)}, 422
-        return {"message": f"Could not find User with id #{id}"}, 404
+                return {"error": str(e)}, 400
+            else: 
+                return {"message": f"Could not find User with id #{id}"}, 404
 
     @login_required
     def delete(self, id):
