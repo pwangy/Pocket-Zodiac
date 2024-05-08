@@ -1,7 +1,7 @@
-from .. import request, g, Resource, db, element_schema, login_required
+from .. import request, g, Resource, db, element_schema, jwt_required
 
 class ElementById(Resource):
-    @login_required
+    @jwt_required()
     def get(self, id):
         try:
             if g.element:

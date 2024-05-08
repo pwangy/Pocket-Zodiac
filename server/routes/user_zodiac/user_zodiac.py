@@ -1,7 +1,7 @@
-from .. import request, Resource, login_required, db, UserZodiac, users_zodiac_schema
+from .. import request, Resource, jwt_required, db, UserZodiac, users_zodiac_schema
 
 class UserZodiac(Resource):
-    @login_required
+    @jwt_required()
     def get(self):
         try:
             serialized_users_zodiac = users_zodiac_schema.dump(UserZodiac.query)

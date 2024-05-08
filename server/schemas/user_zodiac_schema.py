@@ -26,7 +26,7 @@ class UserZodiacSchema(ma.SQLAlchemyAutoSchema):
     )
 
     east_west = fields.String()
-    additional_birthdate = fields.Date()
+    additional_birthdate = fields.String()
 
     url = ma.Hyperlinks(
         {
@@ -38,10 +38,10 @@ class UserZodiacSchema(ma.SQLAlchemyAutoSchema):
         }
     )
 
-    @validates("additional_birthdate")
-    def validate_additional_birthdate(self, additional_birthdate):
-        if not DateTime.strptime(additional_birthdate, "%Y-%m-%d"):
-            raise ValueError('Date must be in "YYYY-MM-DD"')
+    # @validates("additional_birthdate")
+    # def validate_additional_birthdate(self, additional_birthdate):
+    #     if not DateTime.strptime(additional_birthdate, "%Y-%m-%d"):
+    #         raise ValueError('Date must be in "YYYY-MM-DD"')
 
 
 user_zodiac_schema = UserZodiacSchema()

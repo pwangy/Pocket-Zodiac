@@ -1,7 +1,7 @@
-from .. import request, Resource, login_required, db, Element, elements_schema
+from .. import request, Resource, jwt_required, db, Element, elements_schema
 
 class Elements(Resource):
-    @login_required
+    @jwt_required()
     def get(self):
         try:
             serialized_elements = elements_schema.dump(Element.query)

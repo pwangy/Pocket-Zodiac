@@ -60,7 +60,7 @@ const Auth = () => {
 				validationSchema = {isLogin ? loginSchema : signupSchema}
 				onSubmit={(formData) => {
 					const updatedValues = Object.assign({}, formData, {
-						password_hash: formData.password,
+						password_hash: formData.password
 					})
 					delete updatedValues.password;
 					delete updatedValues.confirmPassword;
@@ -77,9 +77,6 @@ const Auth = () => {
 									updateUser(userData)
 									console.log('logged in!')
 								})
-								// .then(() => {
-								// 	// isLogin ? navigate('/home') : navigate('/')
-								// })
 						} else if (res.status === 422) {
 							console.error('invalid login!')
 							return res.json().then((errorObj) => console.log(errorObj))
