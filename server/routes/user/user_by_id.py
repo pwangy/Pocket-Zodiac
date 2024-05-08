@@ -4,7 +4,7 @@ from datetime import datetime
 
 
 class UserById(Resource):
-    @jwt_required()
+    # @jwt_required()
     def patch(self, id):
         try:
             # userToUpdate = User.query.filter(User.id == session['user_id']).first()
@@ -14,11 +14,11 @@ class UserById(Resource):
                 if not birthdate_str:
                     raise ValueError('Birthdate is required.')
                 birthdate = datetime.strptime(birthdate_str, '%Y-%m-%d')
-                # import ipdb; ipdb.set_trace()
 
                 data['birthdate'] = birthdate
                 user_data = user_schema.load(data, instance=current_user, partial=True)
 
+                import ipdb; ipdb.set_trace()
                 db.session.commit()
                 return user_schema.dump(current_user), 200
             else:

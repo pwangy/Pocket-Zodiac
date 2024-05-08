@@ -55,17 +55,17 @@ const Profile = () => {
 						initialValues={initialValues}
 						validationSchema={profileSchema}
 						onSubmit={(formData, { setSubmitting }) => {
-                            // const formatData = {
-                            //     ...formData,
-                            //     birthdate: new Date(formData.birthdate).toISOString().split('T')[0]
-                            // }
+                            const formatData = {
+                                ...formData,
+                                birthdate: new Date(formData.birthdate).toISOString().split('T')[0]
+                            }
 							fetch(`/users/${user.id}`, {
 								method: 'PATCH',
 								headers: { 
                                     'Content-Type': 'application/json', 
                                     'X-CSRF-TOKEN': getCookie('csrf_access_token')
                                 },
-								body: JSON.stringify(formData)
+								body: JSON.stringify(formatData)
 							})
                             .then((res) => {
                                 if (res.ok) {
@@ -101,7 +101,6 @@ const Profile = () => {
                                                 } else {
                                                     return res.json().then(errorObj => console.error(errorObj.message || errorObj.Error))
                                                 }
-                                                // note to make errors consistent; use message OR Error
                                             })
                                     // throw new Error('Something went wrong while saving')
                                         } else {
@@ -146,7 +145,6 @@ const Profile = () => {
 			)}
 		</>
 	)
-} // add csrf token to every fetch call. fix login_req > jwt req. change birthdate to string in be
-
+}
 
 export default Profile
