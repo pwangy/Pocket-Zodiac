@@ -21,6 +21,7 @@ const Profile = () => {
 				if (res.status === 204) {
 					deleteUser(user)
                     navigate('/')
+                    console.log('User deleted!')
 				} else {
 					return res.json().then((errorObj) => {
 						console.error('Error deleting user:', errorObj)

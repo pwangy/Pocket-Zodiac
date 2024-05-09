@@ -35,7 +35,7 @@ from flask_jwt_extended import (
 
 @app.route("/")
 def index():
-    return "<h1>Pocket Astrology Server</h1>"
+    return "<h1>Pocket Zodiac Server</h1>"
 
 @app.errorhandler(NotFound)
 def not_found(error):
@@ -55,12 +55,6 @@ def before_request():
         record = db.session.get(path_dict.get(request.endpoint), id)
         key_name = "user" if request.endpoint == "user_by_id" else "east" if request.endpoint == "eastbyid" else "west" if request.endpoint == "westbyid" else "element" if request.endpoint == "elementbyid" else "user_zodiac"
         setattr(g, key_name, record)
-
-# def login_required(func):
-#     @wraps(func)
-#     def decorated_function(*args, **kwargs):
-#         return func(*args, **kwargs)
-#     return decorated_function
 
 # Register a callback function that loads a user from your database whenever
 # a protected route is accessed. This should return any python object on a

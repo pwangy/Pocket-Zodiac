@@ -18,7 +18,7 @@ class UserById(Resource):
                 data['birthdate'] = birthdate
                 user_data = user_schema.load(data, instance=current_user, partial=True)
 
-                import ipdb; ipdb.set_trace()
+                # import ipdb; ipdb.set_trace()
                 db.session.commit()
                 return user_schema.dump(current_user), 200
             else:

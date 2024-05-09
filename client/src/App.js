@@ -19,7 +19,7 @@ const App = () => {
 				return res.json().then((errorObj) => console.log(errorObj))
 			})
 			.catch((err) => console.log(err))
-	}, [setElements])
+	}, [setElements, user])
 
 	useEffect(() => {
 		fetch('/east')
@@ -30,7 +30,7 @@ const App = () => {
 				return res.json().then((errorObj) => console.log(errorObj))
 			})
 			.catch(err => console.log(err))
-	}, [setEast])
+	}, [setEast, user])
 
 	useEffect(() => {
 		fetch('/west')
@@ -41,7 +41,7 @@ const App = () => {
 				return res.json().then((errorObj) => console.log(errorObj))
 			})
 			.catch(err => console.log(err))
-	}, [setWest])
+	}, [setWest, user])
 
 
 	return (
