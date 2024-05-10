@@ -13,6 +13,7 @@ class User(db.Model, SerializerMixin):
     email = db.Column(db.String(50), nullable=True, unique=True)
     _password_hash = db.Column(db.String, nullable=False)
     birthdate = db.Column(db.String, nullable=True)
+    google_uid = db.Column(db.String, nullable=True)
 
     # Relationships
     user_zodiacs = db.relationship(

@@ -14,7 +14,7 @@ from routes.auth.login import Login
 from routes.auth.logout import Logout
 from routes.auth.check_session import CheckSession
 from routes.auth.refresh import Refresh
-
+from routes.auth.oauth import OAuth
 
 
 #! not used
@@ -26,10 +26,11 @@ api.add_resource(ElementById, "/elementsbyid")
 
 # patch
 api.add_resource(UserById, "/users/<int:id>")
+api.add_resource(OAuth, "/goauth")
 
-#? checked
+# ? checked
 api.add_resource(Elements, "/elements")
-api.add_resource(Easts, "/east") 
+api.add_resource(Easts, "/east")
 api.add_resource(Wests, "/west")
 api.add_resource(Users, "/signup")
 api.add_resource(Login, "/login")

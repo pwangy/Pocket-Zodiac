@@ -18,16 +18,12 @@ app.config["SQLALCHEMY_ECHO"] = True
 
 #! Flask JWT Extended configuration
 app.config["JWT_SECRET_KEY"] = environ.get("JWT_SECRET")
-# Here you can globally configure all the ways you want to allow JWTs to
-# be sent to your web application. By default, this will be only headers.
 app.config["JWT_TOKEN_LOCATION"] = ["cookies"]
-# If true this will only allow the cookies that contain your JWTs to be sent
-# over https. In production, this should always be set to True
 app.config["JWT_COOKIE_SECURE"] = False
 app.config["JWT_CSRF_IN_COOKIES"] = True
 app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(minutes=160)
 app.config["JWT_REFRESH_TOKEN_EXPIRES"] = timedelta(days=90)
-
+GOOGLE_CLIENT_ID = environ.get("GOAUTH_CID")
 
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)

@@ -27,7 +27,7 @@ class UserById(Resource):
             db.session.rollback()
             return {"Error": str(e)}, 400
 
-    # @jwt_required
+    @jwt_required
     def delete(self, id):
         try:
             if user := db.session.get(User, id):

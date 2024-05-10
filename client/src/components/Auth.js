@@ -1,9 +1,11 @@
-import { useContext, useState } from 'react'
+import { useContext, useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import * as Yup from 'yup'
 import YupPassword from 'yup-password'
 import { object, string } from 'yup'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { AuthContext } from '../context/AuthContext'
+// import OAuth from './auth/OAuth'
 
 YupPassword(Yup)
 
@@ -45,11 +47,55 @@ const initialValues = {
 const Auth = () => {
 	const { user, updateUser } = useContext(AuthContext)
 	const [isLogin, setIsLogin] = useState(true)
-
+	const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID
+	const navigate = useNavigate()
 	const requestUrl = isLogin ? '/login' : '/signup'
 
 	const handleIsLogin = () => {
 		setIsLogin(!isLogin)
+	}
+
+	useEffect(() => {
+		const script = document.createElement('script')
+		script.src = 'https://apis.google.com/js/platform.js'
+		script.async = true
+		script.defer = true
+		// script.onload = resolve
+		script.onload = () => {
+			if (window.google && window.google.accounts) {
+				window.google.accounts.id.initialize({
+					client_id: clientId,
+					callback: handleCallbackResponse
+				})
+				window.google.accounts.id.renderButton(
+					document.getElementById('signInDiv'),
+					{ theme: 'outline', size: 'medium', text: 'continue_with' })
+			} else {
+			console.error('Google API failed to load')
+			}
+		}
+		document.head.appendChild(script)
+		return () => {
+			document.head.removeChild(script)
+		}
+	}, [])
+
+	const handleCallbackResponse = (response) => {
+		fetch('/goauth', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+                'Accept': 'application/json'
+			},
+			body: JSON.stringify({ id_token: response.credential })
+		})
+			.then(res => res.json())
+			.then(user => {
+				updateUser(user)
+				navigate(`/`)
+                console.log('logged in!')
+			})
+			.catch(error => console.error(error))
 	}
 
 	return (
@@ -125,6 +171,8 @@ const Auth = () => {
 			</>
 			)}
 			</Formik>
+			<div id='signInDiv' />
+			{/* <OAuth /> */}
 		</article>
 )}
 
