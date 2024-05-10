@@ -6,7 +6,7 @@ const AuthProvider = ({ children }) => {
 	const [user, setUser] = useState(null)
 	const updateUser = (user) => setUser(user)
 
-	const getCookie = (name) => {
+	const getCookie = ( name ) => {
 		const value = `; ${document.cookie}`
 		const parts = value.split(`; ${name}=`)
 		if (parts.length === 2) return parts.pop().split(';').shift()

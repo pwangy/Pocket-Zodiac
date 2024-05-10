@@ -22,7 +22,8 @@ cryptography = "*"
 requests = "*"
 flask-jwt-extended = "*"
 DateTime = "5.5"
-flask-redis = "*"
+python-dotenv = "*"
+google-auth = "*"
 
 [requires]
 python_version = "3.8"
