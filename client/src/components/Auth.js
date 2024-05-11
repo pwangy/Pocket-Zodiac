@@ -55,6 +55,7 @@ const Auth = () => {
 		setIsLogin(!isLogin)
 	}
 
+	//? OAuth
 	useEffect(() => {
 		const script = document.createElement('script')
 		script.src = 'https://apis.google.com/js/platform.js'

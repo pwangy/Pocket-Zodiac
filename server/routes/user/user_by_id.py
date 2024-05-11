@@ -7,7 +7,6 @@ class UserById(Resource):
     # @jwt_required()
     def patch(self, id):
         try:
-            # userToUpdate = User.query.filter(User.id == session['user_id']).first()
             if current_user:
                 data = request.json
                 birthdate_str = data.get('birthdate')

@@ -17,18 +17,18 @@ const Profile = () => {
 		fetch(`/users/${user.id}`, {
 			method: 'DELETE'
 		})
-			.then((res) => {
+			.then(res => {
 				if (res.status === 204) {
 					deleteUser(user)
                     navigate('/')
                     console.log('User deleted!')
 				} else {
-					return res.json().then((errorObj) => {
+					return res.json().then(errorObj => {
 						console.error('Error deleting user:', errorObj)
 					})
 				}
 			})
-			.catch((err) => console.log(err))
+			.catch(err => console.log(err))
 	}
 
 	const profileSchema = Yup.object({
@@ -68,10 +68,10 @@ const Profile = () => {
                                 },
 								body: JSON.stringify(formatData)
 							})
-                            .then((res) => {
+                            .then(res => {
                                 if (res.ok) {
                                     return res.json()
-                                    .then((userData) => {
+                                    .then(userData => {
                                         patchUser(userData)
                                         console.log('Changes saved!')
                                         setEditing(false)
@@ -91,9 +91,9 @@ const Profile = () => {
                                                 },
                                                 body: JSON.stringify(formData)
                                             })
-                                            .then((res) => {
+                                            .then(res => {
                                                 if (res.ok) {
-                                                    return res.json().then((userData) => {
+                                                    return res.json().then(userData => {
                                                         patchUser(userData)
                                                         console.log('Changes saved!')
                                                         setEditing(false)
@@ -103,14 +103,13 @@ const Profile = () => {
                                                     return res.json().then(errorObj => console.error(errorObj.message || errorObj.Error))
                                                 }
                                             })
-                                    // throw new Error('Something went wrong while saving')
                                         } else {
                                             throw new Error('Token Expired! Please login again.')
                                         }
                                     })
                                 }
                             })
-                            .catch((error) => {
+                            .catch(error => {
                                 console.error('Error:', error.message)
                             })
                             .finally(() => {
