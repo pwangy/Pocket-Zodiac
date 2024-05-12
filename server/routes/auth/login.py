@@ -26,6 +26,6 @@ class Login(Resource):
                 set_refresh_cookies(response, refresh_token)
                 return response
             else:
-                return {"message": "Invalid login"}, 422
+                return {"error": "Invalid login"}, 422
         except Exception as e:
-            return {"message": str(e)}, 422
+            return {"error": str(e)}, 422

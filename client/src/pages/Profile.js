@@ -5,7 +5,7 @@ import * as Yup from 'yup'
 import { AuthContext } from '../context/AuthContext'
 
 const Profile = () => {
-	const { user, patchUser, deleteUser } = useContext(AuthContext)
+	const { user, patchUser, deleteUser, getCookie } = useContext(AuthContext)
 	const [editing, setEditing] = useState(false)
     const navigate = useNavigate()
 
@@ -17,35 +17,27 @@ const Profile = () => {
 		fetch(`/users/${user.id}`, {
 			method: 'DELETE'
 		})
-			.then((res) => {
+			.then(res => {
 				if (res.status === 204) {
 					deleteUser(user)
                     navigate('/')
                     console.log('User deleted!')
 				} else {
-					return res.json().then((errorObj) => {
+					return res.json().then(errorObj => {
 						console.error('Error deleting user:', errorObj)
 					})
 				}
 			})
-			.catch((err) => console.log(err))
+			.catch(err => console.log(err))
 	}
 
 	const profileSchema = Yup.object({
-		email: Yup.string().email().required("Email is required"),
-		birthdate: Yup.date().required('Date is required.')
+		email: Yup.string().email().required("Email is required")
 	})
 
 	const initialValues = {
-		email: user?.email || '',
-		birthdate: user?.birthdate || ''
+		email: user?.email || ''
 	}
-
-    function getCookie(name) {
-        const value = `; ${document.cookie}`;
-        const parts = value.split(`; ${name}=`);
-        if (parts.length === 2) return parts.pop().split(';').shift();
-      }
 
 	return (
 		<>
@@ -56,22 +48,19 @@ const Profile = () => {
 						initialValues={initialValues}
 						validationSchema={profileSchema}
 						onSubmit={(formData, { setSubmitting }) => {
-                            const formatData = {
-                                ...formData,
-                                birthdate: new Date(formData.birthdate).toISOString().split('T')[0]
-                            }
-							fetch(`/users/${user.id}`, {
-								method: 'PATCH',
-								headers: { 
+                            const token = getCookie('csrf_access_token')
+                            fetch(`http://localhost:5555/api/v1/users/${user.id}`, {
+                                method: 'PATCH',
+                                headers: { 
                                     'Content-Type': 'application/json', 
-                                    'X-CSRF-TOKEN': getCookie('csrf_access_token')
+                                    'X-CSRF-TOKEN': `Bearer ${token}`
                                 },
-								body: JSON.stringify(formatData)
-							})
-                            .then((res) => {
+                                body: JSON.stringify(formData)
+                            })
+                            .then(res => {
                                 if (res.ok) {
                                     return res.json()
-                                    .then((userData) => {
+                                    .then(userData => {
                                         patchUser(userData)
                                         console.log('Changes saved!')
                                         setEditing(false)
@@ -91,26 +80,24 @@ const Profile = () => {
                                                 },
                                                 body: JSON.stringify(formData)
                                             })
-                                            .then((res) => {
+                                            .then(res => {
                                                 if (res.ok) {
-                                                    return res.json().then((userData) => {
+                                                    return res.json().then(userData => {
                                                         patchUser(userData)
                                                         console.log('Changes saved!')
                                                         setEditing(false)
                                                     })
-                                                    // maybe build a check token route in be
                                                 } else {
                                                     return res.json().then(errorObj => console.error(errorObj.message || errorObj.Error))
                                                 }
                                             })
-                                    // throw new Error('Something went wrong while saving')
                                         } else {
                                             throw new Error('Token Expired! Please login again.')
                                         }
                                     })
                                 }
                             })
-                            .catch((error) => {
+                            .catch(error => {
                                 console.error('Error:', error.message)
                             })
                             .finally(() => {
@@ -126,8 +113,6 @@ const Profile = () => {
                                     autoComplete='email'
                                 />
                                 <ErrorMessage name='email' component='div' />
-								<Field name='birthdate' type='date' />
-								<ErrorMessage name='birthdate'component='div' />
 								<input type='submit' disabled={isSubmitting} value={'Save Changes'} />
 							</Form>
 						)}
