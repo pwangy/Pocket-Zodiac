@@ -56,10 +56,6 @@ def before_request():
         key_name = "user" if request.endpoint == "user_by_id" else "east" if request.endpoint == "eastbyid" else "west" if request.endpoint == "westbyid" else "element" if request.endpoint == "elementbyid" else "user_zodiac"
         setattr(g, key_name, record)
 
-# Register a callback function that loads a user from your database whenever
-# a protected route is accessed. This should return any python object on a
-# successful lookup, or None if the lookup failed for any reason (for example
-# if the user has been deleted from the database).
 @jwt.user_lookup_loader
 def user_lookup_callback(_jwt_header, jwt_data):
     identity = jwt_data["sub"]

@@ -14,4 +14,4 @@ class CheckSession(Resource):
         if current_user:
             return user_schema.dump(current_user), 200
         else:
-            return {"message": "Please log in"}, 401
+            return {"error": "Please log in"}, 401

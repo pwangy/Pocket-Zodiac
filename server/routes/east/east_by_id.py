@@ -5,4 +5,4 @@ class EastById(Resource):
     def get(self, id):
         if g.east:
             return east_schema.dump(g.east), 200
-        return {"message": f"Could not find Eastern sign with id #{id}"}, 404
+        return {"error": f"Could not find Eastern sign with id #{id}"}, 404

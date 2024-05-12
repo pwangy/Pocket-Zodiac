@@ -22,7 +22,7 @@ class UserSchema(ma.SQLAlchemyAutoSchema):
         load_only=True,
         validate=validate.Length(min=8, error="Password must be at least 8 characters long"),
     )
-    birthdate = fields.String()
+    birthdate = fields.Date(format='%Y-%m-%d')
     user_zodiac = fields.Nested(
         "UserZodiac",
         only=("id", "east_west"),

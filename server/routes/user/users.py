@@ -25,4 +25,4 @@ class Users(Resource):
             return response
         except Exception as e:
             db.session.rollback()
-            return {"message": str(e)}, 422
+            return {"error": str(e)}, 422

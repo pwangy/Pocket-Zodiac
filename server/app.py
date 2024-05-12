@@ -18,7 +18,7 @@ from routes.auth.oauth import OAuth
 
 
 #! not used
-api.add_resource(UserZodiacById, "/userzodiacbyid")
+api.add_resource(UserZodiacById, "/userzodiacbyid", methods=['PATCH'])
 api.add_resource(UserZodiac, "/userszodiac")
 api.add_resource(EastById, "/eastbyid")
 api.add_resource(WestById, "/westbyid")
