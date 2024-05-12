@@ -28,7 +28,8 @@ const signupSchema = object({
 		.oneOf([Yup.ref('password'), null], 'Passwords must match.')
 		.required('Confirm Password is required.'),
 
-	email: string().email().required("Email is required")
+	email: string().email().required("Email is required"),
+	birthdate: Yup.string().required('Date is required.')
 })
 
 const loginSchema = object({
@@ -41,7 +42,8 @@ const initialValues = {
 	username: '',
 	password: '',
 	confirmPassword: '',
-	email: ''
+	email: '',
+	birthdate: ''
 }
 
 const Auth = () => {
@@ -117,16 +119,16 @@ const Auth = () => {
 							'Content-Type': 'application/json'
 						},
 						body: JSON.stringify(updatedValues)
-					}).then((res) => {
+					}).then(res => {
 						if (res.ok) {
-							res.json()
-								.then((userData) => {
-									updateUser(userData)
-									console.log('logged in!')
-								})
+							return res.json()
+							.then(userData => {
+								updateUser(userData)
+								console.log('logged in!')
+							})
 						} else if (res.status === 422) {
 							console.error('invalid login!')
-							return res.json().then((errorObj) => console.log(errorObj))
+							return res.json().then(errorObj => console.log(errorObj))
 						}
 					})
 				}}
@@ -164,6 +166,8 @@ const Auth = () => {
 									autoComplete='email'
 								/>
 								<ErrorMessage name='email' component='div' />
+								<Field name='birthdate' type='date' />
+								<ErrorMessage name='birthdate'component='div' />
 							</>
 						)}
 						<input type='submit' value={isLogin ? 'Login' : 'Sign up'} />
@@ -172,8 +176,7 @@ const Auth = () => {
 			</>
 			)}
 			</Formik>
-			<div id='signInDiv' />
-			{/* <OAuth /> */}
+			{/* <div id='signInDiv' /> */}
 		</article>
 )}
 

@@ -12,15 +12,13 @@ class UserById(Resource):
         try:
             if user:
                 data = request.json
-                birthdate_str = data.get('birthdate')
-                if not birthdate_str:
-                    raise ValueError('Birthdate is required.')
-                birthdate = datetime.strptime(birthdate_str, '%Y-%m-%d')
+                # birthdate_str = data.get('birthdate')
+                # if not birthdate_str:
+                    # raise ValueError('Birthdate is required.')
+                # birthdate = datetime.strptime(birthdate_str, '%Y-%m-%d')
 
-                data['birthdate'] = birthdate
+                # data['birthdate'] = birthdate
                 user_data = user_schema.load(data, instance=user, partial=True)
-
-                # import ipdb; ipdb.set_trace()
                 db.session.commit()
                 return user_schema.dump(current_user), 200
             else:

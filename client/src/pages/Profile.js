@@ -32,13 +32,11 @@ const Profile = () => {
 	}
 
 	const profileSchema = Yup.object({
-		email: Yup.string().email().required("Email is required"),
-		// birthdate: Yup.date().required('Date is required.')
+		email: Yup.string().email().required("Email is required")
 	})
 
 	const initialValues = {
-		email: user?.email || '',
-		// birthdate: user?.birthdate || ''
+		email: user?.email || ''
 	}
 
 	return (
@@ -50,20 +48,14 @@ const Profile = () => {
 						initialValues={initialValues}
 						validationSchema={profileSchema}
 						onSubmit={(formData, { setSubmitting }) => {
-                            const formatData = {
-                                ...formData,
-                                // birthdate: new Date(formData.birthdate).toISOString().split('T')[0]
-                            }
                             const token = getCookie('csrf_access_token')
-                            console.log(token)
                             fetch(`http://localhost:5555/api/v1/users/${user.id}`, {
                                 method: 'PATCH',
                                 headers: { 
                                     'Content-Type': 'application/json', 
                                     'X-CSRF-TOKEN': `Bearer ${token}`
-                                    // 'X-CSRF-TOKEN': getCookie('csrf_access_token')
                                 },
-                                body: JSON.stringify(formatData)
+                                body: JSON.stringify(formData)
                             })
                             .then(res => {
                                 if (res.ok) {
@@ -121,8 +113,6 @@ const Profile = () => {
                                     autoComplete='email'
                                 />
                                 <ErrorMessage name='email' component='div' />
-								{/* <Field name='birthdate' type='date' /> */}
-								{/* <ErrorMessage name='birthdate'component='div' /> */}
 								<input type='submit' disabled={isSubmitting} value={'Save Changes'} />
 							</Form>
 						)}
