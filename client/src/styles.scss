@@ -70,7 +70,14 @@ $wht: snow;
 // typography
 $font-primary: Sans-Serif;
 
-html, div, h3, p, a, .form {
+html {
+	max-width: 480px;
+	margin: 16px;
+	background-color: $li1
+}
+
+
+div, h3, p, a, .form {
 	// margin: 0;
 	// padding: 16px 6px;
 	color: $wht;
@@ -182,36 +189,43 @@ footer > p {
 
 /* Breakpoints */
 // Tablet
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 481) {
 	main {
 		width: 85vw;
 		background-color: darkblue;
 	}
 	nav {
-		max-width: 500px;
+		max-width: 768px;
 	}
 	textarea {
 		width: 50em;
 	}
 }
 
+// Laptop
+@media only screen and (min-width: 769) {
+	main {
+		width: 85vw;
+		background-color: $dk6;
+	}
+	nav {
+		max-width: 1024px;
+	}
+	// textarea {
+	// 	width: 50em;
+	// }
+}
+
 // Desktop
-@media only screen and (min-width: 992px) {
+@media only screen and (min-width: 1025) {
 	main {
 		width: 85vw;
 		background-color: darkslategray;
 	}
 	nav {
-		max-width: 500px;
+		max-width: 1024px;
 	}
 	textarea {
 		width: 60em;
 	}
 }
-
-// Breakpoint prefix	Minimum width	CSS
-// sm	640px	@media (min-width: 640px) { ... }
-// md	768px	@media (min-width: 768px) { ... }
-// lg	1024px	@media (min-width: 1024px) { ... }
-// xl	1280px	@media (min-width: 1280px) { ... }
-// 2xl	1536px	@media (min-width: 1536px) { ... }

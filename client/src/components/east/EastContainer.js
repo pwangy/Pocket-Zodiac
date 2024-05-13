@@ -3,7 +3,7 @@ import Card from './Card'
 
 const EastContainer = () => {
     const { east } = useOutletContext()
-    const listEastern = east?.map(e => <Card key={e.id} {...e} />)
+    const listEastern = east?.slice(0, 12).map(e => <Card key={e.id} {...e} />)
 
 	return (
         <>
