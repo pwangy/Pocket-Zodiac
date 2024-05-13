@@ -14,8 +14,12 @@ const Profile = () => {
 	}
 
 	const handleDelete = () => {
+        const token = getCookie('csrf_access_token')
 		fetch(`/users/${user.id}`, {
-			method: 'DELETE'
+			method: 'DELETE',
+            headers: { 
+                'X-CSRF-TOKEN': token
+            },
 		})
 			.then(res => {
 				if (res.status === 204) {
@@ -32,13 +36,15 @@ const Profile = () => {
 	}
 
 	const profileSchema = Yup.object({
-		email: Yup.string().email().required("Email is required")
+		email: Yup.string().email().required("Email is required"),
+        birthdate: Yup.string().required('Date is required.')
 	})
 
 	const initialValues = {
-		email: user?.email || ''
+		email: user?.email || '',
+		birthdate: user?.birthdate || ''
 	}
-
+    if (!user) return <h3>Checking the stars...</h3> 
 	return (
 		<>
 			{editing ? (
@@ -53,7 +59,7 @@ const Profile = () => {
                                 method: 'PATCH',
                                 headers: { 
                                     'Content-Type': 'application/json', 
-                                    'X-CSRF-TOKEN': `Bearer ${token}`
+                                    'X-CSRF-TOKEN': token
                                 },
                                 body: JSON.stringify(formData)
                             })
@@ -113,6 +119,8 @@ const Profile = () => {
                                     autoComplete='email'
                                 />
                                 <ErrorMessage name='email' component='div' />
+                                <Field name='birthdate' type='date' />
+								<ErrorMessage name='birthdate'component='div' />
 								<input type='submit' disabled={isSubmitting} value={'Save Changes'} />
 							</Form>
 						)}

@@ -176,7 +176,7 @@ const Auth = () => {
 			</>
 			)}
 			</Formik>
-			{/* <div id='signInDiv' /> */}
+			<div id='signInDiv' />
 		</article>
 )}
 

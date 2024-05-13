@@ -12,7 +12,7 @@ import rooster from '../../assets/east/128-rooster.png'
 import dog from '../../assets/east/128-dog.png'
 import pig from '../../assets/east/128-pig.png'
 
-const Card = ({ id, name_12, img }) => {
+const Card = ({ id, name_12, img, qualities, desc, polarity, order_12, order_60, western_counterpart, element_id }) => {
     const images = {
         '128-rat.png': rat,
         '128-ox.png': ox,
@@ -31,7 +31,7 @@ const Card = ({ id, name_12, img }) => {
     return (
         <div className='card'>
             <img src={images[img]} alt='element icon' className='ico' />
-            <Link to={`/west/${id}`}>
+            <Link to={`/east/${id}`} state={{ id, name_12, img, qualities, desc, polarity, order_12, order_60, western_counterpart, element_id }}>
                 <h6>{name_12}</h6>
             </Link>
         </div>

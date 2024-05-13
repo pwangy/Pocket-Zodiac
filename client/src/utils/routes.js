@@ -4,7 +4,9 @@ import Auth from '../components/Auth'
 import Error from '../App'
 import PersonalZodiac from '../pages/PersonalZodiac'
 import Explore from '../pages/Explore'
-import Detail from '../components/elements/Detail'
+import SingleEle from '../components/elements/Detail'
+import WestSign from '../components/west/Detail'
+import EastSign from '../components/east/Detail'
 import Profile from '../pages//Profile'
 
 // view & edit info
@@ -34,7 +36,15 @@ const router = createBrowserRouter([
 			},
 			{
 				path: '/element/:id',
-				element: <Detail />
+				element: <SingleEle />
+			},
+			{
+				path: '/east/:id',
+				element: <EastSign />
+			},
+			{
+				path: '/west/:id',
+				element: <WestSign />
 			},
 			{
 				path: '/profile/:id',

@@ -12,7 +12,7 @@ import capricorn from '../../assets/west/128-capricorn.png'
 import aquarius from '../../assets/west/128-aquarius.png'
 import pisces from '../../assets/west/128-pisces.png'
 
-const Card = ({ id, name, img }) => {
+const Card = ({ id, name, gloss, desc, qualities, element, modality, planet, house, img }) => {
     const images = {
         '128-aries.png': aries,
         '128-taurus.png': taurus,
@@ -31,7 +31,7 @@ const Card = ({ id, name, img }) => {
     return (
         <div className='card'>
             <img src={images[img]} alt='element icon' className='ico' />
-            <Link to={`/west/${id}`}>
+            <Link to={`/west/${id}`} state={{ id, name, gloss, desc, qualities, element, modality, planet, house, img }}>
                 <h6>{name}</h6>
             </Link>
         </div>

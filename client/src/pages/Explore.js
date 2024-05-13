@@ -1,10 +1,46 @@
-import { useOutletContext } from 'react-router-dom'
+import { useState, useEffect } from 'react'
 import ElementsContainer from '../components/elements/ElementContainer'
 import WestContainer from '../components/west/WestContainer'
 import EastContainer from '../components/east/EastContainer'
 
 const Explore = () => {
-    const { elements, east, west } = useOutletContext()
+    const [elements, setElements] = useState([])
+	const [east, setEast] = useState([])
+	const [west, setWest] = useState([])
+
+	useEffect(() => {
+		fetch('/elements')
+			.then((res) => {
+				if (res.ok) {
+					return res.json().then(setElements)
+				}
+				return res.json().then((errorObj) => console.log(errorObj))
+			})
+			.catch((err) => console.log(err))
+	}, [])
+
+	useEffect(() => {
+		fetch('/east')
+			.then(res => {
+				if (res.ok) {
+					return res.json().then(setEast)
+				}
+				return res.json().then((errorObj) => console.log(errorObj))
+			})
+			.catch(err => console.log(err))
+	}, [])
+
+	useEffect(() => {
+		fetch('/west')
+			.then(res => {
+				if (res.ok) {
+					return res.json().then(setWest)
+				}
+				return res.json().then((errorObj) => console.log(errorObj))
+			})
+			.catch(err => console.log(err))
+	}, [])
+
 
 	return (
         <>
