@@ -252,3 +252,6 @@ element desc: WHITE, SUZANNE. THE NEW ASTROLOGY FOR THE 21ST CENTURY: A Unique B
 
 eastern sign descriptions: 
 Reiko Chiba. Japanese Fortune Calendar -- Reiko Chiba -- 2011 -- Tuttle Publishing -- 9781462911271 -- 378dfbadd9e15eb3e9655dfffecbdae3 -- Anna’s Archive (pp. 9-10). Kindle Edition. 
+
+east/west/element icons
+<div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div><div>Icons made by <a href="https://www.flaticon.com/authors/nack-thanakorn" title="Nack_Thanakorn">Nack_Thanakorn</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>

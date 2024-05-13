@@ -1,11 +1,22 @@
 import { Link } from 'react-router-dom'
-import Placeholder from '../../assets/elements/solarsystem.png'
+import earth from '../../assets/elements/128-earth.png'
+import fire from '../../assets/elements/128-fire.png'
+import water from '../../assets/elements/128-water.png'
+import wood from '../../assets/elements/128-wood.png'
+import metal from '../../assets/elements/128-metal.png'
 
-const Card = ({ id, name, qualities, desc, season, direction, planet, number, smell, taste, organ, color }) => {
+const Card = ({ id, name, img }) => {
+    const images = {
+        '128-earth.png': earth,
+        '128-fire.png': fire,
+        '128-water.png': water,
+        '128-wood.png': wood,
+        '128-metal.png': metal,
+    }
 
     return (
         <div className='card'>
-            <img src={Placeholder} alt='element icon' className='ico' />
+            <img src={images[img]} alt='element icon' className='ico' />
             <Link to={`/element/${id}`}>
                 <h6>{name}</h6>
             </Link>
