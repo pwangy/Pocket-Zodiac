@@ -1,12 +1,10 @@
 import { createBrowserRouter } from 'react-router-dom'
 import App from '../App'
 import Auth from '../components/Auth'
-import Error from '../App'
+import Error from '../pages/Error'
 import PersonalZodiac from '../pages/PersonalZodiac'
 import Explore from '../pages/Explore'
-import SingleEle from '../components/elements/Detail'
-import WestSign from '../components/west/Detail'
-import EastSign from '../components/east/Detail'
+import Detail from '../components/Detail'
 import Profile from '../pages//Profile'
 
 // view & edit info
@@ -36,24 +34,20 @@ const router = createBrowserRouter([
 			},
 			{
 				path: '/element/:id',
-				element: <SingleEle />
+				element: <Detail />
 			},
 			{
 				path: '/east/:id',
-				element: <EastSign />
+				element: <Detail />
 			},
 			{
 				path: '/west/:id',
-				element: <WestSign />
+				element: <Detail />
 			},
 			{
-				path: '/profile/:id',
+				path: '/edit/:id',
 				element: <Profile />
-			},
-			// {
-			// 	path: '/profile',
-			// 	element: <Profile />
-			// },
+			}
     ]}
 ])
 

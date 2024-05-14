@@ -39,4 +39,3 @@ class UserById(Resource):
                 return {"error": "User not found"}, 404
         except Exception as e:
             return {"error": str(e)}, 400
-

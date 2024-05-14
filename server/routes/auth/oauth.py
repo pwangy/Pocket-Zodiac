@@ -43,6 +43,3 @@ class OAuth(Resource):
         except Exception as e:
             db.session.rollback()
             return {"error": str(e)}, 400
-
-
-# inc redirect for user signup using gauth upon successful acct creation
