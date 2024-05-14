@@ -1,8 +1,8 @@
-import { useOutletContext } from 'react-router-dom'
+// import { useOutletContext } from 'react-router-dom'
 import Card from './Card'
 
-const EastContainer = () => {
-    const { east } = useOutletContext()
+const EastContainer = ({ east }) => {
+    // const { east } = useOutletContext()
     const listEastern = east?.slice(0, 12).map(e => <Card key={e.id} {...e} />)
 
 	return (
@@ -15,4 +15,3 @@ const EastContainer = () => {
 )}
 
 export default EastContainer
-

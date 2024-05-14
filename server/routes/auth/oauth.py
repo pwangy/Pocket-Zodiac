@@ -32,9 +32,10 @@ class OAuth(Resource):
                 db.session.add(new_user)
                 db.session.commit()
 
-            jwt = create_access_token(identity=new_user.id)
-            refresh_toekn = create_refresh_token(identity=new_user.id)
-            response = make_response(user_schema.dump(new_user), 200 if user else 201)
+            final_user = user if user else new_user
+            jwt = create_access_token(identity=final_user.id)
+            refresh_toekn = create_refresh_token(identity=final_user.id)
+            response = make_response(user_schema.dump(final_user), 200 if user else 201)
             set_access_cookies(response, jwt)
             set_refresh_cookies(response, refresh_toekn)
             return response

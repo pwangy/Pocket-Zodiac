@@ -1,10 +1,10 @@
 import { createBrowserRouter } from 'react-router-dom'
 import App from '../App'
 import Auth from '../components/Auth'
-import Error from '../App'
+import Error from '../pages/Error'
 import PersonalZodiac from '../pages/PersonalZodiac'
 import Explore from '../pages/Explore'
-import Detail from '../components/elements/Detail'
+import Detail from '../components/Detail'
 import Profile from '../pages//Profile'
 
 // view & edit info
@@ -33,17 +33,21 @@ const router = createBrowserRouter([
 				element: <Explore />
 			},
 			{
-				path: '/element/:id',
+				path: '/elements/:id',
 				element: <Detail />
 			},
 			{
-				path: '/profile/:id',
-				element: <Profile />
+				path: '/east/:id',
+				element: <Detail />
 			},
-			// {
-			// 	path: '/profile',
-			// 	element: <Profile />
-			// },
+			{
+				path: '/west/:id',
+				element: <Detail />
+			},
+			{
+				path: '/edit/:id',
+				element: <Profile />
+			}
     ]}
 ])
 

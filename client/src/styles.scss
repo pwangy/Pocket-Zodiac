@@ -68,7 +68,25 @@ $li1: #e3e8e6;
 $wht: snow;
 
 // typography
-$font-primary: Sans-Serif;
+$font-titles: "Corben", serif;
+$title-bold: 700;
+// 	font-weight: 400;
+
+// $font-test2: "Milonga", serif;
+	// font-weight: 400;
+	// font-style: normal;
+//   .milonga-bold {
+	// font-weight: 700;
+	// font-style: normal;
+
+$font-primary: "Work Sans", sans-serif;
+// <uniquifier>: Use a unique and descriptive class name
+// <weight>: Use a value from 100 to 900
+// .work-sans-<uniquifier> {
+// 	font-optical-sizing: auto;
+// 	font-weight: <weight>;
+// 	font-style: normal;
+//   }
 
 html {
 	max-width: 480px;
@@ -104,8 +122,10 @@ header {
 }
 
 h1 {
-	height: 2em;
+	height: 1em;
 	margin: 0 16px 0 0;
+	font-family: $font-titles;
+	font-size: xx-large;
 	background-color: $md4;
 	color: $night;
 }
@@ -163,9 +183,12 @@ article {
 
 // Explore
 .ico {
-	width: 100px;
-	height: 100px;
+	width: 65px;
+	height: 65px;
 	border: none;
+	margin: 3px;
+	padding: 5px;
+	background: $dk8;
 }
 article > img, h6 {
 	border: none;

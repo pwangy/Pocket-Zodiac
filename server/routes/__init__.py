@@ -15,7 +15,6 @@ from models.element import Element
 from models.user_zodiac import UserZodiac
 
 from config import db, app, api, jwt
-import ipdb
 from flask_jwt_extended import (
     create_access_token,
     create_refresh_token,
@@ -37,9 +36,11 @@ from flask_jwt_extended import (
 def index():
     return "<h1>Pocket Zodiac Server</h1>"
 
+
 @app.errorhandler(NotFound)
 def not_found(error):
     return {"error": error.description}, 404
+
 
 @app.before_request
 def before_request():
@@ -53,8 +54,25 @@ def before_request():
     if request.endpoint in path_dict:
         id = request.view_args.get("id")
         record = db.session.get(path_dict.get(request.endpoint), id)
-        key_name = "user" if request.endpoint == "user_by_id" else "east" if request.endpoint == "eastbyid" else "west" if request.endpoint == "westbyid" else "element" if request.endpoint == "elementbyid" else "user_zodiac"
+        key_name = (
+            "user"
+            if request.endpoint == "user_by_id"
+            else (
+                "east"
+                if request.endpoint == "eastbyid"
+                else (
+                    "west"
+                    if request.endpoint == "westbyid"
+                    else (
+                        "element"
+                        if request.endpoint == "elementbyid"
+                        else "user_zodiac"
+                    )
+                )
+            )
+        )
         setattr(g, key_name, record)
+
 
 @jwt.user_lookup_loader
 def user_lookup_callback(_jwt_header, jwt_data):

@@ -1,5 +1,5 @@
 import { useOutletContext } from 'react-router-dom'
-import Card from './Card'
+import Card from '../Card'
 
 const ElementsContainer = () => {
     const { elements } = useOutletContext()
