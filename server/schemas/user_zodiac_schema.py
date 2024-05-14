@@ -25,7 +25,6 @@ class UserZodiacSchema(ma.SQLAlchemyAutoSchema):
         "EastSchema",
     )
 
-    east_west = fields.String()
     additional_birthdate = fields.String()
 
     url = ma.Hyperlinks(
