@@ -1,7 +1,5 @@
 import { useState, useEffect } from 'react'
 import Container from '../components/Container'
-// import WestContainer from '../components/west/WestContainer'
-// import EastContainer from '../components/east/EastContainer'
 
 const Explore = () => {
     const [elements, setElements] = useState([])

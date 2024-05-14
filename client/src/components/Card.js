@@ -1,17 +1,28 @@
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { images } from '../utils/images'
 
-const Card = ({ id, img, name, type, ...props }) => {
-    return (
-        <div className='card'>
-            <img src={ images[img] } alt={`${type} icon`} className='ico' />
-            <Link to={{
-                pathname: `/${type}/${id}`,
-                state: { id, img, name, type, ...props }
-            }}>
-                <h6>{ props.name_12 || props.name }</h6>
-            </Link>
+const Card = ({ type, id, img, name, ...props }) => {
+    const navigate = useNavigate()
+    // console.log(type)
+
+    if (type === 'east') {
+        return (
+            <div onClick={() => navigate(`/${type}/${id}`, {state: { type, id, img, name, ...props }})}>
+                <img src={ images[img] } alt={`${name} icon`} className='ico' />
+                {/* <Link to={{ pathname: `/${type}/${id}`, state: { type, id, img, name, ...props }}}> */}
+                <h6>{props.name_12}</h6>
+                {/* </Link> */}
         </div>
-)}
+        )
+    } else {
+        return (
+            <div onClick={() => navigate(`/${type}/${id}`, {state: { type, id, img, name, ...props }})} className='card'>
+                <img src={ images[img] } alt={`${name} icon`} className='ico' />
+                {/* <Link to={{ pathname: `/${type}/${id}`, state: { type, id, img, name, ...props }}}> */}
+                <h6>{name}</h6>
+                {/* </Link> */}
+            </div>
+    )}
+}
 
 export default Card
