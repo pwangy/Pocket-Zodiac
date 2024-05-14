@@ -44,7 +44,7 @@ const Profile = () => {
 		email: user?.email || '',
 		birthdate: user?.birthdate || ''
 	}
-    if (!user) return <h3>Checking the stars...</h3> 
+    if (!user) return <h3>Pulling your records...</h3> 
 	return (
 		<>
 			{editing ? (
@@ -57,8 +57,8 @@ const Profile = () => {
                             const token = getCookie('csrf_access_token')
                             fetch(`http://localhost:5555/api/v1/users/${user.id}`, {
                                 method: 'PATCH',
-                                headers: { 
-                                    'Content-Type': 'application/json', 
+                                headers: {
+                                    'Content-Type': 'application/json',
                                     'X-CSRF-TOKEN': token
                                 },
                                 body: JSON.stringify(formData)
@@ -81,7 +81,7 @@ const Profile = () => {
                                             fetch(`/users/${user.id}`, {
                                                 method: 'PATCH',
                                                 headers: { 
-                                                    'Content-Type': 'application/json', 
+                                                    'Content-Type': 'application/json',
                                                     'X-CSRF-TOKEN': getCookie('csrf_access_token')
                                                 },
                                                 body: JSON.stringify(formData)
