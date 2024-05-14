@@ -7,8 +7,8 @@ class UserZodiac(db.Model, SerializerMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
-    west_id = db.Column(db.Integer, db.ForeignKey("west.id"))
     east_id = db.Column(db.Integer, db.ForeignKey("east.id"))
+    west_id = db.Column(db.Integer, db.ForeignKey("west.id"))
     east_west = db.Column(db.String)
     additional_birthdate = db.Column(db.String)
 

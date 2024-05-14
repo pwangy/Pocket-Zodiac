@@ -21,7 +21,7 @@ class UserZodiacSchema(ma.SQLAlchemyAutoSchema):
     )
 
     east_id = fields.Integer()
-    east_id = fields.Nested(
+    east = fields.Nested(
         "EastSchema",
     )
 
@@ -30,19 +30,9 @@ class UserZodiacSchema(ma.SQLAlchemyAutoSchema):
 
     url = ma.Hyperlinks(
         {
-            "self": ma.URLFor("userzodiacbyid", values=dict(id="<id>")),
-            "collection": ma.URLFor("userszodiac"),
-            # "users": ma.URLFor("users"),
-            # "west": ma.URLFor("west"),
-            # "east": ma.URLFor("east"),
+            "self": ma.URLFor("userzodiacbyid", values=dict(id="<id>"))
         }
     )
-
-    # @validates("additional_birthdate")
-    # def validate_additional_birthdate(self, additional_birthdate):
-    #     if not DateTime.strptime(additional_birthdate, "%Y-%m-%d"):
-    #         raise ValueError('Date must be in "YYYY-MM-DD"')
-
 
 user_zodiac_schema = UserZodiacSchema()
 users_zodiac_schema = UserZodiacSchema(many=True)
