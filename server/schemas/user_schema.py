@@ -20,13 +20,14 @@ class UserSchema(ma.SQLAlchemyAutoSchema):
         data_key="password_hash",
         required=True,
         load_only=True,
-        validate=validate.Length(min=8, error="Password must be at least 8 characters long"),
+        validate=validate.Length(
+            min=8, error="Password must be at least 8 characters long"
+        ),
     )
-    birthdate = fields.String(format='%Y-%m-%d', required=False)
+    birthdate = fields.String(format="%Y-%m-%d", required=False)
     user_zodiacs = fields.Nested(
         "UserZodiacSchema",
         many=True,
-        # only=("id", "east_id", "west_id"),
     )
 
     def load(self, data, instance=None, *, partial=False, **kwargs):
@@ -39,16 +40,12 @@ class UserSchema(ma.SQLAlchemyAutoSchema):
 
         return loaded_instance
 
-    # @validates("birthdate")
-    # def validate_birthdate(self, birthdate):
-    #     if not datetime.strptime(birthdate, "%Y-%m-%d"):
-    #         raise ValueError('Date must be in "YYYY-MM-DD"')
-
     url = ma.Hyperlinks(
         {
             "collection": ma.URLFor("users"),
         }
     )
+
 
 user_schema = UserSchema()
 users_schema = UserSchema(many=True)

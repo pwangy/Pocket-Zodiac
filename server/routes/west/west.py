@@ -1,5 +1,6 @@
 import jwt
-from .. import (request, Resource, jwt_required, West, wests_schema)
+from .. import request, Resource, jwt_required, West, wests_schema
+
 
 class Wests(Resource):
     @jwt_required()

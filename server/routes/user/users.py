@@ -14,6 +14,7 @@ from .. import (
     set_refresh_cookies,
 )
 
+
 class Users(Resource):
     def post(self):
         try:
@@ -22,7 +23,7 @@ class Users(Resource):
             db.session.add(user)
             db.session.commit()
 
-            #? calculate user's western sign
+            # ? calculate user's western sign
             with app.app_context():
                 calc_w_signup(user, app)
                 calc_e_signup(user, app)

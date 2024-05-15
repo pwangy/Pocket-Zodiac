@@ -1,5 +1,6 @@
 from .. import request, Resource, jwt_required, db, UserZodiac, users_zodiac_schema
 
+
 class UserZodiac(Resource):
     @jwt_required()
     def get(self):

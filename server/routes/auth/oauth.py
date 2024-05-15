@@ -1,4 +1,14 @@
-from .. import request, db, Resource, User, make_response, create_access_token, create_refresh_token, set_access_cookies, set_refresh_cookies
+from .. import (
+    request,
+    db,
+    Resource,
+    User,
+    make_response,
+    create_access_token,
+    create_refresh_token,
+    set_access_cookies,
+    set_refresh_cookies,
+)
 from config import app
 from schemas.user_schema import UserSchema
 from google.auth.transport import requests
@@ -9,6 +19,7 @@ from utils.calc_w import calc_w_signup
 
 user_schema = UserSchema(session=db.session)
 CLIENT_ID = environ.get("GOAUTH_CID")
+
 
 class OAuth(Resource):
     def post(self):
@@ -28,7 +39,7 @@ class OAuth(Resource):
                     "username": id_info.get("name"),
                     "email": id_info.get("email"),
                     "password_hash": "TempPass1!",
-                    "birthdate": "1977-01-01"
+                    "birthdate": "1977-01-01",
                 }
                 user_schema.validate(user_data)
                 new_user = user_schema.load(user_data, session=db.session)

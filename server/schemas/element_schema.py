@@ -1,5 +1,6 @@
 from . import ma, fields, Element
 
+
 class ElementSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
         model = Element
@@ -17,6 +18,7 @@ class ElementSchema(ma.SQLAlchemyAutoSchema):
     organ = fields.String(required=True)
     color = fields.String(required=True)
     img = fields.String()
+
 
 element_schema = ElementSchema()
 elements_schema = ElementSchema(many=True)

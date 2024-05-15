@@ -7,7 +7,7 @@ from .. import (
     current_user,
     create_access_token,
     make_response,
-    set_access_cookies
+    set_access_cookies,
 )
 
 
