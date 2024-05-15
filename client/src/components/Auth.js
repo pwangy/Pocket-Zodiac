@@ -101,7 +101,7 @@ const Auth = () => {
 	}
 
 	return (
-		<article className='form'>
+		<article className='form-container'>
 			<h3>{isLogin ? 'Login' : 'Sign up'}</h3>
 			<Formik 
 				initialValues={initialValues}

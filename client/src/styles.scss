@@ -18,7 +18,7 @@ time, mark, audio, video {
 	margin: 0;
 	padding: 0;
 	border: 0;
-	font-size: 100%;
+	// font-size: 100%;
 	font: inherit;
 	border-radius: 3px;
 }
@@ -80,12 +80,22 @@ $font-primary: "Work Sans", sans-serif;
 
 /* Start Styles */
 html {
+	background-color: $night;
+}
+
+main {
 	max-width: 480px;
-	margin: 16px;
 	font-family: $font-primary;
+	margin: 16px;
 	font-weight: 400;
 	color: $wht;
 	background-color: $night;
+	border-radius: 3px;
+	background-color: $dk11;
+}
+
+// Toastify
+.Toastify__toast-container {
 	border-radius: 3px;
 }
 
@@ -137,7 +147,7 @@ h3 {
 	font-weight: 500;
 	text-transform: uppercase;
 	color: $wht;
-	border: 1px solid $li3;
+	// border: 1px solid $li3;
 }
 p {
 	margin: 16px 0;
@@ -162,22 +172,28 @@ article {
 }
 
 // Auth
-.form > p, button {
+.form-container, form {
+	display: flex;
+	flex-flow: column nowrap;
+	background-color: $night;
+}
+
+form > input, p, button {
 	width: 125px; 
 	margin-bottom: 6px;
 	display: flex;
 	flex-flow: column nowrap;
 	border-radius: 3px;
 	border: none;
+}
+
+form > p {
 	background-color: $night;
 }
 
 input {
-	width: 125px;
-	margin-bottom: 6px;
 	color: $dk11;
 	background-color: $li1;
-	border-radius: 3px;
 }
 .form-errors {
 	margin-bottom: 6px;
@@ -237,7 +253,7 @@ footer > p > a {
 @media only screen and (min-width: 769) {
 	main {
 		width: 85vw;
-		background-color: $dk6;
+		background-color: darkgreen;
 	}
 	nav {
 		max-width: 1024px;
@@ -251,7 +267,7 @@ footer > p > a {
 @media only screen and (min-width: 1025) {
 	main {
 		width: 85vw;
-		background-color: darkslategray;
+		background-color: palevioletred;
 	}
 	nav {
 		max-width: 1024px;
