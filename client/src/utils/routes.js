@@ -50,6 +50,3 @@ const router = createBrowserRouter([
 ])
 
 export default router
-
-// /user-info
-// no page refreshes

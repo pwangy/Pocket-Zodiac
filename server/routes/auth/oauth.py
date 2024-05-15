@@ -1,8 +1,11 @@
 from .. import request, db, Resource, User, make_response, create_access_token, create_refresh_token, set_access_cookies, set_refresh_cookies
+from config import app
 from schemas.user_schema import UserSchema
 from google.auth.transport import requests
 from google.oauth2 import id_token
 from os import environ
+from utils.calc_e import calc_e_signup
+from utils.calc_w import calc_w_signup
 
 user_schema = UserSchema(session=db.session)
 CLIENT_ID = environ.get("GOAUTH_CID")
@@ -33,6 +36,10 @@ class OAuth(Resource):
                 db.session.commit()
 
             final_user = user if user else new_user
+            with app.app_context():
+                calc_w_signup(final_user, app)
+                calc_e_signup(final_user, app)
+
             jwt = create_access_token(identity=final_user.id)
             refresh_toekn = create_refresh_token(identity=final_user.id)
             response = make_response(user_schema.dump(final_user), 200 if user else 201)

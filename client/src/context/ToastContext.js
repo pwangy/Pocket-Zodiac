@@ -10,14 +10,14 @@ const ToastProvider = ({ children }) => {
     const [t, setT] = useState({ type: '', message: null })
 
     const options = {
-        position: "top-left",
+        position: 'top-left',
         autoClose: 5000,
         hideProgressBar: true,
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        theme: "dark",
+        theme: 'dark',
         transition: Bounce,
         role: 'alert',
         isLoading: false, 

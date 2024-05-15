@@ -28,7 +28,7 @@ const signupSchema = object({
 		.oneOf([Yup.ref('password'), null], 'Passwords must match.')
 		.required('Confirm Password is required.'),
 
-	email: string().email().required("Email is required"),
+	email: string().email().required('Email is required'),
 	birthdate: Yup.string().required('Date is required.')
 })
 
@@ -94,7 +94,7 @@ const Auth = () => {
 			.then(res => res.json())
 			.then(user => {
 				updateUser(user)
-				navigate(`/zodiac/${user.id}`)
+				navigate('/zodiac')
                 toast.success('logged in!')
 			})
 			.catch(error => toast.error(error))
@@ -110,8 +110,8 @@ const Auth = () => {
 					const updatedValues = Object.assign({}, formData, {
 						password_hash: formData.password
 					})
-					delete updatedValues.password;
-					delete updatedValues.confirmPassword;
+					delete updatedValues.password
+					delete updatedValues.confirmPassword
 					fetch(requestUrl, {
 						method: 'POST',
 						headers: {
@@ -123,11 +123,15 @@ const Auth = () => {
 							return res.json()
 							.then(userData => {
 								updateUser(userData)
+								navigate('/zodiac')
 								toast.success('logged in!')
 							})
 						} else if (res.status === 422) {
-							toast.error('invalid login!')
-							return res.json().then(errorObj => toast.error(errorObj))
+							if (isLogin) {
+								toast.error('invalid login!')
+							} else {
+								return res.json().then(errorObj => toast.error(errorObj.error))
+							}
 						}
 					})
 				}}

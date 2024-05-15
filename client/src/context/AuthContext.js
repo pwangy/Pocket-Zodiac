@@ -48,7 +48,7 @@ const AuthProvider = ({ children }) => {
 		})
 	}, [])
 
-	const patchUser = (patched_user) => setUser({...user, email: patched_user.email, birthdate: patched_user.birthdate})
+	const patchUser = (patched_user) => setUser(patched_user)
 
 
 	const deleteUser = (deleted_user) => setUser(null)

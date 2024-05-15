@@ -13,7 +13,7 @@ const Explore = () => {
 				if (res.ok) {
 					return res.json().then(setElements)
 				}
-				return res.json().then(errorObj => toast.error(errorObj))
+				return res.json().then(errorObj => toast.error(errorObj.error))
 			})
 			.catch((err) => toast.error(err))
 	}, [])
@@ -24,7 +24,7 @@ const Explore = () => {
 				if (res.ok) {
 					return res.json().then(setEast)
 				}
-				return res.json().then(errorObj => toast.error(errorObj))
+				return res.json().then(errorObj => toast.error(errorObj.error))
 			})
 			.catch(err => toast.error(err))
 	}, [])
@@ -35,11 +35,10 @@ const Explore = () => {
 				if (res.ok) {
 					return res.json().then(setWest)
 				}
-				return res.json().then(errorObj => toast.error(errorObj))
+				return res.json().then(errorObj => toast.error(errorObj.error))
 			})
 			.catch(err => toast.error(err))
 	}, [])
-
 
 	return (
         <>
