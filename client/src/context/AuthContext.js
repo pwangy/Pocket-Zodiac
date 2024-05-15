@@ -1,10 +1,13 @@
-import { createContext, useState, useEffect } from 'react'
+import { createContext, useContext, useState, useEffect } from 'react'
+import { toast } from 'react-toastify'
+import ToastContext from './ToastContext'
 
 export const AuthContext = createContext()
 
 const AuthProvider = ({ children }) => {
 	const [user, setUser] = useState(null)
 	const updateUser = (user) => setUser(user)
+	// const { showToast } = useContext(ToastContext)
 
 	const getCookie = ( name ) => {
 		const value = `; ${document.cookie}`
@@ -31,10 +34,14 @@ const AuthProvider = ({ children }) => {
 				.then(res => {
 					if (res.ok) {
 						res.json()
-							console.log('Logged in!')
+							toast.success('Logged in!')
 							.then(updateUser)
 					} else {
-						console.error('Please log in.')
+						toast.info('Please log in.')
+						// toasty.error(({ closeToast }) => 'Please log in.')
+						// showToast('info', 'Please log in.')
+
+
 					}
 				})
 			}
@@ -51,10 +58,10 @@ const AuthProvider = ({ children }) => {
 			.then((res) => {
 				if (res.status === 204) {
 					setUser(null)
-					console.log('logged out!')
+					toast.success('Logged out!')
 				}
 			})
-			.catch((err) => console.log(err))
+			.catch((err) => toast.error(err))
 	}
 
 	return (

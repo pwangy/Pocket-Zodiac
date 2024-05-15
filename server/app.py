@@ -17,7 +17,7 @@ from routes.auth.refresh import Refresh
 from routes.auth.oauth import OAuth
 
 
-api.add_resource(UserZodiacById, "/userzodiacbyid", methods=['PATCH'])
+api.add_resource(UserZodiacById, "/userzodiacbyid/<int:id>")
 api.add_resource(UserZodiac, "/userszodiac")
 
 # ?

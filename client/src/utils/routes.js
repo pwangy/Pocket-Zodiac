@@ -1,13 +1,11 @@
 import { createBrowserRouter } from 'react-router-dom'
 import App from '../App'
 import Auth from '../components/Auth'
-import Error from '../pages/Error'
-import PersonalZodiac from '../pages/PersonalZodiac'
-import Explore from '../pages/Explore'
 import Detail from '../components/Detail'
+import Error from '../pages/Error'
+import Explore from '../pages/Explore'
 import Profile from '../pages//Profile'
-
-// view & edit info
+import Zodiac from '../pages/Zodiac'
 
 const router = createBrowserRouter([
     {
@@ -26,7 +24,7 @@ const router = createBrowserRouter([
 			},
 			{
 				path: '/zodiac',
-				element: <PersonalZodiac />
+				element: <Zodiac />
 			},
 			{
 				path: '/explore',

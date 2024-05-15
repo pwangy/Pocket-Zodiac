@@ -30,6 +30,18 @@ import capricorn from '../assets/west/128-capricorn.png'
 import aquarius from '../assets/west/128-aquarius.png'
 import pisces from '../assets/west/128-pisces.png'
 
+import sun from '../assets/planets/128-sun.png'
+import moon from '../assets/planets/128-moon.png'
+import mercury from '../assets/planets/128-mercury.png'
+import venus from '../assets/planets/128-venus.png'
+import planetEarth from '../assets/planets/128-planetEarth.png'
+import mars from '../assets/planets/128-mars.png'
+import jupiter from '../assets/planets/128-jupiter.png'
+import saturn from '../assets/planets/128-saturn.png'
+import uranus from '../assets/planets/128-uranus.png'
+import neptune from '../assets/planets/128-neptune.png'
+import pluto from '../assets/planets/128-pluto.png'
+
 export const images = {
         '128-earth.png': earth,
         '128-fire.png': fire,
@@ -61,5 +73,17 @@ export const images = {
         '128-sagittarius.png': sagittarius,
         '128-capricorn.png': capricorn,
         '128-aquarius.png': aquarius,
-        '128-pisces.png': pisces
+        '128-pisces.png': pisces,
+
+        '128-sun.png': sun,
+        '128-moon.png': moon,
+        '128-mercury.png': mercury,
+        '128-venus.png': venus,
+        '128-planetEarth.png': planetEarth,
+        '128-mars.png': mars,
+        '128-jupiter.png': jupiter,
+        '128-saturn.png': saturn,
+        '128-uranus.png': uranus,
+        '128-neptune.png': neptune,
+        '128-pluto.png': pluto
 }

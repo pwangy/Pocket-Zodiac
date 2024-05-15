@@ -14,7 +14,6 @@ class WestSchema(ma.SQLAlchemyAutoSchema):
     modality = fields.String()
     planet = fields.String()
     house = fields.String()
-    symbol = fields.String()
     img = fields.String()
     start = fields.Date()
     end = fields.Date()

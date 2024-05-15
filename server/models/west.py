@@ -15,7 +15,6 @@ class West(db.Model, SerializerMixin):
     modality = db.Column(db.String)
     planet = db.Column(db.String)
     house = db.Column(db.String)
-    symbol = db.Column(db.String)
     img = db.Column(db.String)
     start = db.Column(db.Date)
     end = db.Column(db.Date)
@@ -39,7 +38,6 @@ class West(db.Model, SerializerMixin):
                 modality: {self.modality}
                 planet: {self.planet}
                 house: {self.house}
-                symbol: {self.symbol}
                 image: {self.img}
                 start: {self.start}
                 end: {self.end}
