@@ -28,7 +28,7 @@ const signupSchema = object({
 		.oneOf([Yup.ref('password'), null], 'Passwords must match.')
 		.required('Confirm Password is required.'),
 
-	email: string().email().required("Email is required"),
+	email: string().email().required('Email is required.'),
 	birthdate: Yup.string().required('Date is required.')
 })
 
@@ -102,7 +102,7 @@ const Auth = () => {
 
 	return (
 		<article className='form'>
-			<p>{isLogin ? 'Login' : 'Sign up'}</p>
+			<h3>{isLogin ? 'Login' : 'Sign up'}</h3>
 			<Formik 
 				initialValues={initialValues}
 				validationSchema = {isLogin ? loginSchema : signupSchema}
@@ -140,15 +140,16 @@ const Auth = () => {
 							type='text'
 							placeholder='Username'
 							autoComplete='username'
+							className='form-input'
 						/>
-						<ErrorMessage name='username' component='div' />
+						<ErrorMessage name='username' component='div' className='form-errors' />
 						<Field
 							name='password'
 							type='password'
 							placeholder='Password'
 							autoComplete='current-password'
 						/>
-						<ErrorMessage name='password' component='div' />
+						<ErrorMessage name='password' component='div' className='form-errors' />
 						{!isLogin && (
 							<>
 								<Field
@@ -157,16 +158,16 @@ const Auth = () => {
 									placeholder='Confirm Password'
 									autoComplete='confirm-new-password'
 								/>
-								<ErrorMessage name='confirmPassword' component='div' />
+								<ErrorMessage name='confirmPassword' component='div' className='form-errors' />
 								<Field
 									type='text'
 									name='email'
 									placeholder='email'
 									autoComplete='email'
 								/>
-								<ErrorMessage name='email' component='div' />
+								<ErrorMessage name='email' component='div' className='form-errors' />
 								<Field name='birthdate' type='date' />
-								<ErrorMessage name='birthdate'component='div' />
+								<ErrorMessage name='birthdate'component='div' className='form-errors' />
 							</>
 						)}
 						<input type='submit' value={isLogin ? 'Login' : 'Sign up'} />

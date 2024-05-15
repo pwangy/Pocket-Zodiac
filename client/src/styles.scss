@@ -82,26 +82,20 @@ $font-primary: "Work Sans", sans-serif;
 html {
 	max-width: 480px;
 	margin: 16px;
-	background-color: $night;
-}
-
-div, h3, p, a, .form {
+	font-family: $font-primary;
+	font-weight: 400;
 	color: $wht;
 	background-color: $night;
-	border: 1px solid lightblue;
 	border-radius: 3px;
-	font-family: $font-primary;
 }
 
-main {
-	background-color: $dk6;
-}
-
-// Navigation
+// Header
 header {
 	margin-bottom: 16px;
 	padding-bottom: 16px;
+
 	background-color: $night;
+	border: none;
 }
 h1 {
 	height: 1.25em;
@@ -128,12 +122,22 @@ h1 {
 	font-weight: 900;
 }
 
+// General
+// div, h3, p, a, .form {
+// 	color: $wht;
+// 	background-color: $night;
+// 	border: 1px solid lightblue;
+// 	border-radius: 3px;
+// 	font-family: $font-primary;
+// }
 
-//
 h3 {
-	background-color: $dk7;
-	font-weight: 900;
+	margin-bottom: 16px;
+	font-family: $font-primary;
+	font-weight: 500;
 	text-transform: uppercase;
+	color: $wht;
+	border: 1px solid $li3;
 }
 p {
 	margin: 16px 0;
@@ -158,12 +162,27 @@ article {
 }
 
 // Auth
-.form > p, input, button {
+.form > p, button {
+	width: 125px; 
+	margin-bottom: 6px;
 	display: flex;
 	flex-flow: column nowrap;
-	// background-color: #333;
+	border-radius: 3px;
+	border: none;
+	background-color: $night;
 }
 
+input {
+	width: 125px;
+	margin-bottom: 6px;
+	color: $dk11;
+	background-color: $li1;
+	border-radius: 3px;
+}
+.form-errors {
+	margin-bottom: 6px;
+	font-size: x-small;
+}
 // Explore
 .ico {
 	width: 65px;
