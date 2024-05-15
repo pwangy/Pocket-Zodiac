@@ -14,7 +14,7 @@ const Container = ({ data, type }) => {
             break
         case 'west':
             listItems = data?.map((e) => <Card key={e.id} type={type} name={e.name} {...e} />)
-            break;
+            break
         case 'elements':
             listItems = data?.map((e) => <Card key={e.id} type={type} name={e.name} {...e} />)
             break

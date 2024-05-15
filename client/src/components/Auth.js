@@ -110,8 +110,8 @@ const Auth = () => {
 					const updatedValues = Object.assign({}, formData, {
 						password_hash: formData.password
 					})
-					delete updatedValues.password;
-					delete updatedValues.confirmPassword;
+					delete updatedValues.password
+					delete updatedValues.confirmPassword
 					fetch(requestUrl, {
 						method: 'POST',
 						headers: {
