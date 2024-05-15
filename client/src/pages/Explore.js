@@ -13,7 +13,7 @@ const Explore = () => {
 				if (res.ok) {
 					return res.json().then(setElements)
 				}
-				return res.json().then(errorObj => toast.error(errorObj))
+				return res.json().then(errorObj => toast.error(errorObj.error))
 			})
 			.catch((err) => toast.error(err))
 	}, [])
@@ -24,7 +24,7 @@ const Explore = () => {
 				if (res.ok) {
 					return res.json().then(setEast)
 				}
-				return res.json().then(errorObj => toast.error(errorObj))
+				return res.json().then(errorObj => toast.error(errorObj.error))
 			})
 			.catch(err => toast.error(err))
 	}, [])
@@ -35,16 +35,10 @@ const Explore = () => {
 				if (res.ok) {
 					return res.json().then(setWest)
 				}
-				return res.json().then(errorObj => toast.error(errorObj))
+				return res.json().then(errorObj => toast.error(errorObj.error))
 			})
 			.catch(err => toast.error(err))
 	}, [])
-
-// ! include logic to check if user is logged in , redirect to signup page if not (explore and profile) - app or auth should handle this
-// ! fixup calc_w.. doesn't populate patch and signup.
-// confirm mvp once west calc works
-// try sign up user for each west sign.
-
 
 	return (
         <>

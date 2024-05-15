@@ -29,7 +29,7 @@ const Profile = () => {
                     toast.success('User deleted!')
 				} else {
 					return res.json().then(errorObj => {
-						toast.error('Error deleting user:', errorObj)
+						toast.error('Error deleting user:', (errorObj.error))
 					})
 				}
 			})
@@ -95,7 +95,7 @@ const Profile = () => {
                                                         setEditing(false)
                                                     })
                                                 } else {
-                                                    return res.json().then(errorObj => toast.error(errorObj.message || errorObj.Error))
+                                                    return res.json().then(errorObj => toast.error(errorObj.error || errorObj.error))
                                                 }
                                             })
                                         } else {
@@ -105,7 +105,7 @@ const Profile = () => {
                                 }
                             })
                             .catch(error => {
-                                toast.error('Error:', error.message)
+                                toast.error('Error:', error.error)
                             })
                             .finally(() => {
                                 setSubmitting(false)

@@ -1,51 +1,10 @@
-import { useContext, useState, useEffect } from 'react'
+import { useContext } from 'react'
 import { toast } from 'react-toastify'
 import { AuthContext } from '../context/AuthContext'
 import { images } from '../utils/images'
 
 const Zodiac = () => {
-	const { user, getCookie } = useContext(AuthContext)
-	// const [east, setEast] = useState(null)
-	// const [element, setElement] = useState(null)
-	// const [west, setWest] = useState(null)
-
-	// useEffect(() => {
-	// 	const fetchUserZodiac = async () => {
-	// 		if (user) {
-	// 			const token = getCookie('csrf_access_token')
-	// 			const url = `/userzodiacbyid/${user.id}`
-	// 			try {
-	// 				const res = await fetch(url, {
-	// 					method: 'GET',
-	// 					headers: {
-	// 						'Content-Type': 'application/json',
-	// 						'X-CSRF-TOKEN': token
-	// 					}
-	// 				})
-	// 				.then(res => {
-	// 						if (!res.ok) {
-	// 							return res.json().then(errorObj => toast.error(errorObj))
-	// 						}
-	// 						return res.json()
-	// 					})
-	// 				.then(data => {
-	// 					setEast(data.east)
-	// 					setWest(data.west)
-	// 					setElement(data.east.element)
-	// 					})
-	// 				.catch(err => toast.error(err))
-	// 			} catch (err) {
-	// 				toast.error(err)
-	// 			}
-	// 	}}
-	// 	fetchUserZodiac()
-	// }, [user])
-
-	// useEffect(() => {
-	// 	console.log('east:', east)
-	// 	console.log('west:', west)
-	// 	console.log('element:', element)
-	// }, [east, west, element])
+	const { user } = useContext(AuthContext)
 
 	if (!user) return <h3>Checking the stars...</h3>
 	const {east, west} = user.user_zodiacs[0]
@@ -71,14 +30,16 @@ const Zodiac = () => {
 						key !== 'end1' &&
 						(<p key={index}>{key}: {value}</p>)
 				)}
+
 				{east.element.img && <img src={ images[east.element.img]} alt={east.element.name} className='ico' />}
-				<p>Element: {typeof east.element === 'object' ? 
+				<h3>Element: {east.element.name}</h3>
+				{typeof east.element === 'object' ? 
 					Object.entries(east.element).map(
 						([key, value], index) =>
 							key !== 'id' && 
 							key !== 'img' && 
 						(<p key={index}>{key}: {value}</p>)
-						) : ''}</p>
+						) : ''}
 			</div>
 			<div>
 				{west.img && <img src={ images[west.img]} alt={west.name} className='ico' />}

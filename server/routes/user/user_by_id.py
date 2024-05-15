@@ -20,8 +20,6 @@ class UserById(Resource):
                 db.session.commit()
 
                 if birthdate_str and birthdate_str is not current_birthdate:
-                    # import ipdb; ipdb.set_trace()
-                    # rm existing user zodiac, create calculation for new one
                     db.session.delete(user.user_zodiacs[0])
                     db.session.commit()
                     
