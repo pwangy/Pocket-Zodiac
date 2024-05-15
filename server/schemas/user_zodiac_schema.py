@@ -7,13 +7,13 @@ class UserZodiacSchema(ma.SQLAlchemyAutoSchema):
         model = UserZodiac
         load_instance = True
         ordered = True
-
+    id = fields.Integer()
     user_id = fields.Integer(required=True)
-    user = fields.Nested(
-        "UserSchema",
-        only=("id", "username", "email", "birthdate"),
-        exclude=("_password_hash",),
-    )
+    # user = fields.Nested(
+    #     "UserSchema",
+    #     only=("id", "username", "email", "birthdate"),
+    #     exclude=("_password_hash",),
+    # )
 
     west_id = fields.Integer()
     west = fields.Nested(

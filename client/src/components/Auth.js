@@ -94,7 +94,7 @@ const Auth = () => {
 			.then(res => res.json())
 			.then(user => {
 				updateUser(user)
-				navigate(`/zodiac/${user.id}`)
+				navigate(`/zodiac`)
                 toast.success('logged in!')
 			})
 			.catch(error => toast.error(error))
@@ -126,8 +126,11 @@ const Auth = () => {
 								toast.success('logged in!')
 							})
 						} else if (res.status === 422) {
-							toast.error('invalid login!')
-							return res.json().then(errorObj => toast.error(errorObj))
+							if (isLogin) {
+								toast.error('invalid login!')
+							} else {
+								return res.json().then(errorObj => toast.error(errorObj.error))
+							}
 						}
 					})
 				}}

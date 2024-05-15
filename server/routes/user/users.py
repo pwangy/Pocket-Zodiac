@@ -1,5 +1,5 @@
-from utils.calc_e import calc_e
-from utils.calc_w import calc_w
+from utils.calc_e import calc_e_signup
+from utils.calc_w import calc_w_signup
 from config import app
 from .. import (
     request,
@@ -24,8 +24,8 @@ class Users(Resource):
 
             #? calculate user's western sign
             with app.app_context():
-                calc_w(user, app)
-                calc_e(user, app)
+                calc_w_signup(user, app)
+                calc_e_signup(user, app)
 
             access_token = create_access_token(identity=user.id, fresh=True)
             refresh_token = create_refresh_token(identity=user.id)

@@ -40,6 +40,11 @@ const Explore = () => {
 			.catch(err => toast.error(err))
 	}, [])
 
+// ! include logic to check if user is logged in , redirect to signup page if not (explore and profile) - app or auth should handle this
+// ! fixup calc_w.. doesn't populate patch and signup.
+// confirm mvp once west calc works
+// try sign up user for each west sign.
+
 
 	return (
         <>

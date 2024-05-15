@@ -2,7 +2,7 @@ from . import SerializerMixin, db
 from datetime import datetime
 
 
-class UserZodiac(db.Model, SerializerMixin):
+class UserZodiac(db.Model):
     __tablename__ = "user_zodiacs"
 
     id = db.Column(db.Integer, primary_key=True)
@@ -17,7 +17,7 @@ class UserZodiac(db.Model, SerializerMixin):
     west = db.relationship("West", back_populates="user_zodiacs")
 
     # Serialize
-    serialize_rules = ("-user.user_zodiacs", "-east.user_zodiacs", "-west.user_zodiacs")
+    # serialize_rules = ("-user.user_zodiacs", "-east.user_zodiacs", "-west.user_zodiacs")
 
     # Representation
     def __repr__(self):

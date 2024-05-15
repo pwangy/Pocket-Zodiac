@@ -1,6 +1,9 @@
 from flask_jwt_extended import current_user
 from .. import request, Resource, db, g, user_schema, User, jwt_required, unset_access_cookies, make_response, unset_refresh_cookies
+from config import app
 from datetime import datetime
+from utils.calc_e import calc_e
+from utils.calc_w import calc_w
 
 
 class UserById(Resource):
@@ -11,14 +14,22 @@ class UserById(Resource):
         try:
             if user:
                 data = request.json
-                # import ipdb; ipdb.set_trace()
+                current_birthdate = user.birthdate
                 birthdate_str = data.get('birthdate')
-                if not birthdate_str:
-                    raise ValueError('Birthdate is required.')
-
-                user_data = user_schema.load(data, instance=user, partial=True)
+                updated_user = user_schema.load(data, instance=user, partial=True)
                 db.session.commit()
-                return user_schema.dump(user_data), 200
+
+                if birthdate_str and birthdate_str is not current_birthdate:
+                    # import ipdb; ipdb.set_trace()
+                    # rm existing user zodiac, create calculation for new one
+                    db.session.delete(user.user_zodiacs[0])
+                    db.session.commit()
+                    
+                    with app.app_context():
+                        calc_w(updated_user, app)
+                        calc_e(updated_user, app)
+
+                return user_schema.dump(updated_user), 200
             else:
                 return {"error": f"Unable to find user"}, 404
         except Exception as e:
