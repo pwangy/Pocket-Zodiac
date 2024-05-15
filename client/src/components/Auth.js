@@ -28,7 +28,7 @@ const signupSchema = object({
 		.oneOf([Yup.ref('password'), null], 'Passwords must match.')
 		.required('Confirm Password is required.'),
 
-	email: string().email().required("Email is required"),
+	email: string().email().required('Email is required'),
 	birthdate: Yup.string().required('Date is required.')
 })
 

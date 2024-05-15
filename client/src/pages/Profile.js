@@ -37,7 +37,7 @@ const Profile = () => {
 	}
 
 	const profileSchema = Yup.object({
-		email: Yup.string().email().required("Email is required"),
+		email: Yup.string().email().required('Email is required'),
         birthdate: Yup.string().required('Date is required.')
 	})
 
