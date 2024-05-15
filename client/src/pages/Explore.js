@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { toast } from 'react-toastify'
 import Container from '../components/Container'
 
 const Explore = () => {
@@ -12,9 +13,9 @@ const Explore = () => {
 				if (res.ok) {
 					return res.json().then(setElements)
 				}
-				return res.json().then(errorObj => console.log(errorObj))
+				return res.json().then(errorObj => toast.error(errorObj))
 			})
-			.catch((err) => console.log(err))
+			.catch((err) => toast.error(err))
 	}, [])
 
 	useEffect(() => {
@@ -23,9 +24,9 @@ const Explore = () => {
 				if (res.ok) {
 					return res.json().then(setEast)
 				}
-				return res.json().then(errorObj => console.log(errorObj))
+				return res.json().then(errorObj => toast.error(errorObj))
 			})
-			.catch(err => console.log(err))
+			.catch(err => toast.error(err))
 	}, [])
 
 	useEffect(() => {
@@ -34,9 +35,9 @@ const Explore = () => {
 				if (res.ok) {
 					return res.json().then(setWest)
 				}
-				return res.json().then(errorObj => console.log(errorObj))
+				return res.json().then(errorObj => toast.error(errorObj))
 			})
-			.catch(err => console.log(err))
+			.catch(err => toast.error(err))
 	}, [])
 
 

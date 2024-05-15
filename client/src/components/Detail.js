@@ -1,11 +1,13 @@
 import { useLocation } from 'react-router-dom'
+import { toast } from 'react-toastify'
 import { images } from '../utils/images'
+
 
 const Detail = () => {
 	const { state } = useLocation()
 
 	if (!state) {
-		return <h3>Checking the stars...</h3>
+		return toast.loading(<h3>Checking the stars...</h3>)
 	}
 
 	const { type, id, img, name, ...props } = state

@@ -1,4 +1,5 @@
 import { useContext, useState, useEffect } from 'react'
+import { toast } from 'react-toastify'
 import { AuthContext } from '../context/AuthContext'
 import { images } from '../utils/images'
 
@@ -23,7 +24,7 @@ const Zodiac = () => {
 					})
 					.then(res => {
 							if (!res.ok) {
-								return res.json().then(errorObj => console.log(errorObj))
+								return res.json().then(errorObj => toast.error(errorObj))
 							}
 							return res.json()
 						})
@@ -32,9 +33,9 @@ const Zodiac = () => {
 						setWest(data.west)
 						setElement(data.east.element)
 						})
-					.catch(err => console.log(err))
+					.catch(err => toast.error(err))
 				} catch (err) {
-					console.log(err)
+					toast.error(err)
 				}
 		}}
 		fetchUserZodiac()

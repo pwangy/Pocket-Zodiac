@@ -2,6 +2,7 @@ import { useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
+import { toast } from 'react-toastify'
 import { AuthContext } from '../context/AuthContext'
 
 const Profile = () => {
@@ -25,14 +26,14 @@ const Profile = () => {
 				if (res.status === 204) {
 					deleteUser(user)
                     navigate('/')
-                    console.log('User deleted!')
+                    toast.success('User deleted!')
 				} else {
 					return res.json().then(errorObj => {
-						console.error('Error deleting user:', errorObj)
+						toast.error('Error deleting user:', errorObj)
 					})
 				}
 			})
-			.catch(err => console.log(err))
+			.catch(err => toast.error(err))
 	}
 
 	const profileSchema = Yup.object({
@@ -68,7 +69,7 @@ const Profile = () => {
                                     return res.json()
                                     .then(userData => {
                                         patchUser(userData)
-                                        console.log('Changes saved!')
+                                        toast.success('Changes saved!')
                                         setEditing(false)
                                     })
                                 } else if (res.status === 401) {
@@ -90,11 +91,11 @@ const Profile = () => {
                                                 if (res.ok) {
                                                     return res.json().then(userData => {
                                                         patchUser(userData)
-                                                        console.log('Changes saved!')
+                                                        toast.success('Changes saved!')
                                                         setEditing(false)
                                                     })
                                                 } else {
-                                                    return res.json().then(errorObj => console.error(errorObj.message || errorObj.Error))
+                                                    return res.json().then(errorObj => toast.error(errorObj.message || errorObj.Error))
                                                 }
                                             })
                                         } else {
@@ -104,7 +105,7 @@ const Profile = () => {
                                 }
                             })
                             .catch(error => {
-                                console.error('Error:', error.message)
+                                toast.error('Error:', error.message)
                             })
                             .finally(() => {
                                 setSubmitting(false)

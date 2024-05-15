@@ -4,8 +4,8 @@ import * as Yup from 'yup'
 import YupPassword from 'yup-password'
 import { object, string } from 'yup'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
+import { toast } from 'react-toastify'
 import { AuthContext } from '../context/AuthContext'
-// import OAuth from './auth/OAuth'
 
 YupPassword(Yup)
 
@@ -63,7 +63,6 @@ const Auth = () => {
 		script.src = 'https://apis.google.com/js/platform.js'
 		script.async = true
 		script.defer = true
-		// script.onload = resolve
 		script.onload = () => {
 			if (window.google && window.google.accounts) {
 				window.google.accounts.id.initialize({
@@ -74,7 +73,7 @@ const Auth = () => {
 					document.getElementById('signInDiv'),
 					{ theme: 'outline', size: 'medium', text: 'continue_with' })
 			} else {
-			console.error('Google API failed to load')
+			toast.error('Google API failed to load')
 			}
 		}
 		document.head.appendChild(script)
@@ -95,10 +94,10 @@ const Auth = () => {
 			.then(res => res.json())
 			.then(user => {
 				updateUser(user)
-				navigate(`/`)
-                console.log('logged in!')
+				navigate(`/zodiac/${user.id}`)
+                toast.success('logged in!')
 			})
-			.catch(error => console.error(error))
+			.catch(error => toast.error(error))
 	}
 
 	return (
@@ -124,11 +123,11 @@ const Auth = () => {
 							return res.json()
 							.then(userData => {
 								updateUser(userData)
-								console.log('logged in!')
+								toast.success('logged in!')
 							})
 						} else if (res.status === 422) {
-							console.error('invalid login!')
-							return res.json().then(errorObj => console.log(errorObj))
+							toast.error('invalid login!')
+							return res.json().then(errorObj => toast.error(errorObj))
 						}
 					})
 				}}
