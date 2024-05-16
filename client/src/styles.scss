@@ -131,7 +131,6 @@ article {
 	display: flex;
 	flex-flow: row wrap;
 }
-
 .col-nowrap {
 	display: flex;
 	flex-flow: column nowrap;
@@ -255,7 +254,11 @@ form > button {
 // Explore
 section {
 	margin: 16px 0 25px 0;
-	// border: 1px solid $night;
+
+}
+.exp {
+	color: $dk11;
+	padding: 8px 8px 0 0;
 }
 .list {
 	margin: 0;
@@ -284,6 +287,20 @@ h6 {
 }
 
 
+
+// Detail
+.detail-container {
+	justify-content: center;
+}
+.detail {
+	width: 130px;
+	height: 130px;
+	padding: 8px;
+	background-color: $li3;
+	border: 1px solid $md4;
+}
+
+
 // Footer
 footer {
 	margin-top: .25em;
@@ -307,7 +324,7 @@ footer > p {
 	color: $li2;
 }
 .footer-link:hover {
-	color: $wht;
+	color: $warn;
 }
 
 /* Breakpoints */
