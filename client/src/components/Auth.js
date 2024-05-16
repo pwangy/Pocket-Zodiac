@@ -71,7 +71,7 @@ const Auth = () => {
 				})
 				window.google.accounts.id.renderButton(
 					document.getElementById('signInDiv'),
-					{ theme: 'outline', size: 'medium', text: 'continue_with' })
+					{ theme: 'filled_black', size: 'small', text: 'Use Google', width: 133, height: 20, backgroundColor: '#2e3833', })
 			} else {
 			toast.error('Google API failed to load')
 			}
@@ -145,14 +145,14 @@ const Auth = () => {
 							placeholder='Username'
 							autoComplete='username'
 						/>
-						<ErrorMessage name='username' component='div' />
+						<ErrorMessage name='username' component='div' className='form-errors' />
 						<Field
 							name='password'
 							type='password'
 							placeholder='Password'
 							autoComplete='current-password'
 						/>
-						<ErrorMessage name='password' component='div' />
+						<ErrorMessage name='password' component='div' className='form-errors' />
 						{!isLogin && (
 							<>
 								<Field
@@ -161,7 +161,7 @@ const Auth = () => {
 									placeholder='Confirm Password'
 									autoComplete='confirm-new-password'
 								/>
-								<ErrorMessage name='confirmPassword' component='div' />
+								<ErrorMessage name='confirmPassword' component='div' className='form-errors' />
 								<Field
 									type='text'
 									name='email'
@@ -170,12 +170,12 @@ const Auth = () => {
 								/>
 								<ErrorMessage name='email' component='div' />
 								<Field name='birthdate' type='date' />
-								<ErrorMessage name='birthdate'component='div' />
+								<ErrorMessage name='birthdate'component='div' className='form-errors' />
 							</>
 						)}
-						<input type='submit' value={isLogin ? 'Login' : 'Sign up'} />
+						<input type='submit' className='form-button' value={isLogin ? 'Login' : 'Sign up'} />
 					</Form>
-					{isLogin ? <button type='button' className='change-form' onClick={handleIsLogin}>Create New Account</button> : ''}
+					{isLogin ? <button type='button' className='form-button' onClick={handleIsLogin}>Sign up</button> : ''}
 			</>
 			)}
 			</Formik>
