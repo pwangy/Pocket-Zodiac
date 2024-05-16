@@ -23,12 +23,12 @@ const Container = ({ data, type }) => {
     }
 
     return (
-        <>
-            <p>{typeNames[type]}</p>
-            <article className='row-wrap'>
+        <section>
+            <h3 className='exp'>{typeNames[type]}</h3>
+            <article className='row-wrap list'>
                 {listItems}
             </article>
-        </>
+        </section>
 )}
 
 export default Container

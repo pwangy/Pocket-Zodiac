@@ -13,7 +13,7 @@ const Card = ({ type, id, img, name, ...props }) => {
         )
     } else {
         return (
-            <div onClick={() => navigate(`/${type}/${id}`, {state: { type, id, img, name, ...props }})} className='card'>
+            <div onClick={() => navigate(`/${type}/${id}`, {state: { type, id, img, name, ...props }})}>
                 <img src={ images[img] } alt={`${name} icon`} className='ico' />
                 <h6>{name}</h6>
             </div>

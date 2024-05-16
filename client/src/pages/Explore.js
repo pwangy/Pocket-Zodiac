@@ -42,8 +42,7 @@ const Explore = () => {
 
 	return (
         <>
-            <p>here's the Explore page</p>
-            <p>learn more about signs, elements, etc here</p>
+            <h3>Explore</h3>
             {/* <> */}
             <Container data={east} type='east' />
             <Container data={west} type='west' />

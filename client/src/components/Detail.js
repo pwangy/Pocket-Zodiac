@@ -14,9 +14,9 @@ const Detail = () => {
 
 	if (type === 'east') {
 		return (
-			<>
-				<img src={images[img]} alt={`${type} icon`} className='ico' />
-				<h3>{props.name_12} thing!</h3>
+			<div className='detail-container col-nowrap'>
+				<img src={images[img]} alt={`${type} icon`} className='ico detail' />
+				<h3 className='exp'>{props.name_12}</h3>
 				{Object.entries(props).map(
 					([key, value]) =>
 						key !== 'name' &&
@@ -38,13 +38,13 @@ const Detail = () => {
 								{value instanceof Object ? JSON.stringify(value) : value}
 						</p>)
 				)}
-			</>
+			</div>
 		)
 	} else if (type === 'west') {
 		return (
-			<>
-				<img src={images[img]} alt={`${type} icon`} className='ico' />
-				<h3>{name} thing!</h3>
+			<div className='detail-container col-nowrap'>
+				<img src={images[img]} alt={`${type} icon`} className='ico detail' />
+				<h3 className='exp'>{name}</h3>
 				{Object.entries(props).map(
 					([key, value]) =>
 						key !== 'name' &&
@@ -60,13 +60,13 @@ const Detail = () => {
 								{value instanceof Object ? JSON.stringify(value) : value}
 						</p>)
 				)}
-			</>
+			</div>
 		)
 	} else {
         return (
-			<>
-				<img src={images[img]} alt={`${type} icon`} className='ico' />
-				<h3>{name} thing!</h3>
+			<div className='detail-container col-nowrap'>
+				<img src={images[img]} alt={`${type} icon`} className='ico detail' />
+				<h3 className='exp'>{name}</h3>
 				{Object.entries(props).map(
 					([key, value]) =>
 						key !== 'name' && (
@@ -81,7 +81,7 @@ const Detail = () => {
 							</p>
 						)
 				)}
-			</>
+			</div>
 		)
     }
 }
