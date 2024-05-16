@@ -26,15 +26,15 @@ const signupSchema = object({
 
 	confirmPassword: string()
 		.oneOf([Yup.ref('password'), null], 'Passwords must match.')
-		.required('Confirm Password is required.'),
+		.required('Please confirm your password.'),
 
 	email: string().email().required('Email is required'),
 	birthdate: Yup.string().required('Date is required.')
 })
 
 const loginSchema = object({
-	username: string().required('Username is required.'),
-	password: string().required('A password is required to login.')
+	username: string().required('A username is required.'),
+	password: string().required('A password is required.')
 })
 
 // Initial values
@@ -71,7 +71,7 @@ const Auth = () => {
 				})
 				window.google.accounts.id.renderButton(
 					document.getElementById('signInDiv'),
-					{ theme: 'outline', size: 'medium', text: 'continue_with' })
+					{ theme: 'filled_black', size: 'small', text: 'Use Google', width: 133, height: 23, backgroundColor: '#2e3833', borderRadius: 2, })
 			} else {
 			toast.error('Google API failed to load')
 			}
@@ -139,43 +139,53 @@ const Auth = () => {
 			{({ handleSubmit, touched, errors }) => (
 				<>
 					<Form onSubmit={handleSubmit}>
-						<Field
-							name='username'
-							type='text'
-							placeholder='Username'
-							autoComplete='username'
-						/>
-						<ErrorMessage name='username' component='div' />
-						<Field
-							name='password'
-							type='password'
-							placeholder='Password'
-							autoComplete='current-password'
-						/>
-						<ErrorMessage name='password' component='div' />
+						<div className='input-group'>
+							<Field
+								name='username'
+								type='text'
+								placeholder='Username'
+								autoComplete='username'
+							/>
+							<ErrorMessage name='username' component='div' className='form-errors' />
+						</div>
+						<div className='input-group'>
+							<Field
+								name='password'
+								type='password'
+								placeholder='Password'
+								autoComplete='current-password'
+							/>
+							<ErrorMessage name='password' component='div' className='form-errors' />
+						</div>
 						{!isLogin && (
 							<>
+							<div className='input-group'>
 								<Field
 									type='password'
 									name='confirmPassword'
 									placeholder='Confirm Password'
 									autoComplete='confirm-new-password'
 								/>
-								<ErrorMessage name='confirmPassword' component='div' />
+								<ErrorMessage name='confirmPassword' component='div' className='form-errors' />
+							</div>
+							<div className='input-group'>
 								<Field
 									type='text'
 									name='email'
 									placeholder='email'
 									autoComplete='email'
 								/>
-								<ErrorMessage name='email' component='div' />
+								<ErrorMessage name='email' component='div' className='form-errors' />
+							</div>
+							<div className='input-group'>
 								<Field name='birthdate' type='date' />
-								<ErrorMessage name='birthdate'component='div' />
+								<ErrorMessage name='birthdate'component='div' className='form-errors' />
+							</div>
 							</>
 						)}
-						<input type='submit' value={isLogin ? 'Login' : 'Sign up'} />
+						<input type='submit' className='form-button second' value={isLogin ? 'Login' : 'Sign up'} />
 					</Form>
-					{isLogin ? <button type='button' className='change-form' onClick={handleIsLogin}>Create New Account</button> : ''}
+					{isLogin ? <button type='button' className='form-button second' onClick={handleIsLogin}>Sign up</button> : ''}
 			</>
 			)}
 			</Formik>

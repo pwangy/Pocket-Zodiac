@@ -1,5 +1,6 @@
 from .. import request, g, Resource, db, west_schema, jwt_required
 
+
 class WestById(Resource):
     @jwt_required()
     def get(self, id):

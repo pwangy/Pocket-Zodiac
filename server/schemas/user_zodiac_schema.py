@@ -7,13 +7,9 @@ class UserZodiacSchema(ma.SQLAlchemyAutoSchema):
         model = UserZodiac
         load_instance = True
         ordered = True
+
     id = fields.Integer()
     user_id = fields.Integer(required=True)
-    # user = fields.Nested(
-    #     "UserSchema",
-    #     only=("id", "username", "email", "birthdate"),
-    #     exclude=("_password_hash",),
-    # )
 
     west_id = fields.Integer()
     west = fields.Nested(
@@ -27,11 +23,8 @@ class UserZodiacSchema(ma.SQLAlchemyAutoSchema):
 
     additional_birthdate = fields.String()
 
-    url = ma.Hyperlinks(
-        {
-            "self": ma.URLFor("userzodiacbyid", values=dict(id="<id>"))
-        }
-    )
+    url = ma.Hyperlinks({"self": ma.URLFor("userzodiacbyid", values=dict(id="<id>"))})
+
 
 user_zodiac_schema = UserZodiacSchema()
 users_zodiac_schema = UserZodiacSchema(many=True)

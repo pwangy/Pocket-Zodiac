@@ -16,9 +16,6 @@ class UserZodiac(db.Model):
     east = db.relationship("East", back_populates="user_zodiacs")
     west = db.relationship("West", back_populates="user_zodiacs")
 
-    # Serialize
-    # serialize_rules = ("-user.user_zodiacs", "-east.user_zodiacs", "-west.user_zodiacs")
-
     # Representation
     def __repr__(self):
         return f"""

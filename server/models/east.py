@@ -21,7 +21,7 @@ class East(db.Model, SerializerMixin):
     end = db.Column(db.Date)
     start1 = db.Column(db.Date)
     end1 = db.Column(db.Date)
-    
+
     # Relationships
     element = db.relationship("Element", back_populates="east_signs")
     users = association_proxy("user_zodiacs", "user")

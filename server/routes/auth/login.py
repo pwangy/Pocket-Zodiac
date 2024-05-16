@@ -8,9 +8,9 @@ from .. import (
     set_access_cookies,
     create_refresh_token,
     set_refresh_cookies,
-    jwt_required
+    jwt_required,
 )
-import ipdb
+
 
 class Login(Resource):
     def post(self):

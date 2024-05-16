@@ -1,5 +1,6 @@
 from .. import request, Resource, jwt_required, db, Element, elements_schema
 
+
 class Elements(Resource):
     @jwt_required()
     def get(self):

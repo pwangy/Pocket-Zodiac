@@ -1,10 +1,11 @@
 from flask_jwt_extended import current_user
 from .. import request, g, Resource, db, UserZodiac, user_zodiac_schema, jwt_required
 
+
 class UserZodiacById(Resource):
     @jwt_required()
     def get(self, id):
-        try: 
+        try:
             user = current_user
             g.zodiac = UserZodiac.query.filter_by(user_id=user.id).first()
             if g.zodiac:

@@ -8,7 +8,6 @@ from models.west import West, convert_date_w
 from models.element import Element
 from models.user import User
 from models.user_zodiac import UserZodiac
-from utils.signs import calculate_west
 
 
 fake = Faker()
@@ -35,27 +34,23 @@ def seed_users():
             db.session.add_all(users)
             db.session.commit()
             print("Users created")
-            return True # success
+            return True  # success
         except Exception as e:
             print("Users not created")
-            return False # failure
+            return False  # failure
 
 
 def seed_user_zodiacs():
     with app.app_context():
         try:
             users = User.query.all()
-
             for user in users:
-                # western_sign = calculate_west(user.birthdate)
-                # print(f'Western sign for {user.username}: {western_sign}')
-
                 user_zodiac = UserZodiac(
                     user_id=user.id,
-                    # west_id=western_sign.id,
-                    # eaast_id=,
-                    east_west=fake.random_element(elements=('East', 'West')),
-                    additional_birthdate=fake.date_time_between(start_date="-50y", end_date="now")
+                    east_west=fake.random_element(elements=("East", "West")),
+                    additional_birthdate=fake.date_time_between(
+                        start_date="-50y", end_date="now"
+                    ),
                 )
                 db.session.add(user_zodiac)
             db.session.commit()
@@ -82,7 +77,7 @@ def seed():
         except Exception as e:
             print("Could not drop tables")
 
-# ? Freeze changes to Element, East, & West db
+        # ? Freeze changes to Element, East, & West db
         # # element
         # with open("seeds/elements.csv", "r") as file:
         #     reader = csv.DictReader(file)
@@ -124,6 +119,7 @@ def seed():
             seed_user_zodiacs()
 
         print("Done seeding!")
+
 
 if __name__ == "__main__":
     seed()

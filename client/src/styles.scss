@@ -2,7 +2,6 @@
    v2.0 | 20110126
    License: none (public domain)
 */
-
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -21,8 +20,9 @@ time, mark, audio, video {
 	border: 0;
 	font-size: 100%;
 	font: inherit;
-	border-radius: 3px;
-	border: 1px solid #abbab2;
+	border-radius: 2px;
+	background-color: #abbab2;
+	// border: 1px solid #abbab2;
 	// vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
@@ -49,120 +49,92 @@ table {
 	border-spacing: 0;
 }
 
-/* Start Styles */
 
-// pallet
+/* Global Styles */
+// Pallete
 $blk: #191414;
-$night: #0E1926;
-$dk11: #2E4C6B;
-$dk10: #264C73;
-$dk9: #1F4C7A;
+$night: #0e1926;
+$dk11: #2e4c6b;
+$dk10: #264c73;
+$dk9: #1f4c7a;
 $dk8: #2e3833;
 $dk7: #45544c;
 $dk6: #5c7066;
+
 $md5: #738c80;
 $md4: #8fa399;
 $li3: #abbab2;
 $li2: #c7d1cc;
 $li1: #e3e8e6;
 $wht: snow;
+$warn: #cc3333;
 
 // typography
+.corben-regular {
+	font-family: "Corben", serif;
+	font-weight: 400;
+	font-style: normal;
+  }
+.corben-bold {
+	font-family: "Corben", serif;
+	font-weight: 700;
+	font-style: normal;
+  }
+
 $font-titles: "Corben", serif;
 $title-bold: 700;
-// 	font-weight: 400;
-
-// $font-test2: "Milonga", serif;
-	// font-weight: 400;
-	// font-style: normal;
-//   .milonga-bold {
-	// font-weight: 700;
-	// font-style: normal;
-
+$title-regular: 400;
+// <weight>: 100 to 900
 $font-primary: "Work Sans", sans-serif;
-// <uniquifier>: Use a unique and descriptive class name
-// <weight>: Use a value from 100 to 900
-// .work-sans-<uniquifier> {
-// 	font-optical-sizing: auto;
-// 	font-weight: <weight>;
-// 	font-style: normal;
-//   }
+$font-bolder: 900;
+$font-bold: 600;
+$font-emphasis: 500;
+$font-regular: 300;
+$font-light: 100;
 
+
+
+/* Start Styles */
 html {
-	max-width: 480px;
 	margin: 16px;
-	background-color: $li1
-}
-
-
-div, h3, p, a, .form {
-	// margin: 0;
-	// padding: 16px 6px;
-	color: $wht;
-	background-color: $night;
-	border: 1px solid lightblue;
-	border-radius: 3px;
-	font-family: $font-primary;
-}
-
-main {
-	background-color: $dk10;
-}
-
-#root{
-	padding: 16px;
-}
-
-// nav
-header {
 	background-color: $li3;
-	margin-bottom: 16px;
-	padding-bottom: 16px;
-	border: 1px solid pink;
-}
-
-h1 {
-	height: 1em;
-	margin: 0 16px 0 0;
-	font-family: $font-titles;
-	font-size: xx-large;
-	background-color: $md4;
-	color: $night;
-}
-.nav {
-	margin-right: 10px;
-	text-decoration: none;
-	text-transform: uppercase;
-	// font-family: $font-primary;
-	font-size: small;
-	color: $wht ;
-	cursor: pointer;
 	border: none;
 }
-.nav:hover {
-	text-decoration: none;
+body {
+	font-family: $font-primary;
+	font-weight: $font-regular;
+	line-height: 1.18;
+	color: $night;
+
+	border: none;
+	// border: 1px solid #abbab2;
 }
-.nav.active {
-	color: $li3;
-	font-weight: 900;
+main {
+	max-width: 350px;
+	padding: 3px;
+	border: 1px solid $night;
 }
-//
+div, h3, p, a, .form {
+	border-radius: 2px;
+	// border: 1px solid #abbab2;
+}
 h3 {
-	background-color: $dk7;
-	font-weight: 900;
+	margin-bottom: 16px;
+	font-weight: $font-emphasis;
 	text-transform: uppercase;
+	// background-color: $wht;
 }
 p {
 	margin: 16px 0;
-	background-color: $dk11;
+	// background-color: $dk11;
 }
 section {
 	margin: 16px 0;
-	background-color: $dk6;
+	// background-color: $dk6;
 }
 article {
 	margin: 16px 0;
-	background-color: $dk9;
+	// background-color: $dk9;
 }
 .row-wrap {
 	display: flex;
@@ -171,15 +143,126 @@ article {
 .card {
 	width: 7em;
 	margin-right: 16px;
-
 }
-
-// Auth
-.form > p, input, button {
+.col-nowrap {
 	display: flex;
 	flex-flow: column nowrap;
-	// background-color: #333;
 }
+
+
+
+// Toastify
+// .Toastify__toast-container {
+// 	border-radius: 2px;
+// }
+
+
+
+// Header
+header {
+	margin-bottom: 16px;
+	padding-bottom: 16px;
+
+	border: none;
+	// background-color: $li3;
+	// border: 1px solid pink;
+}
+h1 {
+	height: 1.25em;
+	margin: 0 16px 0 0;
+	font-family: $font-titles;
+	font-size: 2.5rem;
+	color: $night;
+	// background-color: $md4;
+}
+.nav {
+	margin-right: 10px;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-weight: $font-emphasis;
+	font-size: small;
+	letter-spacing: .04rem;
+	color: $wht ;
+	cursor: pointer;
+	border: none;
+}
+.nav:hover {
+	text-decoration: none;
+}
+.nav.active {
+	color: $dk7;
+	font-weight: $font-bold;
+}
+
+
+
+// Auth
+.form-container, form {
+	display: flex;
+	flex-flow: column nowrap;
+}
+.form > p, input, button {
+	width: 125px;
+	margin-bottom: 11px;
+	border: none;
+}
+.input-group {
+	display: flex;
+	flex-flow: row nowrap;
+}
+input {
+	height: 15px;
+	padding: 4px;
+	color: $dk11;
+	background-color: $wht;
+}
+.form-errors {
+	margin: 11px 0 6px 4px;
+	font-size: x-small;
+	font-weight: $font-bold;
+	color: $warn;
+}
+form > button {
+	height: 20px;
+	width: 133px;
+	padding: 5px 0 15px;
+	background-color: $dk9;
+	color: $wht;
+	cursor: pointer;
+}
+.form-button {
+	height: 23px;
+	width: 133px;
+	padding-bottom: 3px;
+	cursor: pointer;
+	background-color: $dk8;
+	font-size: small;
+	color: $wht;
+}
+.form-button:hover {
+	background-color: $dk11;
+}
+.second {
+	margin-bottom: 13px;
+}
+#signInDiv {
+	width: 133px;
+}
+.profile {
+	padding: 4px;
+	margin: 5px 5px 11px 0;
+}
+.view > p {
+	margin: 6px 0 3px 0;
+}
+.profile-user {
+	font-weight: $font-emphasis;
+}
+.text-asis {
+	text-transform: none;
+}
+
+
 
 // Explore
 .ico {
@@ -189,27 +272,43 @@ article {
 	margin: 3px;
 	padding: 5px;
 	background: $dk8;
+	background-color: $li3;
 }
 article > img, h6 {
 	border: none;
 }
 
+
+
 // Footer
 footer {
-	margin-top: 3em;
+	margin-top: .25em;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+
+	// align-self:last baseline;
 	// background-color: $dk6;
 }
 footer > p {
-	// font-family: $font-primary;
+	margin: 10px 16px;
 	font-size: x-small;
 	line-height: normal;
 	text-align: center;
+	// position: absolute;
   }
-
+.footer-link {
+	color: $dk10;
+	text-decoration: none;
+	font-weight: $font-emphasis;
+}
+.footer-link:active {
+	color: $li2;
+}
+.footer-link:hover {
+	color: $wht;
+}	
 /* Breakpoints */
 // Tablet
 @media only screen and (min-width: 481) {

@@ -48,7 +48,7 @@ class User(db.Model, SerializerMixin):
             raise ValueError("Password must contain at least one number")
         else:
             hashed_password = flask_bcrypt.generate_password_hash(new_password).decode(
-                'utf-8'
+                "utf-8"
             )
             self._password_hash = hashed_password
 
