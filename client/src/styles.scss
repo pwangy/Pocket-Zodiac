@@ -21,7 +21,7 @@ time, mark, audio, video {
 	font-size: 100%;
 	font: inherit;
 	border-radius: 2px;
-	background-color: #0e1926;
+	background-color: #abbab2;
 	// border: 1px solid #abbab2;
 	// vertical-align: baseline;
 }
@@ -67,6 +67,7 @@ $li3: #abbab2;
 $li2: #c7d1cc;
 $li1: #e3e8e6;
 $wht: snow;
+$warn: #cc3333;
 
 // typography
 .corben-regular {
@@ -96,21 +97,22 @@ $font-light: 100;
 /* Start Styles */
 html {
 	margin: 16px;
-	background-color: $night;
+	background-color: $li3;
 	border: none;
 }
 body {
 	font-family: $font-primary;
 	font-weight: $font-regular;
 	line-height: 1.18;
-	color: $wht;
+	color: $night;
 
 	border: none;
 	// border: 1px solid #abbab2;
 }
 main {
 	max-width: 350px;
-	// border: 1px solid #abbab2;
+	padding: 3px;
+	border: 1px solid $night;
 }
 div, h3, p, a, .form {
 	border-radius: 2px;
@@ -120,7 +122,7 @@ h3 {
 	margin-bottom: 16px;
 	font-weight: $font-emphasis;
 	text-transform: uppercase;
-	background-color: $dk8;
+	background-color: $wht;
 }
 p {
 	margin: 16px 0;
@@ -146,9 +148,9 @@ article {
 
 
 // Toastify
-.Toastify__toast-container {
-	border-radius: 2px;
-}
+// .Toastify__toast-container {
+// 	border-radius: 2px;
+// }
 
 
 
@@ -166,7 +168,7 @@ h1 {
 	margin: 0 16px 0 0;
 	font-family: $font-titles;
 	font-size: 2.5rem;
-	color: $li2;
+	color: $night;
 	// background-color: $md4;
 }
 .nav {
@@ -184,7 +186,7 @@ h1 {
 	text-decoration: none;
 }
 .nav.active {
-	color: $li3;
+	color: $dk7;
 	font-weight: $font-bold;
 }
 
@@ -197,7 +199,7 @@ h1 {
 }
 .form > p, input, button {
 	width: 125px;
-	margin-bottom: 10px;
+	margin-bottom: 11px;
 	border: none;
 	// display: flex;
 	// flex-flow: column nowrap;
@@ -206,26 +208,34 @@ h1 {
 // form > p {
 
 // }
+.input-group {
+	display: flex;
+	flex-flow: row nowrap;
+}
 input {
-	height: 13px;
+	height: 15px;
 	padding: 4px;
 	color: $dk11;
-	background-color: $li1;
+	background-color: $wht;
 }
 .form-errors {
-	margin-bottom: 6px;
+	margin: 11px 0 6px 4px;
 	font-size: x-small;
+	font-weight: $font-bold;
+	color: $warn;
 }
 form > button {
+	height: 20px;
 	width: 133px;
-	padding: 5px;
-	background-color: $dk8;
+	padding: 5px 0 15px;
+	background-color: $dk9;
 	color: $wht;
 	cursor: pointer;
 }
 .form-button {
-	height: 20px;
+	height: 23px;
 	width: 133px;
+	padding-bottom: 3px;
 	cursor: pointer;
 	background-color: $dk8;
 	font-size: small;
@@ -234,8 +244,14 @@ form > button {
 .form-button:hover {
 	background-color: $dk11;
 }
+.second {
+	margin-bottom: 13px;
+}
 #signInDiv {
 	width: 133px;
+}
+.profile {
+	text-transform: uppercase;
 }
 
 

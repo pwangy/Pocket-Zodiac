@@ -131,11 +131,10 @@ const Profile = () => {
 				<div className='view'>
 					<h3>Manage your details here</h3>
 					<p>{user.username}'s Profile</p>
-					<button onClick={editMode}>edit profile</button>
-					<p>id: {user.id}</p>
+					<button className='form-button profile' onClick={editMode}>EDIT</button>
 					<p>email: {user.email}</p>
 					<p>birthdate: {user.birthdate}</p>
-					<button onClick={handleDelete}>delete profile</button>
+					<button className='form-button profile' onClick={handleDelete}>DELETE PROFILE</button>
 				</div>
 			)}
 		</>
