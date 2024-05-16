@@ -50,7 +50,7 @@ const Profile = () => {
 		<>
 			{editing ? (
 				<div className='edit'>
-					<h3>Now editing</h3>
+					<h3 className='text-asis'>Now Editing</h3>
 					<Formik
 						initialValues={initialValues}
 						validationSchema={profileSchema}
@@ -114,27 +114,31 @@ const Profile = () => {
                         >
 						{({ touched, errors, isSubmitting }) => (
 							<Form>
-								<Field 
-                                    name='email'
-                                    type='email'
-                                    autoComplete='email'
-                                />
-                                <ErrorMessage name='email' component='div' />
-                                <Field name='birthdate' type='date' />
-								<ErrorMessage name='birthdate'component='div' />
-								<input type='submit' disabled={isSubmitting} value={'Save Changes'} />
+                                <div className='input-group'>
+                                    <Field 
+                                        name='email'
+                                        type='email'
+                                        autoComplete='email'
+                                    />
+                                    <ErrorMessage name='email' component='div' />
+                                </div>
+                                <div className='input-group'>
+                                    <Field name='birthdate' type='date' />
+                                    <ErrorMessage name='birthdate'component='div' />
+                                </div>
+								<input type='submit' className='form-button second' disabled={isSubmitting} value={'Save Changes'} />
 							</Form>
 						)}
 					</Formik>
 				</div>
 			) : (
-				<div className='view'>
+				<div className='view col-nowrap'>
 					<h3>Manage your details here</h3>
-					<p>{user.username}'s Profile</p>
-					<button className='form-button profile' onClick={editMode}>EDIT</button>
+					<p className='profile-user'>{user.username}'s Profile</p>
 					<p>email: {user.email}</p>
 					<p>birthdate: {user.birthdate}</p>
-					<button className='form-button profile' onClick={handleDelete}>DELETE PROFILE</button>
+					<button className='form-button profile' onClick={editMode}>Edit</button>
+					<button className='form-button profile' onClick={handleDelete}>Delete Profile</button>
 				</div>
 			)}
 		</>
