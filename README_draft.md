@@ -1,24 +1,43 @@
-# Phase 4 Full-Stack Application Project Template
+# Pocket Zodiac
+A guide to the stars everywhere you go. 
 
-## Introduction
+Pocket Zodiac is an astrology app from an Eastern point of view. View your Chinese Zodiac sign, learn about the element particular to your year, unlock how it translates to your Western signs and vice versa.
 
-## Setup
+## About the app
+Pocket Zodiac is a full stack app built with React, Flask, and SQLAlchemy and best viewed on a small screen.
 
-### `server/`
+Users can:
+- [x] create an account via form or Google OAuth
+- [x] Edit their personal details and delete their own account
+- [x] View their personalized zodiac signs
+- [x] Explore all Eastern and Western Zodiac signs and the five elements within the Chinese system.
 
-The `server/` directory contains all of your backend code.
 
-`app.py` is your Flask application. You'll want to use Flask to build a simple
-API backend like we have in previous modules. You should use Flask-RESTful for
-your routes. You should be familiar with `models.py` and `seed.py` by now, but
-remember that you will need to use Flask-SQLAlchemy, Flask-Migrate, and
-SQLAlchemy-Serializer instead of SQLAlchemy and Alembic in your models.
+## Pipeline
+In the future, this app will...
+- [ ] Incorporate the ability to consult the I Ching utilizing: [I-Ching](https://github.com/strobus/i-ching).
+- [ ] Add an additonal birthdate to explore a friend or family member's zodiac.
+- [ ] Full styles for a variety of screen widths.
 
-The project contains a default `Pipfile` with some basic dependencies. You may
-adapt the `Pipfile` if there are additional dependencies you want to add for
-your project.
 
-To download the dependencies for the backend server, run:
+## Getting up and running
+Want to try the app on your own? Clone this repo and follow these steps.
+
+Get the server up
+1. Navigate to the Server directory `cd server`
+2. Create your .env file it should contain:
+   ```
+   PIPENV_IGNORE_VIRTUALENVS=1
+   FLASK_APP=app.py
+   FLASK_RUN_PORT=5555
+   GOAUTH_CID='my Google OAuth secret'
+   JWT_SECRET='my JWT secret'
+   ```
+   Replace the values of GOAUTH_CID and JWT_SECRET with your own keys.
+
+3. Install dependencies with `pipenv install`
+4. 
+
 
 ```console
 pipenv install
