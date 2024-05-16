@@ -1,127 +1,43 @@
-# Phase 4 Full-Stack Application Project Template
+# Pocket Zodiac
+A guide to the stars everywhere you go. 
 
-## Learning Goals
+Pocket Zodiac is an astrology app from an Eastern point of view. View your Chinese Zodiac sign, learn about the element particular to your year, unlock how it translates to your Western signs and vice versa.
 
-- Discuss the basic directory structure of a full-stack Flask/React application.
-- Carry out the first steps in creating your Phase 4 project.
+## About the app
+Pocket Zodiac is a full stack app built with React, Flask, and SQLAlchemy and best viewed on a small screen.
 
----
+Users can:
+- [x] create an account via form or Google OAuth
+- [x] Edit their personal details and delete their own account
+- [x] View their personalized zodiac signs
+- [x] Explore all Eastern and Western Zodiac signs and the five elements within the Chinese system.
 
-## Introduction
 
-Fork and clone this lesson for a template for your full-stack application. Take
-a look at the directory structure before we begin (NOTE: node_modules will be
-generated in a subsequent step):
+## Pipeline
+In the future, this app will...
+- [ ] Incorporate the ability to consult the I Ching utilizing: [I-Ching](https://github.com/strobus/i-ching).
+- [ ] Add an additonal birthdate to explore a friend or family member's zodiac.
+- [ ] Full styles for a variety of screen widths.
 
-```console
-$ tree -L 2
-$ # the -L argument limits the depth at which we look into the directory structure
-.
-├── CONTRIBUTING.md
-├── LICENSE.md
-├── Pipfile
-├── README.md
-├── client
-│   ├── README.md
-│   ├── package.json
-│   ├── public
-│   └── src
-└── server
-    ├── app.py
-    ├── config.py
-    ├── models.py
-    └── seed.py
-```
 
-A `migrations` folder will be added to the `server` directory in a later step.
+## Getting up and running
+Want to try the app on your own? Clone this repo and follow these steps.
 
-The `client` folder contains a basic React application, while the `server`
-folder contains a basic Flask application. You will adapt both folders to
-implement the code for your project .
+Get the server up
+1. Navigate to the Server directory `cd server`
+2. Create your .env file it should contain:
+   ```
+   PIPENV_IGNORE_VIRTUALENVS=1
+   FLASK_APP=app.py
+   FLASK_RUN_PORT=5555
+   GOAUTH_CID='my Google OAuth secret'
+   JWT_SECRET='my JWT secret'
+   ```
+   Replace the values of GOAUTH_CID and JWT_SECRET with your own keys.
 
-NOTE: If you did not previously install `tree` in your environment setup, MacOS
-users can install this with the command `brew install tree`. WSL and Linux users
-can run `sudo apt-get install tree` to download it as well.
+3. Install dependencies with `pipenv install`
+4. 
 
-## Where Do I Start?
-
-Just as with your Phase 3 Project, this will likely be one of the biggest
-projects you've undertaken so far. Your first task should be creating a Git
-repository to keep track of your work and roll back any undesired changes.
-
-### Removing Existing Git Configuration
-
-If you're using this template, start off by removing the existing metadata for
-Github and Canvas. Run the following command to carry this out:
-
-```console
-$ rm -rf .git .canvas
-```
-
-The `rm` command removes files from your computer's memory. The `-r` flag tells
-the console to remove _recursively_, which allows the command to remove
-directories and the files within them. `-f` removes them permanently.
-
-`.git` contains this directory's configuration to track changes and push to
-Github (you want to track and push _your own_ changes instead), and `.canvas`
-contains the metadata to create a Canvas page from your Git repo. You don't have
-the permissions to edit our Canvas course, so it's not worth keeping around.
-
-### Creating Your Own Git Repo
-
-First things first- rename this directory! Once you have an idea for a name,
-move one level up with `cd ..` and run
-`mv python-p4-project-template <new-directory-name>` to change its name (replace
-<new-directory-name> with an appropriate project directory name).
-
-> **Note: If you typed the `mv` command in a terminal within VS Code, you should
-> close VS Code then reopen it.**
-
-> **Note: `mv` actually stands for "move", but your computer interprets this
-> rename as a move from a directory with the old name to a directory with a new
-> name.**
-
-`cd` back into your new directory and run `git init` to create a local git
-repository. Add all of your local files to version control with `git add --all`,
-then commit them with `git commit -m'initial commit'`. (You can change the
-message here- this one is just a common choice.)
-
-Navigate to [GitHub](https://github.com). In the upper-right corner of the page,
-click on the "+" dropdown menu, then select "New repository". Enter the name of
-your local repo, choose whether you would like it to be public or private, make
-sure "Initialize this repository with a README" is unchecked (you already have
-one), then click "Create repository".
-
-Head back to the command line and enter
-`git remote add origin git@github.com:github-username/new-repository-name.git`.
-NOTE: Replace `github-username` with your github username, and
-`new-repository-name` with the name of your new repository. This command will
-map the remote repository to your local repository. Finally, push your first
-commit with `git push -u origin main`.
-
-Your project is now version-controlled locally and online. This will allow you
-to create different versions of your project and pick up your work on a
-different machine if the need arises.
-
----
-
-## Setup
-
-### `server/`
-
-The `server/` directory contains all of your backend code.
-
-`app.py` is your Flask application. You'll want to use Flask to build a simple
-API backend like we have in previous modules. You should use Flask-RESTful for
-your routes. You should be familiar with `models.py` and `seed.py` by now, but
-remember that you will need to use Flask-SQLAlchemy, Flask-Migrate, and
-SQLAlchemy-Serializer instead of SQLAlchemy and Alembic in your models.
-
-The project contains a default `Pipfile` with some basic dependencies. You may
-adapt the `Pipfile` if there are additional dependencies you want to add for
-your project.
-
-To download the dependencies for the backend server, run:
 
 ```console
 pipenv install
@@ -310,17 +226,6 @@ def howdy():
 
 ## Updating Your README.md
 
-`README.md` is a Markdown file that describes your project. These files can be
-used in many different ways- you may have noticed that we use them to generate
-entire Canvas lessons- but they're most commonly used as homepages for online
-Git repositories. **When you develop something that you want other people to
-use, you need to have a README.**
-
-Markdown is not a language that we cover in Flatiron's Software Engineering
-curriculum, but it's not a particularly difficult language to learn (if you've
-ever left a comment on Reddit, you might already know the basics). Refer to the
-cheat sheet in this lesson's resources for a basic guide to Markdown.
-
 ### What Goes into a README?
 
 This README should serve as a template for your own- go through the important
@@ -350,11 +255,22 @@ Happy coding!
 
 ## Resources
 
-- [Setting up a respository - Atlassian](https://www.atlassian.com/git/tutorials/setting-up-a-repository)
-- [Create a repo- GitHub Docs](https://docs.github.com/en/get-started/quickstart/create-a-repo)
-- [Markdown Cheat Sheet](https://www.markdownguide.org/cheat-sheet/)
-- [Python Circular Imports - StackAbuse](https://stackabuse.com/python-circular-imports/)
-- [Flask-CORS](https://flask-cors.readthedocs.io/en/latest/)
-
 ## Credits
 I-Ching : https://github.com/strobus/i-ching
+
+Western sign descriptions: The Influence of the Zodiac Upon Human Life by Eleanor Kirk, 1894
+eastern illustartions 
+
+= Image by <a href="https://www.freepik.com/free-vector/hand-drawn-chinese-zodiac-animals-illustration-set_35061601.htm#fromView=search&page=1&position=14&uuid=098f6370-6acc-4b96-920b-0ee372bffd2c?log-in=google">Freepik</a>
+
+
+element placeholder: 
+<a href="https://www.flaticon.com/free-icons/astrology" title="astrology icons">Astrology icons created by Freepik - Flaticon</a>
+
+element desc: WHITE, SUZANNE. THE NEW ASTROLOGY FOR THE 21ST CENTURY: A Unique Blend of Chinese and Western Astrology (pp. 10-11). Suzanne White. Kindle Edition.
+
+eastern sign descriptions: 
+Reiko Chiba. Japanese Fortune Calendar -- Reiko Chiba -- 2011 -- Tuttle Publishing -- 9781462911271 -- 378dfbadd9e15eb3e9655dfffecbdae3 -- Anna’s Archive (pp. 9-10). Kindle Edition. 
+
+east/west/element icons
+<div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div><div>Icons made by <a href="https://www.flaticon.com/authors/nack-thanakorn" title="Nack_Thanakorn">Nack_Thanakorn</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
