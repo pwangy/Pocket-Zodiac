@@ -1,9 +1,9 @@
-# Pocket Zodiac
+# ✨ Pocket Zodiac
 A guide to the stars everywhere you go. 
 
 Pocket Zodiac is an astrology app from an Eastern point of view. View your Chinese Zodiac sign, learn about the element particular to your year, unlock how it translates to your Western signs and vice versa.
 
-## About the app
+## About this app
 Pocket Zodiac is a full stack app built with React, Flask, and SQLAlchemy and best viewed on a small screen.
 
 Users can:
@@ -12,6 +12,15 @@ Users can:
 - [x] View their personalized zodiac signs
 - [x] Explore all Eastern and Western Zodiac signs and the five elements within the Chinese system.
 
+This app makes use of the following libraries:
+- Toastify
+- Formik
+- Yup
+- React Router
+- Scss
+- Google OAuth
+- JSON Web Token
+- Marshmallow
 
 ## Pipeline
 In the future, this app will...
@@ -23,254 +32,36 @@ In the future, this app will...
 ## Getting up and running
 Want to try the app on your own? Clone this repo and follow these steps.
 
-Get the server up
-1. Navigate to the Server directory `cd server`
-2. Create your .env file it should contain:
+Server
+1. Navigate to the Server directory
+2. Create your .env file in the root directory. It should contain:
    ```
    PIPENV_IGNORE_VIRTUALENVS=1
    FLASK_APP=app.py
    FLASK_RUN_PORT=5555
-   GOAUTH_CID='my Google OAuth secret'
-   JWT_SECRET='my JWT secret'
+   GOAUTH_CID='Google OAuth Client ID'
+   JWT_SECRET='your JWT secret'
    ```
    Replace the values of GOAUTH_CID and JWT_SECRET with your own keys.
+   [Google Credentials](https://console.cloud.google.com/apis/credentials/oauthclient)
 
-3. Install dependencies with `pipenv install`
-4. 
+3. Install dependencies with `pipenv install` & `pipenv shell`
+4. Start the server `python app.py`
 
+Client
+1. Navigate to the client directory
+2. Install dependencies with `npm install`
+3. Create an .env file which should live in the /client directory, it should contain your Goolge OAuth client id which you got in step 2 of the server instructions. Make sure that you name this variable `REACT_APP_GOOGLE_CLIENT_ID`.
+4. Once your dependencies are done, start the frontend with `npm start`
+---
+### Credits
+- Eastern sign descriptions: Reiko Chiba. Japanese Fortune Calendar, 2011, Tuttle Publishing, 9781462911271, 378dfbadd9e15eb3e9655dfffecbdae3 -- Anna’s Archive (pp. 9-10). Kindle Edition.
 
-```console
-pipenv install
-pipenv shell
-```
+- Element descriptions: WHITE, SUZANNE. THE NEW ASTROLOGY FOR THE 21ST CENTURY: A Unique Blend of Chinese and Western Astrology (pp. 10-11). Suzanne White. Kindle Edition.
 
-You can run your Flask API on [`localhost:5555`](http://localhost:5555) by
-running:
+- Western sign descriptions: The Influence of the Zodiac Upon Human Life by Eleanor Kirk, 1894 - Public Domain.
 
-```console
-python server/app.py
-```
-
-Check that your server serves the default route `http://localhost:5555`. You
-should see a web page with the heading "Project Server".
-
-### `client/`
-
-The `client/` directory contains all of your frontend code. The file
-`package.json` has been configured with common React application dependencies,
-include `react-router-dom`. The file also sets the `proxy` field to forward
-requests to `"http://localhost:5555". Feel free to change this to another port-
-just remember to configure your Flask app to use another port as well!
-
-To download the dependencies for the frontend client, run:
-
-```console
-npm install --prefix client
-```
-
-You can run your React app on [`localhost:3000`](http://localhost:3000) by
-running:
-
-```sh
-npm start --prefix client
-```
-
-Check that your the React client displays a default page
-`http://localhost:3000`. You should see a web page with the heading "Project
-Client".
-
-## Generating Your Database
-
-NOTE: The initial project directory structure does not contain the `instance` or
-`migrations` folders. Change into the `server` directory:
-
-```console
-cd server
-```
-
-Then enter the commands to create the `instance` and `migrations` folders and
-the database `app.db` file:
-
-```
-flask db init
-flask db upgrade head
-```
-
-Type `tree -L 2` within the `server` folder to confirm the new directory
-structure:
-
-```console
-.
-├── app.py
-├── config.py
-├── instance
-│   └── app.db
-├── migrations
-│   ├── README
-│   ├── __pycache__
-│   ├── alembic.ini
-│   ├── env.py
-│   ├── script.py.mako
-│   └── versions
-├── models.py
-└── seed.py
-```
-
-Edit `models.py` and start creating your models. Import your models as needed in
-other modules, i.e. `from models import ...`.
-
-Remember to regularly run
-`flask db revision --autogenerate -m'<descriptive message>'`, replacing
-`<descriptive message>` with an appropriate message, and `flask db upgrade head`
-to track your modifications to the database and create checkpoints in case you
-ever need to roll those modifications back.
-
-> **Tip: It's always a good idea to start with an empty revision! This allows
-> you to roll all the way back while still holding onto your database. You can
-> create this empty revision with `flask db revision -m'Create DB'`.**
-
-If you want to seed your database, now would be a great time to write out your
-`seed.py` script and run it to generate some test data. Faker has been included
-in the Pipfile if you'd like to use that library.
+- All icons (except the sparkle emoji) are from [flaticon](https://www.flaticon.com/) and were made by [Freepik](https://www.freepik.com) and [Nack_Thanakorn](https://www.flaticon.com/authors/nack-thanakorn).
 
 ---
-
-#### `config.py`
-
-When developing a large Python application, you might run into a common issue:
-_circular imports_. A circular import occurs when two modules import from one
-another, such as `app.py` and `models.py`. When you create a circular import and
-attempt to run your app, you'll see the following error:
-
-```console
-ImportError: cannot import name
-```
-
-If you're going to need an object in multiple modules like `app` or `db`,
-creating a _third_ module to instantiate these objects can save you a great deal
-of circular grief. Here's a good start to a Flask config file (you may need more
-if you intend to include features like authentication and passwords):
-
-```py
-# Standard library imports
-
-# Remote library imports
-from flask import Flask
-from flask_cors import CORS
-from flask_migrate import Migrate
-from flask_restful import Api
-from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import MetaData
-
-# Local imports
-
-# Instantiate app, set attributes
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.json.compact = False
-
-# Define metadata, instantiate db
-metadata = MetaData(naming_convention={
-    "fk": "fk_%(table_name)s_%(column_0_name)s_%(referred_table_name)s",
-})
-db = SQLAlchemy(metadata=metadata)
-migrate = Migrate(app, db)
-db.init_app(app)
-
-# Instantiate REST API
-api = Api(app)
-
-# Instantiate CORS
-CORS(app)
-
-```
-
-Now let's review that last line...
-
-#### CORS
-
-CORS (Cross-Origin Resource Sharing) is a system that uses HTTP headers to
-determine whether resources from different servers-of-origin can be accessed. If
-you're using the fetch API to connect your frontend to your Flask backend, you
-need to configure CORS on your Flask application instance. Lucky for us, that
-only takes one line:
-
-```py
-CORS(app)
-
-```
-
-By default, Flask-CORS enables CORS on all routes in your application with all
-fetching servers. You can also specify the resources that allow CORS. The
-following specifies that routes beginning with `api/` allow CORS from any
-originating server:
-
-```py
-CORS(app, resources={r"/api/*": {"origins": "*"}})
-
-```
-
-You can also set this up resource-by-resource by importing and using the
-`@cross_origin` decorator:
-
-```py
-@app.route("/")
-@cross_origin()
-def howdy():
-  return "Howdy partner!"
-
-```
-
----
-
-## Updating Your README.md
-
-### What Goes into a README?
-
-This README should serve as a template for your own- go through the important
-files in your project and describe what they do. Each file that you edit (you
-can ignore your migration files) should get at least a paragraph. Each function
-should get a small blurb.
-
-You should descibe your application first, and with a good level of detail. The
-rest should be ordered by importance to the user. (Probably routes next, then
-models.)
-
-Screenshots and links to resources that you used throughout are also useful to
-users and collaborators, but a little more syntactically complicated. Only add
-these in if you're feeling comfortable with Markdown.
-
----
-
-## Conclusion
-
-A lot of work goes into a full-stack application, but it all relies on concepts
-that you've practiced thoroughly throughout this phase. Hopefully this template
-and guide will get you off to a good start with your Phase 4 Project.
-
-Happy coding!
-
----
-
-## Resources
-
-## Credits
-I-Ching : https://github.com/strobus/i-ching
-
-Western sign descriptions: The Influence of the Zodiac Upon Human Life by Eleanor Kirk, 1894
-eastern illustartions 
-
-= Image by <a href="https://www.freepik.com/free-vector/hand-drawn-chinese-zodiac-animals-illustration-set_35061601.htm#fromView=search&page=1&position=14&uuid=098f6370-6acc-4b96-920b-0ee372bffd2c?log-in=google">Freepik</a>
-
-
-element placeholder: 
-<a href="https://www.flaticon.com/free-icons/astrology" title="astrology icons">Astrology icons created by Freepik - Flaticon</a>
-
-element desc: WHITE, SUZANNE. THE NEW ASTROLOGY FOR THE 21ST CENTURY: A Unique Blend of Chinese and Western Astrology (pp. 10-11). Suzanne White. Kindle Edition.
-
-eastern sign descriptions: 
-Reiko Chiba. Japanese Fortune Calendar -- Reiko Chiba -- 2011 -- Tuttle Publishing -- 9781462911271 -- 378dfbadd9e15eb3e9655dfffecbdae3 -- Anna’s Archive (pp. 9-10). Kindle Edition. 
-
-east/west/element icons
-<div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div><div>Icons made by <a href="https://www.flaticon.com/authors/nack-thanakorn" title="Nack_Thanakorn">Nack_Thanakorn</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+### License : [MIT](./LICENSE.md)
