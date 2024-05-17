@@ -13,20 +13,18 @@ const App = () => {
         hideProgressBar: true,
         closeOnClick: true,
         pauseOnHover: true,
+		pauseOnFocusLoss: true,
+		newestOnTop: true,
         draggable: true,
         progress: undefined,
-        theme: 'dark',
         transition: Bounce,
-        role: 'alert',
-        isLoading: false, 
-        data: null,
-        icon: false,
+        role: 'alert'
     }
 
 	return (
 		<main>
 			<Header />
-			<ToastContainer role='alert' stacked options />
+			<ToastContainer role='alert' stacked options={options} />
 			<Outlet context={{ user }} />
 			<Footer />
 		</main>

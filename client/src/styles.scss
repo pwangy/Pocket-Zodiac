@@ -167,7 +167,7 @@ h1 {
 	display: flex;
 	flex-flow: column nowrap;
 }
-.form > p, input, button {
+.form > p, input {
 	width: 125px;
 	margin-bottom: 11px;
 	border: none;
@@ -204,9 +204,11 @@ form > button {
 	background-color: $dk8;
 	font-size: small;
 	color: $wht;
+	border: none;
 }
 .form-button:hover {
 	background-color: $dk11;
+	border: none;
 }
 .second {
 	margin-bottom: 13px;
@@ -314,7 +316,7 @@ footer > p {
 	text-align: center;
   }
 .footer-link {
-	color: $dk10;
+	color: $dk7;
 	text-decoration: none;
 	font-weight: $font-emphasis;
 }
