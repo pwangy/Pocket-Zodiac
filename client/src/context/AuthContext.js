@@ -1,13 +1,11 @@
-import { createContext, useContext, useState, useEffect } from 'react'
+import { createContext, useState, useEffect } from 'react'
 import { toast } from 'react-toastify'
-import ToastContext from './ToastContext'
 
 export const AuthContext = createContext()
 
 const AuthProvider = ({ children }) => {
 	const [user, setUser] = useState(null)
 	const updateUser = (user) => setUser(user)
-	// const { showToast } = useContext(ToastContext)
 
 	const getCookie = ( name ) => {
 		const value = `; ${document.cookie}`
@@ -38,10 +36,6 @@ const AuthProvider = ({ children }) => {
 							.then(updateUser)
 					} else {
 						toast.info('Please log in.')
-						// toasty.error(({ closeToast }) => 'Please log in.')
-						// showToast('info', 'Please log in.')
-
-
 					}
 				})
 			}
@@ -49,8 +43,6 @@ const AuthProvider = ({ children }) => {
 	}, [])
 
 	const patchUser = (patched_user) => setUser(patched_user)
-
-
 	const deleteUser = (deleted_user) => setUser(null)
 
 	const logout = (user) => {
@@ -68,7 +60,6 @@ const AuthProvider = ({ children }) => {
 		<AuthContext.Provider value={{ user, updateUser, logout, patchUser, deleteUser, getCookie }}>
 			{children}
 		</AuthContext.Provider>
-	)
-}
+)}
 
 export default AuthProvider

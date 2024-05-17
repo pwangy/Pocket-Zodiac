@@ -16,10 +16,10 @@ const Error = () => {
     }
 
     return (
-        <article className=''>
-            {user ?  <p className=''>{ err.message }</p> : <p className=''>Please login to view this page.</p>}
-            <button className='' onClick={handleGoBack}>Go Back</button>
-            <button className='' onClick={handleGoHome}>Return Home</button>
+        <article className='col-nowrap'>
+            {user ?  <p>{ err.errorObj }</p> : <p>Please login to view this page.</p>}
+            <button className='form-button error' onClick={handleGoBack}>Go Back</button>
+            <button className='form-button error' onClick={handleGoHome}>Return Home</button>
         </article>
 )}
 

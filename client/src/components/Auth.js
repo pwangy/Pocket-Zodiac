@@ -37,7 +37,6 @@ const loginSchema = object({
 	password: string().required('A password is required.')
 })
 
-// Initial values
 const initialValues = {
 	username: '',
 	password: '',
@@ -57,7 +56,7 @@ const Auth = () => {
 		setIsLogin(!isLogin)
 	}
 
-	//? OAuth
+	// OAuth
 	useEffect(() => {
 		const script = document.createElement('script')
 		script.src = 'https://apis.google.com/js/platform.js'
@@ -71,7 +70,7 @@ const Auth = () => {
 				})
 				window.google.accounts.id.renderButton(
 					document.getElementById('signInDiv'),
-					{ theme: 'filled_black', size: 'small', text: 'Use Google', width: 133, height: 23, backgroundColor: '#2e3833', borderRadius: 2, })
+					{ theme: 'filled_black', size: 'small', text: 'signin', width: 133, height: 23, backgroundColor: '#2e3833', borderRadius: 2, })
 			} else {
 			toast.error('Google API failed to load')
 			}

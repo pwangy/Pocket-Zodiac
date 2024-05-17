@@ -45,6 +45,7 @@ const Profile = () => {
 		email: user?.email || '',
 		birthdate: user?.birthdate || ''
 	}
+
     if (!user) return <h3>Pulling your records...</h3> 
 	return (
 		<>
@@ -142,7 +143,6 @@ const Profile = () => {
 				</div>
 			)}
 		</>
-	)
-}
+)}
 
 export default Profile

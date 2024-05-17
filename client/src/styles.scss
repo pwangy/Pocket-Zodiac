@@ -21,9 +21,6 @@ time, mark, audio, video {
 	font-size: 100%;
 	font: inherit;
 	border-radius: 2px;
-	background-color: #abbab2;
-	// border: 1px solid #abbab2;
-	// vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
@@ -49,7 +46,6 @@ table {
 	border-spacing: 0;
 }
 
-
 /* Global Styles */
 // Pallete
 $blk: #191414;
@@ -60,7 +56,6 @@ $dk9: #1f4c7a;
 $dk8: #2e3833;
 $dk7: #45544c;
 $dk6: #5c7066;
-
 $md5: #738c80;
 $md4: #8fa399;
 $li3: #abbab2;
@@ -80,23 +75,18 @@ $warn: #a32929;
 	font-weight: 700;
 	font-style: normal;
   }
-
 $font-titles: "Corben", serif;
 $title-bold: 700;
 $title-regular: 400;
-// <weight>: 100 to 900
 $font-primary: "Work Sans", sans-serif;
-$font-bolder: 900;
 $font-bold: 600;
 $font-emphasis: 500;
 $font-regular: 300;
 $font-light: 100;
 
-
-
 /* Start Styles */
 html {
-	margin: 16px;
+	margin: 6px;
 	background-color: $li3;
 	border: none;
 }
@@ -110,8 +100,8 @@ body {
 }
 main {
 	max-width: 350px;
-	padding: 3px;
-	// border: 1px solid $night;
+	padding: 16px;
+	border: 1px solid $md4;
 }
 div, h3, p, a, .form {
 	border-radius: 2px;
@@ -131,28 +121,23 @@ article {
 	display: flex;
 	flex-flow: row wrap;
 }
+.row-nowrap {
+	display: flex;
+	flex-flow: row nowrap;
+}
 .col-nowrap {
 	display: flex;
 	flex-flow: column nowrap;
 }
-
-
-
-// Toastify
-// .Toastify__toast-container {
-// 	border-radius: 2px;
-// }
-
-
+.error {
+	margin-bottom: 10px;
+}
 
 // Header
 header {
 	margin-bottom: 16px;
 	padding-bottom: 16px;
-
 	border: none;
-	// background-color: $li3;
-	// border: 1px solid pink;
 }
 h1 {
 	height: 1.25em;
@@ -160,7 +145,6 @@ h1 {
 	font-family: $font-titles;
 	font-size: 2.5rem;
 	color: $night;
-	// background-color: $md4;
 }
 .nav {
 	margin-right: 10px;
@@ -181,14 +165,12 @@ h1 {
 	font-weight: $font-bold;
 }
 
-
-
 // Auth
 .form-container, form {
 	display: flex;
 	flex-flow: column nowrap;
 }
-.form > p, input, button {
+.form > p, input {
 	width: 125px;
 	margin-bottom: 11px;
 	border: none;
@@ -225,9 +207,11 @@ form > button {
 	background-color: $dk8;
 	font-size: small;
 	color: $wht;
+	border: none;
 }
 .form-button:hover {
 	background-color: $dk11;
+	border: none;
 }
 .second {
 	margin-bottom: 13px;
@@ -249,16 +233,15 @@ form > button {
 	text-transform: none;
 }
 
-
-
 // Explore
 section {
 	margin: 16px 0 25px 0;
 
 }
 .exp {
-	color: $dk11;
+	margin-bottom: 4px;
 	padding: 8px 8px 0 0;
+	color: $dk11;
 }
 .list {
 	margin: 0;
@@ -285,8 +268,9 @@ h6 {
 	background-color: $dk6;
 	cursor: pointer;
 }
-
-
+.rmspace {
+	margin-bottom: -14px;
+}
 
 // Detail
 .detail-container {
@@ -297,9 +281,28 @@ h6 {
 	height: 130px;
 	padding: 8px;
 	background-color: $li3;
-	border: 1px solid $md4;
+	align-self: center;
+}
+strong {
+	text-transform: uppercase;
+	font-weight: $font-emphasis;
+	font-size: small;
+}
+.text {
+	margin: 0 0 6px 0;
+}
+.next {
+	margin-top: 28px;
 }
 
+// Zodiac
+.em {
+	font-weight: $font-emphasis;
+	text-transform: none;
+}
+.wrap {
+	display: contents;
+}
 
 // Footer
 footer {
@@ -316,7 +319,7 @@ footer > p {
 	text-align: center;
   }
 .footer-link {
-	color: $dk10;
+	color: $dk7;
 	text-decoration: none;
 	font-weight: $font-emphasis;
 }
