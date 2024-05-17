@@ -37,7 +37,7 @@ const Zodiac = () => {
 						)}
 					)}
 
-					{east.element.img && <img src={ images[east.element.img]} alt={east.element.name} className='ico detail' />}
+					{east.element.img && <img src={ images[east.element.img]} alt={east.element.name} className='ico detail next' />}
 					<h3 className='exp'>Element: {east.element.name}</h3>
 					{typeof east.element === 'object' ? 
 						Object.entries(east.element).map(
@@ -52,7 +52,7 @@ const Zodiac = () => {
 					}
 				</div>
 				<div className='detail-container col-nowrap'>
-					{west.img && <img src={ images[west.img]} alt={west.name} className='ico detail' />}
+					{west.img && <img src={ images[west.img]} alt={west.name} className='ico detail next' />}
 					<h3 className='exp'>Western Sign: {west.name}</h3>
 					{Object.entries(west).map(
 						([key, value], index) => {

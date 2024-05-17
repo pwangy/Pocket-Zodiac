@@ -42,12 +42,10 @@ const Explore = () => {
 
 	return (
         <>
-            <h3>Explore</h3>
-            {/* <> */}
+            {/* <h3 className='rmspace'>Explore</h3> */}
             <Container data={east} type='east' />
             <Container data={west} type='west' />
             <Container data={elements} type='elements' />
-            {/* </> */}
         </>
 )}
 

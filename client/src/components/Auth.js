@@ -37,7 +37,6 @@ const loginSchema = object({
 	password: string().required('A password is required.')
 })
 
-// Initial values
 const initialValues = {
 	username: '',
 	password: '',
@@ -57,7 +56,7 @@ const Auth = () => {
 		setIsLogin(!isLogin)
 	}
 
-	//? OAuth
+	// OAuth
 	useEffect(() => {
 		const script = document.createElement('script')
 		script.src = 'https://apis.google.com/js/platform.js'

@@ -7,7 +7,6 @@ import Footer from './components/Footer'
 
 const App = () => {
 	const { user } = useContext(AuthContext)
-
 	return (
 		<main>
 			<Header />
