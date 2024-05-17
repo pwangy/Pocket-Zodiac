@@ -131,6 +131,10 @@ article {
 	display: flex;
 	flex-flow: row wrap;
 }
+.row-wrap {
+	display: flex;
+	flex-flow: row nowrap;
+}
 .col-nowrap {
 	display: flex;
 	flex-flow: column nowrap;
@@ -297,9 +301,26 @@ h6 {
 	height: 130px;
 	padding: 8px;
 	background-color: $li3;
-	border: 1px solid $md4;
+	// border: 1px solid $md4;
+	align-self: center;
+}
+strong {
+	text-transform: uppercase;
+	font-weight: $font-emphasis;
+	font-size: small;
+}
+.text {
+	margin: 0 0 6px 0;
 }
 
+// Zodiac
+.em {
+	font-weight: $font-emphasis;
+	text-transform: none;
+}
+.wrap {
+	display: contents;
+}
 
 // Footer
 footer {

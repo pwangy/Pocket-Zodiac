@@ -18,25 +18,29 @@ const Detail = () => {
 				<img src={images[img]} alt={`${type} icon`} className='ico detail' />
 				<h3 className='exp'>{props.name_12}</h3>
 				{Object.entries(props).map(
-					([key, value]) =>
-						key !== 'name' &&
-						key !== 'start' &&
-						key !== 'end' &&
-						key !== 'start1' &&
-						key !== 'end1' &&
-						key !== 'id' &&
-                        key !== 'element_id' &&
-                        key !== 'element' &&
-                        key !== 'order_12' &&
-                        key !== 'order_60' &&
-                        key !== 'name_12' &&
-                        (<p key={key}>
-                            <strong>
-                                {key.charAt(0).toUpperCase() + key.slice(1)}
-                                :
-                            </strong>{' '}
-								{value instanceof Object ? JSON.stringify(value) : value}
-						</p>)
+					([key, value]) => {
+						key = key === 'desc' ? 'description' : key
+						key = key === 'western_counterpart' ? 'western counterpart' : key
+						return (
+							key !== 'name' &&
+							key !== 'start' &&
+							key !== 'end' &&
+							key !== 'start1' &&
+							key !== 'end1' &&
+							key !== 'id' &&
+							key !== 'element_id' &&
+							key !== 'element' &&
+							key !== 'order_12' &&
+							key !== 'order_60' &&
+							key !== 'name_12' &&
+							(<p className='text' key={key}>
+								<strong>
+									{key.charAt(0).toUpperCase() + key.slice(1)}
+									:
+								</strong>{' '}
+									{value instanceof Object ? JSON.stringify(value) : value}
+							</p>)
+					)}
 				)}
 			</div>
 		)
@@ -46,19 +50,22 @@ const Detail = () => {
 				<img src={images[img]} alt={`${type} icon`} className='ico detail' />
 				<h3 className='exp'>{name}</h3>
 				{Object.entries(props).map(
-					([key, value]) =>
-						key !== 'name' &&
-						key !== 'start' &&
-						key !== 'end' &&
-						key !== 'id' &&
-						key !== 'symbol' &&
-                        (<p key={key}>
-                            <strong>
-                                {key.charAt(0).toUpperCase() + key.slice(1)}
-                                :
-                            </strong>{' '}
-								{value instanceof Object ? JSON.stringify(value) : value}
-						</p>)
+					([key, value]) => {
+						key = key === 'desc' ? 'description' : key
+						return (
+							key !== 'name' &&
+							key !== 'start' &&
+							key !== 'end' &&
+							key !== 'id' &&
+							key !== 'symbol' &&
+							(<p className='text' key={key}>
+								<strong>
+									{key.charAt(0).toUpperCase() + key.slice(1)}
+									:
+								</strong>{' '}
+									{value instanceof Object ? JSON.stringify(value) : value}
+							</p>)
+					)}
 				)}
 			</div>
 		)
@@ -68,18 +75,20 @@ const Detail = () => {
 				<img src={images[img]} alt={`${type} icon`} className='ico detail' />
 				<h3 className='exp'>{name}</h3>
 				{Object.entries(props).map(
-					([key, value]) =>
-						key !== 'name' && (
-							<p key={key}>
-								<strong>
-									{key.charAt(0).toUpperCase() + key.slice(1)}
-									:
-								</strong>{' '}
-								{value instanceof Object
-									? JSON.stringify(value)
-									: value}
-							</p>
-						)
+					([key, value]) => {
+						key = key === 'desc' ? 'description' : key
+						return (
+							key !== 'name' && (
+								<p className='text' key={key}>
+									<strong>
+										{key.charAt(0).toUpperCase() + key.slice(1)}
+										:
+									</strong>{' '}
+									{value instanceof Object
+										? JSON.stringify(value)
+										: value}
+								</p>)
+						)}
 				)}
 			</div>
 		)
