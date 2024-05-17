@@ -4,7 +4,6 @@ import { AuthContext } from '../context/AuthContext'
 
 const Header = () => {
 	const { user, logout } = useContext(AuthContext)
-
     return (
         <header>
             <h1>Pocket Zodiac</h1>

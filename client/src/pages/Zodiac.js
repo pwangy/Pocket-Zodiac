@@ -36,7 +36,6 @@ const Zodiac = () => {
 								</p>)
 						)}
 					)}
-
 					{east.element.img && <img src={ images[east.element.img]} alt={east.element.name} className='ico detail next' />}
 					<h3 className='exp'>Element: {east.element.name}</h3>
 					{typeof east.element === 'object' ? 
