@@ -14,8 +14,8 @@ load_dotenv()
 
 app = Flask(__name__)
 CORS(app, origins="http://localhost:3000")
-# app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///zodiac.db"
-app.config["SQLALCHEMY_DATABASE_URI"] = environ.get("DATABASE_URI")
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///zodiac.db"
+# app.config["SQLALCHEMY_DATABASE_URI"] = environ.get("DATABASE_URI")
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.config["SQLALCHEMY_ECHO"] = True
 
