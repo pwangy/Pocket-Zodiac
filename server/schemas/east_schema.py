@@ -21,6 +21,10 @@ class EastSchema(ma.SQLAlchemyAutoSchema):
     end = fields.Date()
     start1 = fields.Date()
     end1 = fields.Date()
+    # start = fields.String()
+    # end = fields.String()
+    # start1 = fields.String()
+    # end1 = fields.String()
 
 
 east_schema = EastSchema()

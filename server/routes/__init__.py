@@ -32,9 +32,9 @@ from flask_jwt_extended import (
 )
 
 
-@app.route("/")
-def index():
-    return "<h1>Pocket Zodiac Server</h1>"
+# @app.route("/")
+# def index():
+#     return "<h1>Pocket Zodiac Server</h1>"
 
 
 @app.errorhandler(NotFound)

@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-from config import app, api
+from flask import render_template
+from config import GOOGLE_CLIENT_ID, app, api
 from routes.user.users import Users
 from routes.user.user_by_id import UserById
 from routes.user_zodiac.user_zodiac import UserZodiac
@@ -15,6 +16,8 @@ from routes.auth.logout import Logout
 from routes.auth.check_session import CheckSession
 from routes.auth.refresh import Refresh
 from routes.auth.oauth import OAuth
+from os import environ
+from dotenv import load_dotenv
 
 api.add_resource(UserZodiacById, "/userzodiacbyid/<int:id>")
 api.add_resource(UserZodiac, "/userszodiac")
@@ -31,6 +34,18 @@ api.add_resource(Logout, "/logout")
 api.add_resource(CheckSession, "/me")
 api.add_resource(Refresh, "/refresh")
 api.add_resource(OAuth, "/goauth")
+
+@app.route("/")
+@app.route("/auth")
+@app.route("/zodiac")
+@app.route("/explore")
+@app.route("/elements/<int:id>")
+@app.route("/east/<int:id>")
+@app.route("/west/<int:id>")
+@app.route("/edit/<int:id>")
+
+def index(id=0):
+    return render_template("index.html", GOOGLE_CLIENT_ID=environ.get("GOAUTH_CID"))
 
 if __name__ == "__main__":
     app.run(port=5555, debug=True)

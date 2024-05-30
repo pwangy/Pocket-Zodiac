@@ -12,11 +12,23 @@ from os import environ
 
 load_dotenv()
 
-app = Flask(__name__)
+
+app = Flask(
+    __name__,
+    static_url_path="",
+    static_folder="../client/build",
+    template_folder="../client/build",
+)
+
+#! deployment
 CORS(app, origins="http://localhost:3000")
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///zodiac.db"
-# app.config["SQLALCHEMY_DATABASE_URI"] = environ.get("DATABASE_URI")
+app.config["SQLALCHEMY_DATABASE_URI"] = environ.get("DATABASE_URI")
+
+#! production
+# app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///zodiac.db"
+
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+app.config["SESSION_TYPE"] = "sqlalchemy"
 app.config["SQLALCHEMY_ECHO"] = True
 
 

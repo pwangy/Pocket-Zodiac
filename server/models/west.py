@@ -18,6 +18,8 @@ class West(db.Model, SerializerMixin):
     img = db.Column(db.String)
     start = db.Column(db.Date)
     end = db.Column(db.Date)
+    # start = db.Column(db.String)
+    # end = db.Column(db.String)
 
     # Relationships
     user_zodiacs = db.relationship("UserZodiac", back_populates="west")

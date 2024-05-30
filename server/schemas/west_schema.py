@@ -17,6 +17,8 @@ class WestSchema(ma.SQLAlchemyAutoSchema):
     img = fields.String()
     start = fields.Date()
     end = fields.Date()
+    # start = fields.String()
+    # end = fields.String()
 
 
 west_schema = WestSchema()

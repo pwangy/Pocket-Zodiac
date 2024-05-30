@@ -21,6 +21,10 @@ class East(db.Model, SerializerMixin):
     end = db.Column(db.Date)
     start1 = db.Column(db.Date)
     end1 = db.Column(db.Date)
+    # start = db.Column(db.String)
+    # end = db.Column(db.String)
+    # start1 = db.Column(db.String)
+    # end1 = db.Column(db.String)
 
     # Relationships
     element = db.relationship("Element", back_populates="east_signs")
