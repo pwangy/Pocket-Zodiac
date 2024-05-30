@@ -79,7 +79,6 @@ def seed():
         with open("seeds/elements.csv", "r") as file:
             reader = csv.DictReader(file, delimiter="\t")
             for row in reader:
-                print("row")
                 element = Element(**row)
                 db.session.add(element)
         db.session.commit()
@@ -89,7 +88,6 @@ def seed():
         with open("seeds/east.csv", "r") as file:
             reader = csv.DictReader(file, delimiter="\t")
             for row in reader:
-                print("row")
                 east = East(**row)
                 db.session.add(east)
         db.session.commit()
@@ -98,7 +96,6 @@ def seed():
         with open("seeds/west.csv", "r") as file:
             reader = csv.DictReader(file, delimiter="\t")
             for row in reader:
-                print("row")
                 west = West(**row)
                 db.session.add(west)
         db.session.commit()
