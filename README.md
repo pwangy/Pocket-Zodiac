@@ -5,6 +5,7 @@ Pocket Zodiac is an astrology app from an Eastern point of view. View your Chine
 
 ## About this app
 Pocket Zodiac is a full stack app built with React, Flask, and SQLAlchemy and best viewed on a small screen.
+[Watch Demo](https://www.loom.com/share/a56048ce13a247ebb0ed3a0cdbd5445f)
 
 Users can:
 - [x] create an account via form or Google OAuth
