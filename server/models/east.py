@@ -63,3 +63,11 @@ class East(db.Model, SerializerMixin):
 
     def set_order_60(self, value):
         self.order_60 = self.ensure_integer(value)
+
+
+def convert_date(date_str):
+    try:
+        year, day, month = map(int, date_str.split("-"))
+        return datetime(year, day, month)
+    except ValueError:
+        return None

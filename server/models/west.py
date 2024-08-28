@@ -43,3 +43,11 @@ class West(db.Model, SerializerMixin):
                 end: {self.end}
             />
         """
+
+def convert_date_w(date_str):
+    try:
+        day, month = map(int, date_str.split("-"))
+        year = 2024
+        return datetime(year, day, month)
+    except ValueError:
+        return None
